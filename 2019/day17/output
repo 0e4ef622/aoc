@@ -1,0 +1,1536 @@
+part 1: 4044
+[R, F(8), L, F(10), L, F(12), R, F(4), R, F(8), L, F(12), R, F(4), R, F(4), R, F(8), L, F(10), L, F(12), R, F(4), R, F(8), L, F(10), R, F(8), R, F(8), L, F(10), L, F(12), R, F(4), R, F(8), L, F(12), R, F(4), R, F(4), R, F(8), L, F(10), R, F(8), R, F(8), L, F(12), R, F(4), R, F(4), R, F(8), L, F(10), R, F(8), R, F(8), L, F(12), R, F(4), R, F(4)]
+R,8,L,10,L,12,R,4,R,8,L,12,R,4,R,4,R,8,L,10,L,12,R,4,R,8,L,10,R,8,R,8,L,10,L,12,R,4,R,8,L,12,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4
+
+main: R,8,L,10,L,12,R,4,R,8,L,12,R,4,R,4,R,8,L,10,L,12,R,4,R,8,L,10,R,8,R,8,L,10,L,12,R,4,R,8,L,12,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4
+A: 
+B: 
+C: 
+
+main: A,8,L,10,L,12,A,4,A,8,L,12,A,4,A,4,A,8,L,10,L,12,A,4,A,8,L,10,A,8,A,8,L,10,L,12,A,4,A,8,L,12,A,4,A,4,A,8,L,10,A,8,A,8,L,12,A,4,A,4,A,8,L,10,A,8,A,8,L,12,A,4,A,4
+A: R
+B: 
+C: 
+
+main: A,B,L,10,L,12,A,4,A,B,L,12,A,4,A,4,A,B,L,10,L,12,A,4,A,B,L,10,A,B,A,B,L,10,L,12,A,4,A,B,L,12,A,4,A,4,A,B,L,10,A,B,A,B,L,12,A,4,A,4,A,B,L,10,A,B,A,B,L,12,A,4,A,4
+A: R
+B: 8
+C: 
+
+main: A,B,C,10,C,12,A,4,A,B,C,12,A,4,A,4,A,B,C,10,C,12,A,4,A,B,C,10,A,B,A,B,C,10,C,12,A,4,A,B,C,12,A,4,A,4,A,B,C,10,A,B,A,B,C,12,A,4,A,4,A,B,C,10,A,B,A,B,C,12,A,4,A,4
+A: R
+B: 8
+C: L
+
+main: A,B,C,L,12,A,4,A,B,L,12,A,4,A,4,A,B,C,L,12,A,4,A,B,C,A,B,A,B,C,L,12,A,4,A,B,L,12,A,4,A,4,A,B,C,A,B,A,B,L,12,A,4,A,4,A,B,C,A,B,A,B,L,12,A,4,A,4
+A: R
+B: 8
+C: L,10
+
+main: A,B,C,12,A,4,A,B,L,12,A,4,A,4,A,B,C,12,A,4,A,B,L,10,A,B,A,B,C,12,A,4,A,B,L,12,A,4,A,4,A,B,L,10,A,B,A,B,L,12,A,4,A,4,A,B,L,10,A,B,A,B,L,12,A,4,A,4
+A: R
+B: 8
+C: L,10,L
+
+main: A,B,C,A,4,A,B,L,12,A,4,A,4,A,B,C,A,4,A,B,L,10,A,B,A,B,C,A,4,A,B,L,12,A,4,A,4,A,B,L,10,A,B,A,B,L,12,A,4,A,4,A,B,L,10,A,B,A,B,L,12,A,4,A,4
+A: R
+B: 8
+C: L,10,L,12
+
+main: A,B,10,L,12,A,4,A,B,12,A,4,A,4,A,B,10,L,12,A,4,A,B,10,A,8,A,B,10,L,12,A,4,A,B,12,A,4,A,4,A,B,10,A,8,A,B,12,A,4,A,4,A,B,10,A,8,A,B,12,A,4,A,4
+A: R
+B: 8,L
+C: 
+
+main: A,B,C,L,12,A,4,A,B,12,A,4,A,4,A,B,C,L,12,A,4,A,B,C,A,8,A,B,C,L,12,A,4,A,B,12,A,4,A,4,A,B,C,A,8,A,B,12,A,4,A,4,A,B,C,A,8,A,B,12,A,4,A,4
+A: R
+B: 8,L
+C: 10
+
+main: A,B,C,12,A,4,A,B,12,A,4,A,4,A,B,C,12,A,4,A,B,10,A,8,A,B,C,12,A,4,A,B,12,A,4,A,4,A,B,10,A,8,A,B,12,A,4,A,4,A,B,10,A,8,A,B,12,A,4,A,4
+A: R
+B: 8,L
+C: 10,L
+
+main: A,B,C,A,4,A,B,12,A,4,A,4,A,B,C,A,4,A,B,10,A,8,A,B,C,A,4,A,B,12,A,4,A,4,A,B,10,A,8,A,B,12,A,4,A,4,A,B,10,A,8,A,B,12,A,4,A,4
+A: R
+B: 8,L
+C: 10,L,12
+
+main: A,B,L,12,A,4,A,8,L,12,A,4,A,4,A,B,L,12,A,4,A,B,A,8,A,B,L,12,A,4,A,8,L,12,A,4,A,4,A,B,A,8,A,8,L,12,A,4,A,4,A,B,A,8,A,8,L,12,A,4,A,4
+A: R
+B: 8,L,10
+C: 
+
+main: A,B,C,12,A,4,A,8,C,12,A,4,A,4,A,B,C,12,A,4,A,B,A,8,A,B,C,12,A,4,A,8,C,12,A,4,A,4,A,B,A,8,A,8,C,12,A,4,A,4,A,B,A,8,A,8,C,12,A,4,A,4
+A: R
+B: 8,L,10
+C: L
+
+main: A,B,C,A,4,A,8,C,A,4,A,4,A,B,C,A,4,A,B,A,8,A,B,C,A,4,A,8,C,A,4,A,4,A,B,A,8,A,8,C,A,4,A,4,A,B,A,8,A,8,C,A,4,A,4
+A: R
+B: 8,L,10
+C: L,12
+
+main: A,B,12,A,4,A,8,L,12,A,4,A,4,A,B,12,A,4,A,8,L,10,A,8,A,B,12,A,4,A,8,L,12,A,4,A,4,A,8,L,10,A,8,A,8,L,12,A,4,A,4,A,8,L,10,A,8,A,8,L,12,A,4,A,4
+A: R
+B: 8,L,10,L
+C: 
+
+main: A,B,C,A,4,A,8,L,C,A,4,A,4,A,B,C,A,4,A,8,L,10,A,8,A,B,C,A,4,A,8,L,C,A,4,A,4,A,8,L,10,A,8,A,8,L,C,A,4,A,4,A,8,L,10,A,8,A,8,L,C,A,4,A,4
+A: R
+B: 8,L,10,L
+C: 12
+
+main: A,B,A,4,A,8,L,12,A,4,A,4,A,B,A,4,A,8,L,10,A,8,A,B,A,4,A,8,L,12,A,4,A,4,A,8,L,10,A,8,A,8,L,12,A,4,A,4,A,8,L,10,A,8,A,8,L,12,A,4,A,4
+A: R
+B: 8,L,10,L,12
+C: 
+
+main: A,B,A,C,A,8,L,12,A,C,A,C,A,B,A,C,A,8,L,10,A,8,A,B,A,C,A,8,L,12,A,C,A,C,A,8,L,10,A,8,A,8,L,12,A,C,A,C,A,8,L,10,A,8,A,8,L,12,A,C,A,C
+A: R
+B: 8,L,10,L,12
+C: 4
+
+main: A,L,10,L,12,R,4,A,L,12,R,4,R,4,A,L,10,L,12,R,4,A,L,10,A,A,L,10,L,12,R,4,A,L,12,R,4,R,4,A,L,10,A,A,L,12,R,4,R,4,A,L,10,A,A,L,12,R,4,R,4
+A: R,8
+B: 
+C: 
+
+main: A,B,10,B,12,R,4,A,B,12,R,4,R,4,A,B,10,B,12,R,4,A,B,10,A,A,B,10,B,12,R,4,A,B,12,R,4,R,4,A,B,10,A,A,B,12,R,4,R,4,A,B,10,A,A,B,12,R,4,R,4
+A: R,8
+B: L
+C: 
+
+main: A,B,C,B,12,R,4,A,B,12,R,4,R,4,A,B,C,B,12,R,4,A,B,C,A,A,B,C,B,12,R,4,A,B,12,R,4,R,4,A,B,C,A,A,B,12,R,4,R,4,A,B,C,A,A,B,12,R,4,R,4
+A: R,8
+B: L
+C: 10
+
+main: A,B,L,12,R,4,A,L,12,R,4,R,4,A,B,L,12,R,4,A,B,A,A,B,L,12,R,4,A,L,12,R,4,R,4,A,B,A,A,L,12,R,4,R,4,A,B,A,A,L,12,R,4,R,4
+A: R,8
+B: L,10
+C: 
+
+main: A,B,C,12,R,4,A,C,12,R,4,R,4,A,B,C,12,R,4,A,B,A,A,B,C,12,R,4,A,C,12,R,4,R,4,A,B,A,A,C,12,R,4,R,4,A,B,A,A,C,12,R,4,R,4
+A: R,8
+B: L,10
+C: L
+
+main: A,B,C,R,4,A,C,R,4,R,4,A,B,C,R,4,A,B,A,A,B,C,R,4,A,C,R,4,R,4,A,B,A,A,C,R,4,R,4,A,B,A,A,C,R,4,R,4
+A: R,8
+B: L,10
+C: L,12
+
+main: A,B,C,4,A,C,4,R,4,A,B,C,4,A,B,A,A,B,C,4,A,C,4,R,4,A,B,A,A,C,4,R,4,A,B,A,A,C,4,R,4
+A: R,8
+B: L,10
+C: L,12,R
+
+main: A,B,C,A,C,R,4,A,B,C,A,B,A,A,B,C,A,C,R,4,A,B,A,A,C,R,4,A,B,A,A,C,R,4
+A: R,8
+B: L,10
+C: L,12,R,4
+
+main: A,B,12,R,4,A,L,12,R,4,R,4,A,B,12,R,4,A,L,10,A,A,B,12,R,4,A,L,12,R,4,R,4,A,L,10,A,A,L,12,R,4,R,4,A,L,10,A,A,L,12,R,4,R,4
+A: R,8
+B: L,10,L
+C: 
+
+main: A,B,C,R,4,A,L,C,R,4,R,4,A,B,C,R,4,A,L,10,A,A,B,C,R,4,A,L,C,R,4,R,4,A,L,10,A,A,L,C,R,4,R,4,A,L,10,A,A,L,C,R,4,R,4
+A: R,8
+B: L,10,L
+C: 12
+
+main: A,B,C,4,A,L,C,4,R,4,A,B,C,4,A,L,10,A,A,B,C,4,A,L,C,4,R,4,A,L,10,A,A,L,C,4,R,4,A,L,10,A,A,L,C,4,R,4
+A: R,8
+B: L,10,L
+C: 12,R
+
+main: A,B,C,A,L,C,R,4,A,B,C,A,L,10,A,A,B,C,A,L,C,R,4,A,L,10,A,A,L,C,R,4,A,L,10,A,A,L,C,R,4
+A: R,8
+B: L,10,L
+C: 12,R,4
+
+main: A,B,R,4,A,L,12,R,4,R,4,A,B,R,4,A,L,10,A,A,B,R,4,A,L,12,R,4,R,4,A,L,10,A,A,L,12,R,4,R,4,A,L,10,A,A,L,12,R,4,R,4
+A: R,8
+B: L,10,L,12
+C: 
+
+main: A,B,C,4,A,L,12,C,4,C,4,A,B,C,4,A,L,10,A,A,B,C,4,A,L,12,C,4,C,4,A,L,10,A,A,L,12,C,4,C,4,A,L,10,A,A,L,12,C,4,C,4
+A: R,8
+B: L,10,L,12
+C: R
+
+main: A,B,C,A,L,12,C,C,A,B,C,A,L,10,A,A,B,C,A,L,12,C,C,A,L,10,A,A,L,12,C,C,A,L,10,A,A,L,12,C,C
+A: R,8
+B: L,10,L,12
+C: R,4
+
+main: A,B,4,A,L,12,R,4,R,4,A,B,4,A,L,10,A,A,B,4,A,L,12,R,4,R,4,A,L,10,A,A,L,12,R,4,R,4,A,L,10,A,A,L,12,R,4,R,4
+A: R,8
+B: L,10,L,12,R
+C: 
+
+main: A,B,C,A,L,12,R,C,R,C,A,B,C,A,L,10,A,A,B,C,A,L,12,R,C,R,C,A,L,10,A,A,L,12,R,C,R,C,A,L,10,A,A,L,12,R,C,R,C
+A: R,8
+B: L,10,L,12,R
+C: 4
+
+main: A,B,A,L,12,R,4,R,4,A,B,A,L,10,A,A,B,A,L,12,R,4,R,4,A,L,10,A,A,L,12,R,4,R,4,A,L,10,A,A,L,12,R,4,R,4
+A: R,8
+B: L,10,L,12,R,4
+C: 
+
+main: A,B,A,C,12,R,4,R,4,A,B,A,C,10,A,A,B,A,C,12,R,4,R,4,A,C,10,A,A,C,12,R,4,R,4,A,C,10,A,A,C,12,R,4,R,4
+A: R,8
+B: L,10,L,12,R,4
+C: L
+
+main: A,B,A,C,R,4,R,4,A,B,A,L,10,A,A,B,A,C,R,4,R,4,A,L,10,A,A,C,R,4,R,4,A,L,10,A,A,C,R,4,R,4
+A: R,8
+B: L,10,L,12,R,4
+C: L,12
+
+main: A,B,A,C,4,R,4,A,B,A,L,10,A,A,B,A,C,4,R,4,A,L,10,A,A,C,4,R,4,A,L,10,A,A,C,4,R,4
+A: R,8
+B: L,10,L,12,R,4
+C: L,12,R
+
+main: A,B,A,C,R,4,A,B,A,L,10,A,A,B,A,C,R,4,A,L,10,A,A,C,R,4,A,L,10,A,A,C,R,4
+A: R,8
+B: L,10,L,12,R,4
+C: L,12,R,4
+
+main: A,B,A,C,4,A,B,A,L,10,A,A,B,A,C,4,A,L,10,A,A,C,4,A,L,10,A,A,C,4
+A: R,8
+B: L,10,L,12,R,4
+C: L,12,R,4,R
+
+main: A,B,A,C,A,B,A,L,10,A,A,B,A,C,A,L,10,A,A,C,A,L,10,A,A,C
+A: R,8
+B: L,10,L,12,R,4
+C: L,12,R,4,R,4
+
+main: A,10,L,12,R,4,A,12,R,4,R,4,A,10,L,12,R,4,A,10,R,8,A,10,L,12,R,4,A,12,R,4,R,4,A,10,R,8,A,12,R,4,R,4,A,10,R,8,A,12,R,4,R,4
+A: R,8,L
+B: 
+C: 
+
+main: A,B,L,12,R,4,A,12,R,4,R,4,A,B,L,12,R,4,A,B,R,8,A,B,L,12,R,4,A,12,R,4,R,4,A,B,R,8,A,12,R,4,R,4,A,B,R,8,A,12,R,4,R,4
+A: R,8,L
+B: 10
+C: 
+
+main: A,B,C,12,R,4,A,12,R,4,R,4,A,B,C,12,R,4,A,B,R,8,A,B,C,12,R,4,A,12,R,4,R,4,A,B,R,8,A,12,R,4,R,4,A,B,R,8,A,12,R,4,R,4
+A: R,8,L
+B: 10
+C: L
+
+main: A,B,C,R,4,A,12,R,4,R,4,A,B,C,R,4,A,B,R,8,A,B,C,R,4,A,12,R,4,R,4,A,B,R,8,A,12,R,4,R,4,A,B,R,8,A,12,R,4,R,4
+A: R,8,L
+B: 10
+C: L,12
+
+main: A,B,C,4,A,12,R,4,R,4,A,B,C,4,A,B,R,8,A,B,C,4,A,12,R,4,R,4,A,B,R,8,A,12,R,4,R,4,A,B,R,8,A,12,R,4,R,4
+A: R,8,L
+B: 10
+C: L,12,R
+
+main: A,B,C,A,12,R,4,R,4,A,B,C,A,B,R,8,A,B,C,A,12,R,4,R,4,A,B,R,8,A,12,R,4,R,4,A,B,R,8,A,12,R,4,R,4
+A: R,8,L
+B: 10
+C: L,12,R,4
+
+main: A,B,12,R,4,A,12,R,4,R,4,A,B,12,R,4,A,10,R,8,A,B,12,R,4,A,12,R,4,R,4,A,10,R,8,A,12,R,4,R,4,A,10,R,8,A,12,R,4,R,4
+A: R,8,L
+B: 10,L
+C: 
+
+main: A,B,C,R,4,A,C,R,4,R,4,A,B,C,R,4,A,10,R,8,A,B,C,R,4,A,C,R,4,R,4,A,10,R,8,A,C,R,4,R,4,A,10,R,8,A,C,R,4,R,4
+A: R,8,L
+B: 10,L
+C: 12
+
+main: A,B,C,4,A,C,4,R,4,A,B,C,4,A,10,R,8,A,B,C,4,A,C,4,R,4,A,10,R,8,A,C,4,R,4,A,10,R,8,A,C,4,R,4
+A: R,8,L
+B: 10,L
+C: 12,R
+
+main: A,B,C,A,C,R,4,A,B,C,A,10,R,8,A,B,C,A,C,R,4,A,10,R,8,A,C,R,4,A,10,R,8,A,C,R,4
+A: R,8,L
+B: 10,L
+C: 12,R,4
+
+main: A,B,R,4,A,12,R,4,R,4,A,B,R,4,A,10,R,8,A,B,R,4,A,12,R,4,R,4,A,10,R,8,A,12,R,4,R,4,A,10,R,8,A,12,R,4,R,4
+A: R,8,L
+B: 10,L,12
+C: 
+
+main: A,B,C,4,A,12,C,4,C,4,A,B,C,4,A,10,C,8,A,B,C,4,A,12,C,4,C,4,A,10,C,8,A,12,C,4,C,4,A,10,C,8,A,12,C,4,C,4
+A: R,8,L
+B: 10,L,12
+C: R
+
+main: A,B,C,A,12,C,C,A,B,C,A,10,R,8,A,B,C,A,12,C,C,A,10,R,8,A,12,C,C,A,10,R,8,A,12,C,C
+A: R,8,L
+B: 10,L,12
+C: R,4
+
+main: A,B,4,A,12,R,4,R,4,A,B,4,A,10,R,8,A,B,4,A,12,R,4,R,4,A,10,R,8,A,12,R,4,R,4,A,10,R,8,A,12,R,4,R,4
+A: R,8,L
+B: 10,L,12,R
+C: 
+
+main: A,B,C,A,12,R,C,R,C,A,B,C,A,10,R,8,A,B,C,A,12,R,C,R,C,A,10,R,8,A,12,R,C,R,C,A,10,R,8,A,12,R,C,R,C
+A: R,8,L
+B: 10,L,12,R
+C: 4
+
+main: A,B,A,12,R,4,R,4,A,B,A,10,R,8,A,B,A,12,R,4,R,4,A,10,R,8,A,12,R,4,R,4,A,10,R,8,A,12,R,4,R,4
+A: R,8,L
+B: 10,L,12,R,4
+C: 
+
+main: A,B,A,C,R,4,R,4,A,B,A,10,R,8,A,B,A,C,R,4,R,4,A,10,R,8,A,C,R,4,R,4,A,10,R,8,A,C,R,4,R,4
+A: R,8,L
+B: 10,L,12,R,4
+C: 12
+
+main: A,B,A,C,4,R,4,A,B,A,10,R,8,A,B,A,C,4,R,4,A,10,R,8,A,C,4,R,4,A,10,R,8,A,C,4,R,4
+A: R,8,L
+B: 10,L,12,R,4
+C: 12,R
+
+main: A,B,A,C,R,4,A,B,A,10,R,8,A,B,A,C,R,4,A,10,R,8,A,C,R,4,A,10,R,8,A,C,R,4
+A: R,8,L
+B: 10,L,12,R,4
+C: 12,R,4
+
+main: A,B,A,C,4,A,B,A,10,R,8,A,B,A,C,4,A,10,R,8,A,C,4,A,10,R,8,A,C,4
+A: R,8,L
+B: 10,L,12,R,4
+C: 12,R,4,R
+
+main: A,B,A,C,A,B,A,10,R,8,A,B,A,C,A,10,R,8,A,C,A,10,R,8,A,C
+A: R,8,L
+B: 10,L,12,R,4
+C: 12,R,4,R,4
+
+main: A,L,12,R,4,R,8,L,12,R,4,R,4,A,L,12,R,4,A,R,8,A,L,12,R,4,R,8,L,12,R,4,R,4,A,R,8,R,8,L,12,R,4,R,4,A,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10
+B: 
+C: 
+
+main: A,B,12,R,4,R,8,B,12,R,4,R,4,A,B,12,R,4,A,R,8,A,B,12,R,4,R,8,B,12,R,4,R,4,A,R,8,R,8,B,12,R,4,R,4,A,R,8,R,8,B,12,R,4,R,4
+A: R,8,L,10
+B: L
+C: 
+
+main: A,B,C,R,4,R,8,B,C,R,4,R,4,A,B,C,R,4,A,R,8,A,B,C,R,4,R,8,B,C,R,4,R,4,A,R,8,R,8,B,C,R,4,R,4,A,R,8,R,8,B,C,R,4,R,4
+A: R,8,L,10
+B: L
+C: 12
+
+main: A,B,C,4,R,8,B,C,4,R,4,A,B,C,4,A,R,8,A,B,C,4,R,8,B,C,4,R,4,A,R,8,R,8,B,C,4,R,4,A,R,8,R,8,B,C,4,R,4
+A: R,8,L,10
+B: L
+C: 12,R
+
+main: A,B,C,R,8,B,C,R,4,A,B,C,A,R,8,A,B,C,R,8,B,C,R,4,A,R,8,R,8,B,C,R,4,A,R,8,R,8,B,C,R,4
+A: R,8,L,10
+B: L
+C: 12,R,4
+
+main: A,B,C,8,B,C,4,A,B,12,R,4,A,R,8,A,B,C,8,B,C,4,A,R,8,R,8,B,C,4,A,R,8,R,8,B,C,4
+A: R,8,L,10
+B: L
+C: 12,R,4,R
+
+main: A,B,C,B,12,R,4,R,4,A,B,12,R,4,A,R,8,A,B,C,B,12,R,4,R,4,A,R,8,R,8,B,12,R,4,R,4,A,R,8,R,8,B,12,R,4,R,4
+A: R,8,L,10
+B: L
+C: 12,R,4,R,8
+
+main: A,B,R,4,R,8,B,R,4,R,4,A,B,R,4,A,R,8,A,B,R,4,R,8,B,R,4,R,4,A,R,8,R,8,B,R,4,R,4,A,R,8,R,8,B,R,4,R,4
+A: R,8,L,10
+B: L,12
+C: 
+
+main: A,B,C,4,C,8,B,C,4,C,4,A,B,C,4,A,C,8,A,B,C,4,C,8,B,C,4,C,4,A,C,8,C,8,B,C,4,C,4,A,C,8,C,8,B,C,4,C,4
+A: R,8,L,10
+B: L,12
+C: R
+
+main: A,B,C,R,8,B,C,C,A,B,C,A,R,8,A,B,C,R,8,B,C,C,A,R,8,R,8,B,C,C,A,R,8,R,8,B,C,C
+A: R,8,L,10
+B: L,12
+C: R,4
+
+main: A,B,C,8,B,C,4,A,B,R,4,A,R,8,A,B,C,8,B,C,4,A,R,8,R,8,B,C,4,A,R,8,R,8,B,C,4
+A: R,8,L,10
+B: L,12
+C: R,4,R
+
+main: A,B,C,B,R,4,R,4,A,B,R,4,A,R,8,A,B,C,B,R,4,R,4,A,R,8,R,8,B,R,4,R,4,A,R,8,R,8,B,R,4,R,4
+A: R,8,L,10
+B: L,12
+C: R,4,R,8
+
+main: A,B,4,R,8,B,4,R,4,A,B,4,A,R,8,A,B,4,R,8,B,4,R,4,A,R,8,R,8,B,4,R,4,A,R,8,R,8,B,4,R,4
+A: R,8,L,10
+B: L,12,R
+C: 
+
+main: A,B,C,R,8,B,C,R,C,A,B,C,A,R,8,A,B,C,R,8,B,C,R,C,A,R,8,R,8,B,C,R,C,A,R,8,R,8,B,C,R,C
+A: R,8,L,10
+B: L,12,R
+C: 4
+
+main: A,B,C,8,B,C,4,A,B,4,A,R,8,A,B,C,8,B,C,4,A,R,8,R,8,B,C,4,A,R,8,R,8,B,C,4
+A: R,8,L,10
+B: L,12,R
+C: 4,R
+
+main: A,B,C,B,4,R,4,A,B,4,A,R,8,A,B,C,B,4,R,4,A,R,8,R,8,B,4,R,4,A,R,8,R,8,B,4,R,4
+A: R,8,L,10
+B: L,12,R
+C: 4,R,8
+
+main: A,B,R,8,B,R,4,A,B,A,R,8,A,B,R,8,B,R,4,A,R,8,R,8,B,R,4,A,R,8,R,8,B,R,4
+A: R,8,L,10
+B: L,12,R,4
+C: 
+
+main: A,B,C,8,B,C,4,A,B,A,C,8,A,B,C,8,B,C,4,A,C,8,C,8,B,C,4,A,C,8,C,8,B,C,4
+A: R,8,L,10
+B: L,12,R,4
+C: R
+
+main: A,B,C,B,R,4,A,B,A,C,A,B,C,B,R,4,A,C,C,B,R,4,A,C,C,B,R,4
+A: R,8,L,10
+B: L,12,R,4
+C: R,8
+
+main: A,B,8,B,4,A,L,12,R,4,A,R,8,A,B,8,B,4,A,R,8,R,8,B,4,A,R,8,R,8,B,4
+A: R,8,L,10
+B: L,12,R,4,R
+C: 
+
+main: A,B,C,B,4,A,L,12,R,4,A,R,C,A,B,C,B,4,A,R,C,R,C,B,4,A,R,C,R,C,B,4
+A: R,8,L,10
+B: L,12,R,4,R
+C: 8
+
+main: A,B,L,12,R,4,R,4,A,L,12,R,4,A,R,8,A,B,L,12,R,4,R,4,A,R,8,R,8,L,12,R,4,R,4,A,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10
+B: L,12,R,4,R,8
+C: 
+
+main: A,B,C,12,R,4,R,4,A,C,12,R,4,A,R,8,A,B,C,12,R,4,R,4,A,R,8,R,8,C,12,R,4,R,4,A,R,8,R,8,C,12,R,4,R,4
+A: R,8,L,10
+B: L,12,R,4,R,8
+C: L
+
+main: A,B,C,R,4,R,4,A,C,R,4,A,R,8,A,B,C,R,4,R,4,A,R,8,R,8,C,R,4,R,4,A,R,8,R,8,C,R,4,R,4
+A: R,8,L,10
+B: L,12,R,4,R,8
+C: L,12
+
+main: A,B,C,4,R,4,A,C,4,A,R,8,A,B,C,4,R,4,A,R,8,R,8,C,4,R,4,A,R,8,R,8,C,4,R,4
+A: R,8,L,10
+B: L,12,R,4,R,8
+C: L,12,R
+
+main: A,B,C,R,4,A,C,A,R,8,A,B,C,R,4,A,R,8,R,8,C,R,4,A,R,8,R,8,C,R,4
+A: R,8,L,10
+B: L,12,R,4,R,8
+C: L,12,R,4
+
+main: A,B,C,4,A,L,12,R,4,A,R,8,A,B,C,4,A,R,8,R,8,C,4,A,R,8,R,8,C,4
+A: R,8,L,10
+B: L,12,R,4,R,8
+C: L,12,R,4,R
+
+main: A,B,C,A,L,12,R,4,A,R,8,A,B,C,A,R,8,R,8,C,A,R,8,R,8,C
+A: R,8,L,10
+B: L,12,R,4,R,8
+C: L,12,R,4,R,4
+
+main: A,B,12,R,4,R,4,A,L,12,R,4,A,R,8,A,B,12,R,4,R,4,A,R,8,R,8,L,12,R,4,R,4,A,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10
+B: L,12,R,4,R,8,L
+C: 
+
+main: A,B,C,R,4,R,4,A,L,C,R,4,A,R,8,A,B,C,R,4,R,4,A,R,8,R,8,L,C,R,4,R,4,A,R,8,R,8,L,C,R,4,R,4
+A: R,8,L,10
+B: L,12,R,4,R,8,L
+C: 12
+
+main: A,B,C,4,R,4,A,L,C,4,A,R,8,A,B,C,4,R,4,A,R,8,R,8,L,C,4,R,4,A,R,8,R,8,L,C,4,R,4
+A: R,8,L,10
+B: L,12,R,4,R,8,L
+C: 12,R
+
+main: A,B,C,R,4,A,L,C,A,R,8,A,B,C,R,4,A,R,8,R,8,L,C,R,4,A,R,8,R,8,L,C,R,4
+A: R,8,L,10
+B: L,12,R,4,R,8,L
+C: 12,R,4
+
+main: A,B,C,4,A,L,12,R,4,A,R,8,A,B,C,4,A,R,8,R,8,L,C,4,A,R,8,R,8,L,C,4
+A: R,8,L,10
+B: L,12,R,4,R,8,L
+C: 12,R,4,R
+
+main: A,B,C,A,L,12,R,4,A,R,8,A,B,C,A,R,8,R,8,L,C,A,R,8,R,8,L,C
+A: R,8,L,10
+B: L,12,R,4,R,8,L
+C: 12,R,4,R,4
+
+main: A,B,R,4,R,4,A,L,12,R,4,A,R,8,A,B,R,4,R,4,A,R,8,R,8,L,12,R,4,R,4,A,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10
+B: L,12,R,4,R,8,L,12
+C: 
+
+main: A,B,C,4,C,4,A,L,12,C,4,A,C,8,A,B,C,4,C,4,A,C,8,C,8,L,12,C,4,C,4,A,C,8,C,8,L,12,C,4,C,4
+A: R,8,L,10
+B: L,12,R,4,R,8,L,12
+C: R
+
+main: A,B,C,C,A,L,12,C,A,R,8,A,B,C,C,A,R,8,R,8,L,12,C,C,A,R,8,R,8,L,12,C,C
+A: R,8,L,10
+B: L,12,R,4,R,8,L,12
+C: R,4
+
+main: A,B,C,4,A,L,12,R,4,A,R,8,A,B,C,4,A,R,8,R,8,L,12,C,4,A,R,8,R,8,L,12,C,4
+A: R,8,L,10
+B: L,12,R,4,R,8,L,12
+C: R,4,R
+
+main: A,B,C,A,L,12,R,4,A,R,8,A,B,C,A,R,8,R,8,L,12,C,A,R,8,R,8,L,12,C
+A: R,8,L,10
+B: L,12,R,4,R,8,L,12
+C: R,4,R,4
+
+main: A,B,4,R,4,A,L,12,R,4,A,R,8,A,B,4,R,4,A,R,8,R,8,L,12,R,4,R,4,A,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10
+B: L,12,R,4,R,8,L,12,R
+C: 
+
+main: A,B,C,R,C,A,L,12,R,C,A,R,8,A,B,C,R,C,A,R,8,R,8,L,12,R,C,R,C,A,R,8,R,8,L,12,R,C,R,C
+A: R,8,L,10
+B: L,12,R,4,R,8,L,12,R
+C: 4
+
+main: A,B,C,4,A,L,12,R,4,A,R,8,A,B,C,4,A,R,8,R,8,L,12,R,C,4,A,R,8,R,8,L,12,R,C,4
+A: R,8,L,10
+B: L,12,R,4,R,8,L,12,R
+C: 4,R
+
+main: A,B,C,A,L,12,R,4,A,R,8,A,B,C,A,R,8,R,8,L,12,R,C,A,R,8,R,8,L,12,R,C
+A: R,8,L,10
+B: L,12,R,4,R,8,L,12,R
+C: 4,R,4
+
+main: A,B,R,4,A,L,12,R,4,A,R,8,A,B,R,4,A,R,8,R,8,L,12,R,4,R,4,A,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10
+B: L,12,R,4,R,8,L,12,R,4
+C: 
+
+main: A,B,C,4,A,L,12,C,4,A,C,8,A,B,C,4,A,C,8,C,8,L,12,C,4,C,4,A,C,8,C,8,L,12,C,4,C,4
+A: R,8,L,10
+B: L,12,R,4,R,8,L,12,R,4
+C: R
+
+main: A,B,C,A,L,12,C,A,R,8,A,B,C,A,R,8,R,8,L,12,C,C,A,R,8,R,8,L,12,C,C
+A: R,8,L,10
+B: L,12,R,4,R,8,L,12,R,4
+C: R,4
+
+main: A,B,4,A,L,12,R,4,A,R,8,A,B,4,A,R,8,R,8,L,12,R,4,R,4,A,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10
+B: L,12,R,4,R,8,L,12,R,4,R
+C: 
+
+main: A,B,C,A,L,12,R,C,A,R,8,A,B,C,A,R,8,R,8,L,12,R,C,R,C,A,R,8,R,8,L,12,R,C,R,C
+A: R,8,L,10
+B: L,12,R,4,R,8,L,12,R,4,R
+C: 4
+
+main: A,B,A,L,12,R,4,A,R,8,A,B,A,R,8,R,8,L,12,R,4,R,4,A,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10
+B: L,12,R,4,R,8,L,12,R,4,R,4
+C: 
+
+main: A,B,A,C,12,R,4,A,R,8,A,B,A,R,8,R,8,C,12,R,4,R,4,A,R,8,R,8,C,12,R,4,R,4
+A: R,8,L,10
+B: L,12,R,4,R,8,L,12,R,4,R,4
+C: L
+
+main: A,B,A,C,R,4,A,R,8,A,B,A,R,8,R,8,C,R,4,R,4,A,R,8,R,8,C,R,4,R,4
+A: R,8,L,10
+B: L,12,R,4,R,8,L,12,R,4,R,4
+C: L,12
+
+main: A,B,A,C,4,A,R,8,A,B,A,R,8,R,8,C,4,R,4,A,R,8,R,8,C,4,R,4
+A: R,8,L,10
+B: L,12,R,4,R,8,L,12,R,4,R,4
+C: L,12,R
+
+main: A,B,A,C,A,R,8,A,B,A,R,8,R,8,C,R,4,A,R,8,R,8,C,R,4
+A: R,8,L,10
+B: L,12,R,4,R,8,L,12,R,4,R,4
+C: L,12,R,4
+
+main: A,12,R,4,R,8,L,12,R,4,R,4,A,12,R,4,R,8,L,10,R,8,A,12,R,4,R,8,L,12,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L
+B: 
+C: 
+
+main: A,B,R,4,R,8,L,B,R,4,R,4,A,B,R,4,R,8,L,10,R,8,A,B,R,4,R,8,L,B,R,4,R,4,R,8,L,10,R,8,R,8,L,B,R,4,R,4,R,8,L,10,R,8,R,8,L,B,R,4,R,4
+A: R,8,L,10,L
+B: 12
+C: 
+
+main: A,B,C,4,C,8,L,B,C,4,C,4,A,B,C,4,C,8,L,10,C,8,A,B,C,4,C,8,L,B,C,4,C,4,C,8,L,10,C,8,C,8,L,B,C,4,C,4,C,8,L,10,C,8,C,8,L,B,C,4,C,4
+A: R,8,L,10,L
+B: 12
+C: R
+
+main: A,B,C,R,8,L,B,C,C,A,B,C,R,8,L,10,R,8,A,B,C,R,8,L,B,C,C,R,8,L,10,R,8,R,8,L,B,C,C,R,8,L,10,R,8,R,8,L,B,C,C
+A: R,8,L,10,L
+B: 12
+C: R,4
+
+main: A,B,C,8,L,B,C,4,A,B,C,8,L,10,R,8,A,B,C,8,L,B,C,4,R,8,L,10,R,8,R,8,L,B,C,4,R,8,L,10,R,8,R,8,L,B,C,4
+A: R,8,L,10,L
+B: 12
+C: R,4,R
+
+main: A,B,C,L,B,R,4,R,4,A,B,C,L,10,R,8,A,B,C,L,B,R,4,C,L,10,R,8,R,8,L,B,R,4,C,L,10,R,8,R,8,L,B,R,4,R,4
+A: R,8,L,10,L
+B: 12
+C: R,4,R,8
+
+main: A,B,C,B,R,4,R,4,A,B,C,10,R,8,A,B,C,B,R,4,C,10,R,8,R,8,L,B,R,4,C,10,R,8,R,8,L,B,R,4,R,4
+A: R,8,L,10,L
+B: 12
+C: R,4,R,8,L
+
+main: A,B,4,R,8,L,B,4,R,4,A,B,4,R,8,L,10,R,8,A,B,4,R,8,L,B,4,R,4,R,8,L,10,R,8,R,8,L,B,4,R,4,R,8,L,10,R,8,R,8,L,B,4,R,4
+A: R,8,L,10,L
+B: 12,R
+C: 
+
+main: A,B,C,R,8,L,B,C,R,C,A,B,C,R,8,L,10,R,8,A,B,C,R,8,L,B,C,R,C,R,8,L,10,R,8,R,8,L,B,C,R,C,R,8,L,10,R,8,R,8,L,B,C,R,C
+A: R,8,L,10,L
+B: 12,R
+C: 4
+
+main: A,B,C,8,L,B,C,4,A,B,C,8,L,10,R,8,A,B,C,8,L,B,C,C,8,L,10,R,8,R,8,L,B,C,C,8,L,10,R,8,R,8,L,B,C,4
+A: R,8,L,10,L
+B: 12,R
+C: 4,R
+
+main: A,B,C,L,B,4,R,4,A,B,C,L,10,R,8,A,B,C,L,B,4,R,C,L,10,R,8,R,8,L,B,4,R,C,L,10,R,8,R,8,L,B,4,R,4
+A: R,8,L,10,L
+B: 12,R
+C: 4,R,8
+
+main: A,B,C,B,4,R,4,A,B,C,10,R,8,A,B,C,B,4,R,C,10,R,8,R,8,L,B,4,R,C,10,R,8,R,8,L,B,4,R,4
+A: R,8,L,10,L
+B: 12,R
+C: 4,R,8,L
+
+main: A,B,R,8,L,B,R,4,A,B,R,8,L,10,R,8,A,B,R,8,L,B,R,4,R,8,L,10,R,8,R,8,L,B,R,4,R,8,L,10,R,8,R,8,L,B,R,4
+A: R,8,L,10,L
+B: 12,R,4
+C: 
+
+main: A,B,C,8,L,B,C,4,A,B,C,8,L,10,C,8,A,B,C,8,L,B,C,4,C,8,L,10,C,8,C,8,L,B,C,4,C,8,L,10,C,8,C,8,L,B,C,4
+A: R,8,L,10,L
+B: 12,R,4
+C: R
+
+main: A,B,C,L,B,R,4,A,B,C,L,10,C,A,B,C,L,B,R,4,C,L,10,C,C,L,B,R,4,C,L,10,C,C,L,B,R,4
+A: R,8,L,10,L
+B: 12,R,4
+C: R,8
+
+main: A,B,C,B,R,4,A,B,C,10,R,8,A,B,C,B,R,4,C,10,R,8,C,B,R,4,C,10,R,8,C,B,R,4
+A: R,8,L,10,L
+B: 12,R,4
+C: R,8,L
+
+main: A,B,8,L,B,4,A,B,8,L,10,R,8,A,B,8,L,B,4,R,8,L,10,R,8,R,8,L,B,4,R,8,L,10,R,8,R,8,L,B,4
+A: R,8,L,10,L
+B: 12,R,4,R
+C: 
+
+main: A,B,C,L,B,4,A,B,C,L,10,R,C,A,B,C,L,B,4,R,C,L,10,R,C,R,C,L,B,4,R,C,L,10,R,C,R,C,L,B,4
+A: R,8,L,10,L
+B: 12,R,4,R
+C: 8
+
+main: A,B,C,B,4,A,B,C,10,R,8,A,B,C,B,4,R,C,10,R,8,R,C,B,4,R,C,10,R,8,R,C,B,4
+A: R,8,L,10,L
+B: 12,R,4,R
+C: 8,L
+
+main: A,B,L,12,R,4,R,4,A,B,L,10,R,8,A,B,L,12,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L
+B: 12,R,4,R,8
+C: 
+
+main: A,B,C,12,R,4,R,4,A,B,C,10,R,8,A,B,C,12,R,4,R,4,R,8,C,10,R,8,R,8,C,12,R,4,R,4,R,8,C,10,R,8,R,8,C,12,R,4,R,4
+A: R,8,L,10,L
+B: 12,R,4,R,8
+C: L
+
+main: A,B,C,R,4,R,4,A,B,L,10,R,8,A,B,C,R,4,R,4,R,8,L,10,R,8,R,8,C,R,4,R,4,R,8,L,10,R,8,R,8,C,R,4,R,4
+A: R,8,L,10,L
+B: 12,R,4,R,8
+C: L,12
+
+main: A,B,C,4,R,4,A,B,L,10,R,8,A,B,C,4,R,4,R,8,L,10,R,8,R,8,C,4,R,4,R,8,L,10,R,8,R,8,C,4,R,4
+A: R,8,L,10,L
+B: 12,R,4,R,8
+C: L,12,R
+
+main: A,B,C,R,4,A,B,L,10,R,8,A,B,C,R,4,R,8,L,10,R,8,R,8,C,R,4,R,8,L,10,R,8,R,8,C,R,4
+A: R,8,L,10,L
+B: 12,R,4,R,8
+C: L,12,R,4
+
+main: A,B,C,4,A,B,L,10,R,8,A,B,C,4,R,8,L,10,R,8,R,8,C,4,R,8,L,10,R,8,R,8,C,4
+A: R,8,L,10,L
+B: 12,R,4,R,8
+C: L,12,R,4,R
+
+main: A,B,C,A,B,L,10,R,8,A,B,C,R,8,L,10,R,8,R,8,C,R,8,L,10,R,8,R,8,C
+A: R,8,L,10,L
+B: 12,R,4,R,8
+C: L,12,R,4,R,4
+
+main: A,B,12,R,4,R,4,A,B,10,R,8,A,B,12,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L
+B: 12,R,4,R,8,L
+C: 
+
+main: A,B,C,R,4,R,4,A,B,10,R,8,A,B,C,R,4,R,4,R,8,L,10,R,8,R,8,L,C,R,4,R,4,R,8,L,10,R,8,R,8,L,C,R,4,R,4
+A: R,8,L,10,L
+B: 12,R,4,R,8,L
+C: 12
+
+main: A,B,C,4,R,4,A,B,10,R,8,A,B,C,4,R,4,R,8,L,10,R,8,R,8,L,C,4,R,4,R,8,L,10,R,8,R,8,L,C,4,R,4
+A: R,8,L,10,L
+B: 12,R,4,R,8,L
+C: 12,R
+
+main: A,B,C,R,4,A,B,10,R,8,A,B,C,R,4,R,8,L,10,R,8,R,8,L,C,R,4,R,8,L,10,R,8,R,8,L,C,R,4
+A: R,8,L,10,L
+B: 12,R,4,R,8,L
+C: 12,R,4
+
+main: A,B,C,4,A,B,10,R,8,A,B,C,4,R,8,L,10,R,8,R,8,L,C,4,R,8,L,10,R,8,R,8,L,C,4
+A: R,8,L,10,L
+B: 12,R,4,R,8,L
+C: 12,R,4,R
+
+main: A,B,C,A,B,10,R,8,A,B,C,R,8,L,10,R,8,R,8,L,C,R,8,L,10,R,8,R,8,L,C
+A: R,8,L,10,L
+B: 12,R,4,R,8,L
+C: 12,R,4,R,4
+
+main: A,B,R,4,R,4,A,12,R,4,R,8,L,10,R,8,A,B,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L
+B: 12,R,4,R,8,L,12
+C: 
+
+main: A,B,C,4,C,4,A,12,C,4,C,8,L,10,C,8,A,B,C,4,C,4,C,8,L,10,C,8,C,8,L,12,C,4,C,4,C,8,L,10,C,8,C,8,L,12,C,4,C,4
+A: R,8,L,10,L
+B: 12,R,4,R,8,L,12
+C: R
+
+main: A,B,C,C,A,12,C,R,8,L,10,R,8,A,B,C,C,R,8,L,10,R,8,R,8,L,12,C,C,R,8,L,10,R,8,R,8,L,12,C,C
+A: R,8,L,10,L
+B: 12,R,4,R,8,L,12
+C: R,4
+
+main: A,B,C,4,A,12,C,8,L,10,R,8,A,B,C,4,R,8,L,10,R,8,R,8,L,12,C,4,R,8,L,10,R,8,R,8,L,12,C,4
+A: R,8,L,10,L
+B: 12,R,4,R,8,L,12
+C: R,4,R
+
+main: A,B,C,A,12,R,4,R,8,L,10,R,8,A,B,C,R,8,L,10,R,8,R,8,L,12,C,R,8,L,10,R,8,R,8,L,12,C
+A: R,8,L,10,L
+B: 12,R,4,R,8,L,12
+C: R,4,R,4
+
+main: A,B,4,R,4,A,12,R,4,R,8,L,10,R,8,A,B,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L
+B: 12,R,4,R,8,L,12,R
+C: 
+
+main: A,B,C,R,C,A,12,R,C,R,8,L,10,R,8,A,B,C,R,C,R,8,L,10,R,8,R,8,L,12,R,C,R,C,R,8,L,10,R,8,R,8,L,12,R,C,R,C
+A: R,8,L,10,L
+B: 12,R,4,R,8,L,12,R
+C: 4
+
+main: A,B,C,4,A,12,R,C,8,L,10,R,8,A,B,C,C,8,L,10,R,8,R,8,L,12,R,C,C,8,L,10,R,8,R,8,L,12,R,C,4
+A: R,8,L,10,L
+B: 12,R,4,R,8,L,12,R
+C: 4,R
+
+main: A,B,C,A,12,R,4,R,8,L,10,R,8,A,B,C,R,8,L,10,R,8,R,8,L,12,R,C,R,8,L,10,R,8,R,8,L,12,R,C
+A: R,8,L,10,L
+B: 12,R,4,R,8,L,12,R
+C: 4,R,4
+
+main: A,B,R,4,A,12,R,4,R,8,L,10,R,8,A,B,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L
+B: 12,R,4,R,8,L,12,R,4
+C: 
+
+main: A,B,C,4,A,12,C,4,C,8,L,10,C,8,A,B,C,4,C,8,L,10,C,8,C,8,L,12,C,4,C,4,C,8,L,10,C,8,C,8,L,12,C,4,C,4
+A: R,8,L,10,L
+B: 12,R,4,R,8,L,12,R,4
+C: R
+
+main: A,B,C,A,12,C,R,8,L,10,R,8,A,B,C,R,8,L,10,R,8,R,8,L,12,C,C,R,8,L,10,R,8,R,8,L,12,C,C
+A: R,8,L,10,L
+B: 12,R,4,R,8,L,12,R,4
+C: R,4
+
+main: A,B,4,A,12,R,4,R,8,L,10,R,8,A,B,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L
+B: 12,R,4,R,8,L,12,R,4,R
+C: 
+
+main: A,B,C,A,12,R,C,R,8,L,10,R,8,A,B,C,R,8,L,10,R,8,R,8,L,12,R,C,R,C,R,8,L,10,R,8,R,8,L,12,R,C,R,C
+A: R,8,L,10,L
+B: 12,R,4,R,8,L,12,R,4,R
+C: 4
+
+main: A,B,A,12,R,4,R,8,L,10,R,8,A,B,R,8,L,10,R,8,R,8,L,12,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L
+B: 12,R,4,R,8,L,12,R,4,R,4
+C: 
+
+main: A,B,A,C,R,4,R,8,L,10,R,8,A,B,R,8,L,10,R,8,R,8,L,C,R,4,R,4,R,8,L,10,R,8,R,8,L,C,R,4,R,4
+A: R,8,L,10,L
+B: 12,R,4,R,8,L,12,R,4,R,4
+C: 12
+
+main: A,B,A,C,4,R,8,L,10,R,8,A,B,R,8,L,10,R,8,R,8,L,C,4,R,4,R,8,L,10,R,8,R,8,L,C,4,R,4
+A: R,8,L,10,L
+B: 12,R,4,R,8,L,12,R,4,R,4
+C: 12,R
+
+main: A,B,A,C,R,8,L,10,R,8,A,B,R,8,L,10,R,8,R,8,L,C,R,4,R,8,L,10,R,8,R,8,L,C,R,4
+A: R,8,L,10,L
+B: 12,R,4,R,8,L,12,R,4,R,4
+C: 12,R,4
+
+main: A,B,A,C,8,L,10,R,8,A,B,R,8,L,10,R,8,R,8,L,C,4,R,8,L,10,R,8,R,8,L,C,4
+A: R,8,L,10,L
+B: 12,R,4,R,8,L,12,R,4,R,4
+C: 12,R,4,R
+
+main: A,B,A,C,L,10,R,8,A,B,R,8,L,10,R,8,R,8,L,12,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L
+B: 12,R,4,R,8,L,12,R,4,R,4
+C: 12,R,4,R,8
+
+main: A,B,A,C,10,R,8,A,B,R,8,L,10,R,8,R,8,L,12,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L
+B: 12,R,4,R,8,L,12,R,4,R,4
+C: 12,R,4,R,8,L
+
+main: A,B,A,C,R,8,A,B,R,8,L,10,R,8,R,8,L,12,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L
+B: 12,R,4,R,8,L,12,R,4,R,4
+C: 12,R,4,R,8,L,10
+
+main: A,B,A,C,8,A,B,R,8,L,10,R,8,R,8,L,12,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L
+B: 12,R,4,R,8,L,12,R,4,R,4
+C: 12,R,4,R,8,L,10,R
+
+main: A,B,A,C,A,B,R,8,L,10,R,8,R,8,L,12,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L
+B: 12,R,4,R,8,L,12,R,4,R,4
+C: 12,R,4,R,8,L,10,R,8
+
+main: A,R,4,R,8,L,12,R,4,R,4,A,R,4,R,8,L,10,R,8,A,R,4,R,8,L,12,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L,12
+B: 
+C: 
+
+main: A,B,4,B,8,L,12,B,4,B,4,A,B,4,B,8,L,10,B,8,A,B,4,B,8,L,12,B,4,B,4,B,8,L,10,B,8,B,8,L,12,B,4,B,4,B,8,L,10,B,8,B,8,L,12,B,4,B,4
+A: R,8,L,10,L,12
+B: R
+C: 
+
+main: A,B,C,B,8,L,12,B,C,B,C,A,B,C,B,8,L,10,B,8,A,B,C,B,8,L,12,B,C,B,C,B,8,L,10,B,8,B,8,L,12,B,C,B,C,B,8,L,10,B,8,B,8,L,12,B,C,B,C
+A: R,8,L,10,L,12
+B: R
+C: 4
+
+main: A,B,R,8,L,12,B,B,A,B,R,8,L,10,R,8,A,B,R,8,L,12,B,B,R,8,L,10,R,8,R,8,L,12,B,B,R,8,L,10,R,8,R,8,L,12,B,B
+A: R,8,L,10,L,12
+B: R,4
+C: 
+
+main: A,B,C,8,L,12,B,B,A,B,C,8,L,10,C,8,A,B,C,8,L,12,B,B,C,8,L,10,C,8,C,8,L,12,B,B,C,8,L,10,C,8,C,8,L,12,B,B
+A: R,8,L,10,L,12
+B: R,4
+C: R
+
+main: A,B,C,L,12,B,B,A,B,C,L,10,C,A,B,C,L,12,B,B,C,L,10,C,C,L,12,B,B,C,L,10,C,C,L,12,B,B
+A: R,8,L,10,L,12
+B: R,4
+C: R,8
+
+main: A,B,C,12,B,B,A,B,C,10,R,8,A,B,C,12,B,B,C,10,R,8,C,12,B,B,C,10,R,8,C,12,B,B
+A: R,8,L,10,L,12
+B: R,4
+C: R,8,L
+
+main: A,B,C,B,B,A,B,R,8,L,10,R,8,A,B,C,B,B,R,8,L,10,R,8,C,B,B,R,8,L,10,R,8,C,B,B
+A: R,8,L,10,L,12
+B: R,4
+C: R,8,L,12
+
+main: A,B,8,L,12,B,4,A,B,8,L,10,R,8,A,B,8,L,12,B,4,R,8,L,10,R,8,R,8,L,12,B,4,R,8,L,10,R,8,R,8,L,12,B,4
+A: R,8,L,10,L,12
+B: R,4,R
+C: 
+
+main: A,B,C,L,12,B,4,A,B,C,L,10,R,C,A,B,C,L,12,B,4,R,C,L,10,R,C,R,C,L,12,B,4,R,C,L,10,R,C,R,C,L,12,B,4
+A: R,8,L,10,L,12
+B: R,4,R
+C: 8
+
+main: A,B,C,12,B,4,A,B,C,10,R,8,A,B,C,12,B,4,R,C,10,R,8,R,C,12,B,4,R,C,10,R,8,R,C,12,B,4
+A: R,8,L,10,L,12
+B: R,4,R
+C: 8,L
+
+main: A,B,C,B,4,A,B,8,L,10,R,8,A,B,C,B,4,R,8,L,10,R,8,R,C,B,4,R,8,L,10,R,8,R,C,B,4
+A: R,8,L,10,L,12
+B: R,4,R
+C: 8,L,12
+
+main: A,B,L,12,R,4,R,4,A,B,L,10,R,8,A,B,L,12,R,4,B,L,10,R,8,R,8,L,12,R,4,B,L,10,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L,12
+B: R,4,R,8
+C: 
+
+main: A,B,C,12,R,4,R,4,A,B,C,10,R,8,A,B,C,12,R,4,B,C,10,R,8,R,8,C,12,R,4,B,C,10,R,8,R,8,C,12,R,4,R,4
+A: R,8,L,10,L,12
+B: R,4,R,8
+C: L
+
+main: A,B,C,R,4,R,4,A,B,L,10,R,8,A,B,C,R,4,B,L,10,R,8,R,8,C,R,4,B,L,10,R,8,R,8,C,R,4,R,4
+A: R,8,L,10,L,12
+B: R,4,R,8
+C: L,12
+
+main: A,B,C,4,R,4,A,B,L,10,R,8,A,B,C,4,B,L,10,R,8,R,8,C,4,B,L,10,R,8,R,8,C,4,R,4
+A: R,8,L,10,L,12
+B: R,4,R,8
+C: L,12,R
+
+main: A,B,C,R,4,A,B,L,10,R,8,A,B,C,B,L,10,R,8,R,8,C,B,L,10,R,8,R,8,C,R,4
+A: R,8,L,10,L,12
+B: R,4,R,8
+C: L,12,R,4
+
+main: A,B,C,4,A,B,L,10,R,8,A,B,L,12,R,4,B,L,10,R,8,R,8,L,12,R,4,B,L,10,R,8,R,8,C,4
+A: R,8,L,10,L,12
+B: R,4,R,8
+C: L,12,R,4,R
+
+main: A,B,C,A,B,L,10,R,8,A,B,L,12,R,4,B,L,10,R,8,R,8,L,12,R,4,B,L,10,R,8,R,8,C
+A: R,8,L,10,L,12
+B: R,4,R,8
+C: L,12,R,4,R,4
+
+main: A,B,12,R,4,R,4,A,B,10,R,8,A,B,12,R,4,B,10,R,8,R,8,L,12,R,4,B,10,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L,12
+B: R,4,R,8,L
+C: 
+
+main: A,B,C,R,4,R,4,A,B,10,R,8,A,B,C,R,4,B,10,R,8,R,8,L,C,R,4,B,10,R,8,R,8,L,C,R,4,R,4
+A: R,8,L,10,L,12
+B: R,4,R,8,L
+C: 12
+
+main: A,B,C,4,R,4,A,B,10,R,8,A,B,C,4,B,10,R,8,R,8,L,C,4,B,10,R,8,R,8,L,C,4,R,4
+A: R,8,L,10,L,12
+B: R,4,R,8,L
+C: 12,R
+
+main: A,B,C,R,4,A,B,10,R,8,A,B,C,B,10,R,8,R,8,L,C,B,10,R,8,R,8,L,C,R,4
+A: R,8,L,10,L,12
+B: R,4,R,8,L
+C: 12,R,4
+
+main: A,B,C,4,A,B,10,R,8,A,B,12,R,4,B,10,R,8,R,8,L,12,R,4,B,10,R,8,R,8,L,C,4
+A: R,8,L,10,L,12
+B: R,4,R,8,L
+C: 12,R,4,R
+
+main: A,B,C,A,B,10,R,8,A,B,12,R,4,B,10,R,8,R,8,L,12,R,4,B,10,R,8,R,8,L,C
+A: R,8,L,10,L,12
+B: R,4,R,8,L
+C: 12,R,4,R,4
+
+main: A,B,R,4,R,4,A,R,4,R,8,L,10,R,8,A,B,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L,12
+B: R,4,R,8,L,12
+C: 
+
+main: A,B,C,4,C,4,A,C,4,C,8,L,10,C,8,A,B,C,4,C,4,C,8,L,10,C,8,C,8,L,12,C,4,C,4,C,8,L,10,C,8,C,8,L,12,C,4,C,4
+A: R,8,L,10,L,12
+B: R,4,R,8,L,12
+C: R
+
+main: A,B,C,C,A,C,R,8,L,10,R,8,A,B,C,C,R,8,L,10,R,8,R,8,L,12,C,C,R,8,L,10,R,8,R,8,L,12,C,C
+A: R,8,L,10,L,12
+B: R,4,R,8,L,12
+C: R,4
+
+main: A,B,C,4,A,C,8,L,10,R,8,A,B,C,4,R,8,L,10,R,8,R,8,L,12,C,4,R,8,L,10,R,8,R,8,L,12,C,4
+A: R,8,L,10,L,12
+B: R,4,R,8,L,12
+C: R,4,R
+
+main: A,B,C,A,R,4,R,8,L,10,R,8,A,B,C,R,8,L,10,R,8,R,8,L,12,C,R,8,L,10,R,8,R,8,L,12,C
+A: R,8,L,10,L,12
+B: R,4,R,8,L,12
+C: R,4,R,4
+
+main: A,B,4,R,4,A,R,4,R,8,L,10,R,8,A,B,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L,12
+B: R,4,R,8,L,12,R
+C: 
+
+main: A,B,C,R,C,A,R,C,R,8,L,10,R,8,A,B,C,R,C,R,8,L,10,R,8,R,8,L,12,R,C,R,C,R,8,L,10,R,8,R,8,L,12,R,C,R,C
+A: R,8,L,10,L,12
+B: R,4,R,8,L,12,R
+C: 4
+
+main: A,B,C,4,A,R,C,8,L,10,R,8,A,B,C,C,8,L,10,R,8,R,8,L,12,R,C,C,8,L,10,R,8,R,8,L,12,R,C,4
+A: R,8,L,10,L,12
+B: R,4,R,8,L,12,R
+C: 4,R
+
+main: A,B,C,A,R,4,R,8,L,10,R,8,A,B,C,R,8,L,10,R,8,R,8,L,12,R,C,R,8,L,10,R,8,R,8,L,12,R,C
+A: R,8,L,10,L,12
+B: R,4,R,8,L,12,R
+C: 4,R,4
+
+main: A,B,R,4,A,R,4,R,8,L,10,R,8,A,B,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L,12
+B: R,4,R,8,L,12,R,4
+C: 
+
+main: A,B,C,4,A,C,4,C,8,L,10,C,8,A,B,C,4,C,8,L,10,C,8,C,8,L,12,C,4,C,4,C,8,L,10,C,8,C,8,L,12,C,4,C,4
+A: R,8,L,10,L,12
+B: R,4,R,8,L,12,R,4
+C: R
+
+main: A,B,C,A,C,R,8,L,10,R,8,A,B,C,R,8,L,10,R,8,R,8,L,12,C,C,R,8,L,10,R,8,R,8,L,12,C,C
+A: R,8,L,10,L,12
+B: R,4,R,8,L,12,R,4
+C: R,4
+
+main: A,B,4,A,R,4,R,8,L,10,R,8,A,B,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L,12
+B: R,4,R,8,L,12,R,4,R
+C: 
+
+main: A,B,C,A,R,C,R,8,L,10,R,8,A,B,C,R,8,L,10,R,8,R,8,L,12,R,C,R,C,R,8,L,10,R,8,R,8,L,12,R,C,R,C
+A: R,8,L,10,L,12
+B: R,4,R,8,L,12,R,4,R
+C: 4
+
+main: A,B,A,R,4,R,8,L,10,R,8,A,B,R,8,L,10,R,8,R,8,L,12,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L,12
+B: R,4,R,8,L,12,R,4,R,4
+C: 
+
+main: A,B,A,C,4,C,8,L,10,C,8,A,B,C,8,L,10,C,8,C,8,L,12,C,4,C,4,C,8,L,10,C,8,C,8,L,12,C,4,C,4
+A: R,8,L,10,L,12
+B: R,4,R,8,L,12,R,4,R,4
+C: R
+
+main: A,B,A,C,R,8,L,10,R,8,A,B,R,8,L,10,R,8,R,8,L,12,C,C,R,8,L,10,R,8,R,8,L,12,C,C
+A: R,8,L,10,L,12
+B: R,4,R,8,L,12,R,4,R,4
+C: R,4
+
+main: A,B,A,C,8,L,10,R,8,A,B,R,8,L,10,R,8,R,8,L,12,C,4,R,8,L,10,R,8,R,8,L,12,C,4
+A: R,8,L,10,L,12
+B: R,4,R,8,L,12,R,4,R,4
+C: R,4,R
+
+main: A,B,A,C,L,10,R,8,A,B,R,8,L,10,R,8,R,8,L,12,R,4,C,L,10,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L,12
+B: R,4,R,8,L,12,R,4,R,4
+C: R,4,R,8
+
+main: A,B,A,C,10,R,8,A,B,R,8,L,10,R,8,R,8,L,12,R,4,C,10,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L,12
+B: R,4,R,8,L,12,R,4,R,4
+C: R,4,R,8,L
+
+main: A,B,A,C,R,8,A,B,R,8,L,10,R,8,R,8,L,12,R,4,C,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L,12
+B: R,4,R,8,L,12,R,4,R,4
+C: R,4,R,8,L,10
+
+main: A,B,A,C,8,A,B,R,8,L,10,R,8,R,8,L,12,R,4,C,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L,12
+B: R,4,R,8,L,12,R,4,R,4
+C: R,4,R,8,L,10,R
+
+main: A,B,A,C,A,B,R,8,L,10,R,8,R,8,L,12,R,4,C,R,8,L,12,R,4,R,4
+A: R,8,L,10,L,12
+B: R,4,R,8,L,12,R,4,R,4
+C: R,4,R,8,L,10,R,8
+
+main: A,4,R,8,L,12,R,4,R,4,A,4,R,8,L,10,R,8,A,4,R,8,L,12,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L,12,R
+B: 
+C: 
+
+main: A,B,R,8,L,12,R,B,R,B,A,B,R,8,L,10,R,8,A,B,R,8,L,12,R,B,R,B,R,8,L,10,R,8,R,8,L,12,R,B,R,B,R,8,L,10,R,8,R,8,L,12,R,B,R,B
+A: R,8,L,10,L,12,R
+B: 4
+C: 
+
+main: A,B,C,8,L,12,C,B,C,B,A,B,C,8,L,10,C,8,A,B,C,8,L,12,C,B,C,B,C,8,L,10,C,8,C,8,L,12,C,B,C,B,C,8,L,10,C,8,C,8,L,12,C,B,C,B
+A: R,8,L,10,L,12,R
+B: 4
+C: R
+
+main: A,B,C,L,12,R,B,R,B,A,B,C,L,10,C,A,B,C,L,12,R,B,R,B,C,L,10,C,C,L,12,R,B,R,B,C,L,10,C,C,L,12,R,B,R,B
+A: R,8,L,10,L,12,R
+B: 4
+C: R,8
+
+main: A,B,C,12,R,B,R,B,A,B,C,10,R,8,A,B,C,12,R,B,R,B,C,10,R,8,C,12,R,B,R,B,C,10,R,8,C,12,R,B,R,B
+A: R,8,L,10,L,12,R
+B: 4
+C: R,8,L
+
+main: A,B,C,R,B,R,B,A,B,R,8,L,10,R,8,A,B,C,R,B,R,B,R,8,L,10,R,8,C,R,B,R,B,R,8,L,10,R,8,C,R,B,R,B
+A: R,8,L,10,L,12,R
+B: 4
+C: R,8,L,12
+
+main: A,B,C,B,R,B,A,B,R,8,L,10,R,8,A,B,C,B,R,B,R,8,L,10,R,8,C,B,R,B,R,8,L,10,R,8,C,B,R,B
+A: R,8,L,10,L,12,R
+B: 4
+C: R,8,L,12,R
+
+main: A,B,8,L,12,R,B,4,A,B,8,L,10,R,8,A,B,8,L,12,R,B,B,8,L,10,R,8,R,8,L,12,R,B,B,8,L,10,R,8,R,8,L,12,R,B,4
+A: R,8,L,10,L,12,R
+B: 4,R
+C: 
+
+main: A,B,C,L,12,R,B,4,A,B,C,L,10,R,C,A,B,C,L,12,R,B,B,C,L,10,R,C,R,C,L,12,R,B,B,C,L,10,R,C,R,C,L,12,R,B,4
+A: R,8,L,10,L,12,R
+B: 4,R
+C: 8
+
+main: A,B,C,12,R,B,4,A,B,C,10,R,8,A,B,C,12,R,B,B,C,10,R,8,R,C,12,R,B,B,C,10,R,8,R,C,12,R,B,4
+A: R,8,L,10,L,12,R
+B: 4,R
+C: 8,L
+
+main: A,B,C,R,B,4,A,B,8,L,10,R,8,A,B,C,R,B,B,8,L,10,R,8,R,C,R,B,B,8,L,10,R,8,R,C,R,B,4
+A: R,8,L,10,L,12,R
+B: 4,R
+C: 8,L,12
+
+main: A,B,C,B,4,A,B,8,L,10,R,8,A,B,C,B,B,8,L,10,R,8,R,C,B,B,8,L,10,R,8,R,C,B,4
+A: R,8,L,10,L,12,R
+B: 4,R
+C: 8,L,12,R
+
+main: A,B,L,12,R,4,R,4,A,B,L,10,R,8,A,B,L,12,R,4,R,B,L,10,R,8,R,8,L,12,R,4,R,B,L,10,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L,12,R
+B: 4,R,8
+C: 
+
+main: A,B,C,12,R,4,R,4,A,B,C,10,R,8,A,B,C,12,R,4,R,B,C,10,R,8,R,8,C,12,R,4,R,B,C,10,R,8,R,8,C,12,R,4,R,4
+A: R,8,L,10,L,12,R
+B: 4,R,8
+C: L
+
+main: A,B,C,R,4,R,4,A,B,L,10,R,8,A,B,C,R,4,R,B,L,10,R,8,R,8,C,R,4,R,B,L,10,R,8,R,8,C,R,4,R,4
+A: R,8,L,10,L,12,R
+B: 4,R,8
+C: L,12
+
+main: A,B,C,4,R,4,A,B,L,10,R,8,A,B,C,4,R,B,L,10,R,8,R,8,C,4,R,B,L,10,R,8,R,8,C,4,R,4
+A: R,8,L,10,L,12,R
+B: 4,R,8
+C: L,12,R
+
+main: A,B,C,R,4,A,B,L,10,R,8,A,B,C,R,B,L,10,R,8,R,8,C,R,B,L,10,R,8,R,8,C,R,4
+A: R,8,L,10,L,12,R
+B: 4,R,8
+C: L,12,R,4
+
+main: A,B,C,4,A,B,L,10,R,8,A,B,C,B,L,10,R,8,R,8,C,B,L,10,R,8,R,8,C,4
+A: R,8,L,10,L,12,R
+B: 4,R,8
+C: L,12,R,4,R
+
+main: A,B,C,A,B,L,10,R,8,A,B,L,12,R,4,R,B,L,10,R,8,R,8,L,12,R,4,R,B,L,10,R,8,R,8,C
+A: R,8,L,10,L,12,R
+B: 4,R,8
+C: L,12,R,4,R,4
+
+main: A,B,12,R,4,R,4,A,B,10,R,8,A,B,12,R,4,R,B,10,R,8,R,8,L,12,R,4,R,B,10,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L,12,R
+B: 4,R,8,L
+C: 
+
+main: A,B,C,R,4,R,4,A,B,10,R,8,A,B,C,R,4,R,B,10,R,8,R,8,L,C,R,4,R,B,10,R,8,R,8,L,C,R,4,R,4
+A: R,8,L,10,L,12,R
+B: 4,R,8,L
+C: 12
+
+main: A,B,C,4,R,4,A,B,10,R,8,A,B,C,4,R,B,10,R,8,R,8,L,C,4,R,B,10,R,8,R,8,L,C,4,R,4
+A: R,8,L,10,L,12,R
+B: 4,R,8,L
+C: 12,R
+
+main: A,B,C,R,4,A,B,10,R,8,A,B,C,R,B,10,R,8,R,8,L,C,R,B,10,R,8,R,8,L,C,R,4
+A: R,8,L,10,L,12,R
+B: 4,R,8,L
+C: 12,R,4
+
+main: A,B,C,4,A,B,10,R,8,A,B,C,B,10,R,8,R,8,L,C,B,10,R,8,R,8,L,C,4
+A: R,8,L,10,L,12,R
+B: 4,R,8,L
+C: 12,R,4,R
+
+main: A,B,C,A,B,10,R,8,A,B,12,R,4,R,B,10,R,8,R,8,L,12,R,4,R,B,10,R,8,R,8,L,C
+A: R,8,L,10,L,12,R
+B: 4,R,8,L
+C: 12,R,4,R,4
+
+main: A,B,R,4,R,4,A,4,R,8,L,10,R,8,A,B,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L,12,R
+B: 4,R,8,L,12
+C: 
+
+main: A,B,C,4,C,4,A,4,C,8,L,10,C,8,A,B,C,4,C,4,C,8,L,10,C,8,C,8,L,12,C,4,C,4,C,8,L,10,C,8,C,8,L,12,C,4,C,4
+A: R,8,L,10,L,12,R
+B: 4,R,8,L,12
+C: R
+
+main: A,B,C,C,A,4,R,8,L,10,R,8,A,B,C,C,R,8,L,10,R,8,R,8,L,12,C,C,R,8,L,10,R,8,R,8,L,12,C,C
+A: R,8,L,10,L,12,R
+B: 4,R,8,L,12
+C: R,4
+
+main: A,B,C,4,A,4,R,8,L,10,R,8,A,B,C,4,R,8,L,10,R,8,R,8,L,12,C,4,R,8,L,10,R,8,R,8,L,12,C,4
+A: R,8,L,10,L,12,R
+B: 4,R,8,L,12
+C: R,4,R
+
+main: A,B,C,A,4,R,8,L,10,R,8,A,B,C,R,8,L,10,R,8,R,8,L,12,C,R,8,L,10,R,8,R,8,L,12,C
+A: R,8,L,10,L,12,R
+B: 4,R,8,L,12
+C: R,4,R,4
+
+main: A,B,4,R,4,A,4,R,8,L,10,R,8,A,B,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L,12,R
+B: 4,R,8,L,12,R
+C: 
+
+main: A,B,C,R,C,A,C,R,8,L,10,R,8,A,B,C,R,C,R,8,L,10,R,8,R,8,L,12,R,C,R,C,R,8,L,10,R,8,R,8,L,12,R,C,R,C
+A: R,8,L,10,L,12,R
+B: 4,R,8,L,12,R
+C: 4
+
+main: A,B,C,4,A,C,8,L,10,R,8,A,B,C,C,8,L,10,R,8,R,8,L,12,R,C,C,8,L,10,R,8,R,8,L,12,R,C,4
+A: R,8,L,10,L,12,R
+B: 4,R,8,L,12,R
+C: 4,R
+
+main: A,B,C,A,4,R,8,L,10,R,8,A,B,C,R,8,L,10,R,8,R,8,L,12,R,C,R,8,L,10,R,8,R,8,L,12,R,C
+A: R,8,L,10,L,12,R
+B: 4,R,8,L,12,R
+C: 4,R,4
+
+main: A,B,R,4,A,4,R,8,L,10,R,8,A,B,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L,12,R
+B: 4,R,8,L,12,R,4
+C: 
+
+main: A,B,C,4,A,4,C,8,L,10,C,8,A,B,C,4,C,8,L,10,C,8,C,8,L,12,C,4,C,4,C,8,L,10,C,8,C,8,L,12,C,4,C,4
+A: R,8,L,10,L,12,R
+B: 4,R,8,L,12,R,4
+C: R
+
+main: A,B,C,A,4,R,8,L,10,R,8,A,B,C,R,8,L,10,R,8,R,8,L,12,C,C,R,8,L,10,R,8,R,8,L,12,C,C
+A: R,8,L,10,L,12,R
+B: 4,R,8,L,12,R,4
+C: R,4
+
+main: A,B,4,A,4,R,8,L,10,R,8,A,B,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L,12,R
+B: 4,R,8,L,12,R,4,R
+C: 
+
+main: A,B,C,A,C,R,8,L,10,R,8,A,B,C,R,8,L,10,R,8,R,8,L,12,R,C,R,C,R,8,L,10,R,8,R,8,L,12,R,C,R,C
+A: R,8,L,10,L,12,R
+B: 4,R,8,L,12,R,4,R
+C: 4
+
+main: A,B,A,4,R,8,L,10,R,8,A,B,R,8,L,10,R,8,R,8,L,12,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L,12,R
+B: 4,R,8,L,12,R,4,R,4
+C: 
+
+main: A,B,A,C,R,8,L,10,R,8,A,B,R,8,L,10,R,8,R,8,L,12,R,C,R,C,R,8,L,10,R,8,R,8,L,12,R,C,R,C
+A: R,8,L,10,L,12,R
+B: 4,R,8,L,12,R,4,R,4
+C: 4
+
+main: A,B,A,C,8,L,10,R,8,A,B,R,8,L,10,R,8,R,8,L,12,R,C,C,8,L,10,R,8,R,8,L,12,R,C,4
+A: R,8,L,10,L,12,R
+B: 4,R,8,L,12,R,4,R,4
+C: 4,R
+
+main: A,B,A,C,L,10,R,8,A,B,R,8,L,10,R,8,R,8,L,12,R,4,R,C,L,10,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L,12,R
+B: 4,R,8,L,12,R,4,R,4
+C: 4,R,8
+
+main: A,B,A,C,10,R,8,A,B,R,8,L,10,R,8,R,8,L,12,R,4,R,C,10,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L,12,R
+B: 4,R,8,L,12,R,4,R,4
+C: 4,R,8,L
+
+main: A,B,A,C,R,8,A,B,R,8,L,10,R,8,R,8,L,12,R,4,R,C,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L,12,R
+B: 4,R,8,L,12,R,4,R,4
+C: 4,R,8,L,10
+
+main: A,B,A,C,8,A,B,R,8,L,10,R,8,R,8,L,12,R,4,R,C,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L,12,R
+B: 4,R,8,L,12,R,4,R,4
+C: 4,R,8,L,10,R
+
+main: A,B,A,C,A,B,R,8,L,10,R,8,R,8,L,12,R,4,R,C,R,8,L,12,R,4,R,4
+A: R,8,L,10,L,12,R
+B: 4,R,8,L,12,R,4,R,4
+C: 4,R,8,L,10,R,8
+
+main: A,R,8,L,12,R,4,R,4,A,R,8,L,10,R,8,A,R,8,L,12,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4,R,8,L,10,R,8,R,8,L,12,R,4,R,4
+A: R,8,L,10,L,12,R,4
+B: 
+C: 
+
+main: A,B,8,L,12,B,4,B,4,A,B,8,L,10,B,8,A,B,8,L,12,B,4,B,4,B,8,L,10,B,8,B,8,L,12,B,4,B,4,B,8,L,10,B,8,B,8,L,12,B,4,B,4
+A: R,8,L,10,L,12,R,4
+B: R
+C: 
+
+main: A,B,C,L,12,B,4,B,4,A,B,C,L,10,B,C,A,B,C,L,12,B,4,B,4,B,C,L,10,B,C,B,C,L,12,B,4,B,4,B,C,L,10,B,C,B,C,L,12,B,4,B,4
+A: R,8,L,10,L,12,R,4
+B: R
+C: 8
+
+main: A,B,C,12,B,4,B,4,A,B,C,10,B,8,A,B,C,12,B,4,B,4,B,C,10,B,8,B,C,12,B,4,B,4,B,C,10,B,8,B,C,12,B,4,B,4
+A: R,8,L,10,L,12,R,4
+B: R
+C: 8,L
+
+main: A,B,C,B,4,B,4,A,B,8,L,10,B,8,A,B,C,B,4,B,4,B,8,L,10,B,8,B,C,B,4,B,4,B,8,L,10,B,8,B,C,B,4,B,4
+A: R,8,L,10,L,12,R,4
+B: R
+C: 8,L,12
+
+main: A,B,L,12,R,4,R,4,A,B,L,10,B,A,B,L,12,R,4,R,4,B,L,10,B,B,L,12,R,4,R,4,B,L,10,B,B,L,12,R,4,R,4
+A: R,8,L,10,L,12,R,4
+B: R,8
+C: 
+
+main: A,B,C,12,R,4,R,4,A,B,C,10,B,A,B,C,12,R,4,R,4,B,C,10,B,B,C,12,R,4,R,4,B,C,10,B,B,C,12,R,4,R,4
+A: R,8,L,10,L,12,R,4
+B: R,8
+C: L
+
+main: A,B,C,R,4,R,4,A,B,L,10,B,A,B,C,R,4,R,4,B,L,10,B,B,C,R,4,R,4,B,L,10,B,B,C,R,4,R,4
+A: R,8,L,10,L,12,R,4
+B: R,8
+C: L,12
+
+main: A,B,C,4,R,4,A,B,L,10,B,A,B,C,4,R,4,B,L,10,B,B,C,4,R,4,B,L,10,B,B,C,4,R,4
+A: R,8,L,10,L,12,R,4
+B: R,8
+C: L,12,R
+
+main: A,B,C,R,4,A,B,L,10,B,A,B,C,R,4,B,L,10,B,B,C,R,4,B,L,10,B,B,C,R,4
+A: R,8,L,10,L,12,R,4
+B: R,8
+C: L,12,R,4
+
+main: A,B,C,4,A,B,L,10,B,A,B,C,4,B,L,10,B,B,C,4,B,L,10,B,B,C,4
+A: R,8,L,10,L,12,R,4
+B: R,8
+C: L,12,R,4,R
+
+main: A,B,C,A,B,L,10,B,A,B,C,B,L,10,B,B,C,B,L,10,B,B,C
+A: R,8,L,10,L,12,R,4
+B: R,8
+C: L,12,R,4,R,4
+
+main: A,B,12,R,4,R,4,A,B,10,R,8,A,B,12,R,4,R,4,B,10,R,8,B,12,R,4,R,4,B,10,R,8,B,12,R,4,R,4
+A: R,8,L,10,L,12,R,4
+B: R,8,L
+C: 
+
+main: A,B,C,R,4,R,4,A,B,10,R,8,A,B,C,R,4,R,4,B,10,R,8,B,C,R,4,R,4,B,10,R,8,B,C,R,4,R,4
+A: R,8,L,10,L,12,R,4
+B: R,8,L
+C: 12
+
+main: A,B,C,4,R,4,A,B,10,R,8,A,B,C,4,R,4,B,10,R,8,B,C,4,R,4,B,10,R,8,B,C,4,R,4
+A: R,8,L,10,L,12,R,4
+B: R,8,L
+C: 12,R
+
+main: A,B,C,R,4,A,B,10,R,8,A,B,C,R,4,B,10,R,8,B,C,R,4,B,10,R,8,B,C,R,4
+A: R,8,L,10,L,12,R,4
+B: R,8,L
+C: 12,R,4
+
+main: A,B,C,4,A,B,10,R,8,A,B,C,4,B,10,R,8,B,C,4,B,10,R,8,B,C,4
+A: R,8,L,10,L,12,R,4
+B: R,8,L
+C: 12,R,4,R
+
+main: A,B,C,A,B,10,R,8,A,B,C,B,10,R,8,B,C,B,10,R,8,B,C
+A: R,8,L,10,L,12,R,4
+B: R,8,L
+C: 12,R,4,R,4
+
+main: A,B,R,4,R,4,A,R,8,L,10,R,8,A,B,R,4,R,4,R,8,L,10,R,8,B,R,4,R,4,R,8,L,10,R,8,B,R,4,R,4
+A: R,8,L,10,L,12,R,4
+B: R,8,L,12
+C: 
+
+main: A,B,C,4,C,4,A,C,8,L,10,C,8,A,B,C,4,C,4,C,8,L,10,C,8,B,C,4,C,4,C,8,L,10,C,8,B,C,4,C,4
+A: R,8,L,10,L,12,R,4
+B: R,8,L,12
+C: R
+
+main: A,B,C,C,A,R,8,L,10,R,8,A,B,C,C,R,8,L,10,R,8,B,C,C,R,8,L,10,R,8,B,C,C
+A: R,8,L,10,L,12,R,4
+B: R,8,L,12
+C: R,4
+
+main: A,B,C,4,A,R,8,L,10,R,8,A,B,C,4,R,8,L,10,R,8,B,C,4,R,8,L,10,R,8,B,C,4
+A: R,8,L,10,L,12,R,4
+B: R,8,L,12
+C: R,4,R
+
+main: A,B,C,A,R,8,L,10,R,8,A,B,C,R,8,L,10,R,8,B,C,R,8,L,10,R,8,B,C
+A: R,8,L,10,L,12,R,4
+B: R,8,L,12
+C: R,4,R,4
+
+main: A,B,4,R,4,A,R,8,L,10,R,8,A,B,4,R,4,R,8,L,10,R,8,B,4,R,4,R,8,L,10,R,8,B,4,R,4
+A: R,8,L,10,L,12,R,4
+B: R,8,L,12,R
+C: 
+
+main: A,B,C,R,C,A,R,8,L,10,R,8,A,B,C,R,C,R,8,L,10,R,8,B,C,R,C,R,8,L,10,R,8,B,C,R,C
+A: R,8,L,10,L,12,R,4
+B: R,8,L,12,R
+C: 4
+
+main: A,B,C,4,A,R,8,L,10,R,8,A,B,C,C,8,L,10,R,8,B,C,C,8,L,10,R,8,B,C,4
+A: R,8,L,10,L,12,R,4
+B: R,8,L,12,R
+C: 4,R
+
+main: A,B,C,A,R,8,L,10,R,8,A,B,C,R,8,L,10,R,8,B,C,R,8,L,10,R,8,B,C
+A: R,8,L,10,L,12,R,4
+B: R,8,L,12,R
+C: 4,R,4
+
+main: A,B,R,4,A,R,8,L,10,R,8,A,B,R,4,R,8,L,10,R,8,B,R,4,R,8,L,10,R,8,B,R,4
+A: R,8,L,10,L,12,R,4
+B: R,8,L,12,R,4
+C: 
+
+main: A,B,C,4,A,C,8,L,10,C,8,A,B,C,4,C,8,L,10,C,8,B,C,4,C,8,L,10,C,8,B,C,4
+A: R,8,L,10,L,12,R,4
+B: R,8,L,12,R,4
+C: R
+
+main: A,B,C,A,R,8,L,10,R,8,A,B,C,R,8,L,10,R,8,B,C,R,8,L,10,R,8,B,C
+A: R,8,L,10,L,12,R,4
+B: R,8,L,12,R,4
+C: R,4
+
+main: A,B,4,A,R,8,L,10,R,8,A,B,4,R,8,L,10,R,8,B,4,R,8,L,10,R,8,B,4
+A: R,8,L,10,L,12,R,4
+B: R,8,L,12,R,4,R
+C: 
+
+main: A,B,C,A,R,8,L,10,R,8,A,B,C,R,8,L,10,R,8,B,C,R,8,L,10,R,8,B,C
+A: R,8,L,10,L,12,R,4
+B: R,8,L,12,R,4,R
+C: 4
+
+main: A,B,A,R,8,L,10,R,8,A,B,R,8,L,10,R,8,B,R,8,L,10,R,8,B
+A: R,8,L,10,L,12,R,4
+B: R,8,L,12,R,4,R,4
+C: 
+
+main: A,B,A,C,8,L,10,C,8,A,B,C,8,L,10,C,8,B,C,8,L,10,C,8,B
+A: R,8,L,10,L,12,R,4
+B: R,8,L,12,R,4,R,4
+C: R
+
+main: A,B,A,C,L,10,C,A,B,C,L,10,C,B,C,L,10,C,B
+A: R,8,L,10,L,12,R,4
+B: R,8,L,12,R,4,R,4
+C: R,8
+
+main: A,B,A,C,10,R,8,A,B,C,10,R,8,B,C,10,R,8,B
+A: R,8,L,10,L,12,R,4
+B: R,8,L,12,R,4,R,4
+C: R,8,L
+
+main: A,B,A,C,R,8,A,B,C,R,8,B,C,R,8,B
+A: R,8,L,10,L,12,R,4
+B: R,8,L,12,R,4,R,4
+C: R,8,L,10
+
+main: A,B,A,C,8,A,B,C,8,B,C,8,B
+A: R,8,L,10,L,12,R,4
+B: R,8,L,12,R,4,R,4
+C: R,8,L,10,R
+
+main: A,B,A,C,A,B,C,B,C,B
+A: R,8,L,10,L,12,R,4
+B: R,8,L,12,R,4,R,4
+C: R,8,L,10,R,8
+main: [A, B, A, C, A, B, C, B, C, B]
+fns: [[R, F(8), L, F(10), L, F(12), R, F(4)], [R, F(8), L, F(12), R, F(4), R, F(4)], [R, F(8), L, F(10), R, F(8)]]
+part 2: 0
