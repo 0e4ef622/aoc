@@ -1,0 +1,7 @@
+[workspace]
+
+members = [
+    "day*",
+    "ic",
+]
+exclude = ["template"]
