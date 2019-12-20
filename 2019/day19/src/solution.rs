@@ -21,20 +21,16 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
     let prog = input.trim().split(",").map(|x| x.parse::<i128>().unwrap()).collect::<Vec<_>>();
 
     let mut y = 100;
-    let mut px = 0;
-    let mut ex = 0;
+    let mut x = 0;
     loop {
-        let mut x = px;
-        loop {
-            let mut vm = ic::Icvm::new(prog.clone());
-            vm.push_input(x);
-            vm.push_input(y);
-            vm.run();
-            if vm.pop_output().unwrap() == 1 { break; }
-            x += 1;
-        }
-        px = x;
-        x = x.max(ex);
+        let mut vm = ic::Icvm::new(prog.clone());
+        vm.push_input(x);
+        vm.push_input(y);
+        vm.run();
+        if vm.pop_output().unwrap() == 1 { break; }
+        x += 1;
+    }
+    loop {
         loop {
             let mut vm = ic::Icvm::new(prog.clone());
             vm.push_input(x);
@@ -43,7 +39,6 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
             if vm.pop_output().unwrap() == 0 { break; }
             x += 1;
         }
-        ex = x;
         x -= 1;
 
         let mut vm = ic::Icvm::new(prog.clone());
