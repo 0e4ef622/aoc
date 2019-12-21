@@ -148,11 +148,12 @@ impl Icvm {
     }
 
     /// Add multiple inputs to the VM.
-    pub fn push_inputs<I>(&mut self, i: I)
+    pub fn push_inputs<I, T>(&mut self, i: I)
     where
-        I: IntoIterator<Item = i128>
+        T: Into<i128>,
+        I: IntoIterator<Item = T>
     {
-        self.input.extend(i);
+        self.input.extend(i.into_iter().map(Into::into));
         if self.status == Status::WaitingForInput && !self.input.is_empty() {
             self.status = Status::Ready;
         }
