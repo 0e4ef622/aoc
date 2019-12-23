@@ -97,7 +97,7 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
     let mut p = (0, 0);
     map.insert(p, 1);
     visit(&mut vm, &mut map, p, 1);
-    print_map(&map, p);
+    // print_map(&map, p);
 
     // flood fill
 
@@ -121,6 +121,7 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
 }
 
 fn visit(vm: &mut ic::Icvm, map: &mut HashMap<(isize, isize), usize>, p: (isize, isize), depth: usize) {
+    let pr = map[&p];
     *map.get_mut(&p).unwrap() = 4;
     for input in 1..=4 {
 
@@ -142,8 +143,8 @@ fn visit(vm: &mut ic::Icvm, map: &mut HashMap<(isize, isize), usize>, p: (isize,
             2 => { map.insert(newp, 3); },
             _ => panic!("aaaaaa"),
         }
-        print_map(&map, p);
-        std::thread::sleep(std::time::Duration::from_millis(20));
+        // print_map(&map, p);
+        // std::thread::sleep(std::time::Duration::from_millis(20));
 
         visit(vm, map, newp, depth+1);
 
@@ -156,8 +157,8 @@ fn visit(vm: &mut ic::Icvm, map: &mut HashMap<(isize, isize), usize>, p: (isize,
         });
         vm.run();
         vm.drain_outputs().for_each(|_| ());
-        print_map(&map, p);
-        std::thread::sleep(std::time::Duration::from_millis(20));
+        // print_map(&map, p);
+        // std::thread::sleep(std::time::Duration::from_millis(20));
     }
-    *map.get_mut(&p).unwrap() = 1;
+    *map.get_mut(&p).unwrap() = pr;
 }

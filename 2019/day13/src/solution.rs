@@ -8,24 +8,24 @@ pub fn part1(input: &str) -> impl std::fmt::Display {
     for ch in a.chunks(3) {
         map.insert((ch[0], ch[1]), ch[2]);
     }
-        let minx = map.iter().map(|(a, _)| a.0).min().unwrap();
-        let maxx = map.iter().map(|(a, _)| a.0).max().unwrap();
-        let miny = map.iter().map(|(a, _)| a.1).min().unwrap();
-        let maxy = map.iter().map(|(a, _)| a.1).max().unwrap();
+    // let minx = map.iter().map(|(a, _)| a.0).min().unwrap();
+    // let maxx = map.iter().map(|(a, _)| a.0).max().unwrap();
+    // let miny = map.iter().map(|(a, _)| a.1).min().unwrap();
+    // let maxy = map.iter().map(|(a, _)| a.1).max().unwrap();
 
-        for y in (miny..=maxy).rev() {
-            for x in minx..=maxx {
-                match map.get(&(x, y)).unwrap_or(&0) {
-                    0 => print!(" "),
-                    1 => print!("█"),
-                    2 => print!("#"),
-                    3 => print!("-"),
-                    4 => print!("O"),
-                    _ => print!(" "),
-                }
-            }
-            println!()
-        }
+    // for y in (miny..=maxy).rev() {
+    //     for x in minx..=maxx {
+    //         match map.get(&(x, y)).unwrap_or(&0) {
+    //             0 => print!(" "),
+    //             1 => print!("█"),
+    //             2 => print!("#"),
+    //             3 => print!("-"),
+    //             4 => print!("O"),
+    //             _ => print!(" "),
+    //         }
+    //     }
+    //     println!()
+    // }
     map.into_iter().filter(|(a, b)| b == &2).count()
 }
 

@@ -1,11 +1,11 @@
 use std::io::Read;
 mod solution;
-const input: &'static str = include_str!("../in");
+// const input: &'static str = include_str!("../in");
 fn main() {
-    // let mut input = String::new();
-    // std::io::stdin().read_to_string(&mut input);
-    // let p1 = solution::part1(&input);
-    // println!("part 1: {}", p1);
+    let mut input = String::new();
+    std::io::stdin().read_to_string(&mut input);
+    let p1 = solution::part1(&input);
+    println!("part 1: {}", p1);
     let p2 = solution::part2(&input);
     println!("part 2: {}", p2);
 }

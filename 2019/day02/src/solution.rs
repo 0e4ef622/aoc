@@ -29,7 +29,6 @@ pub fn part2(input: &str) -> usize {
     for i in 0..=99 {
         for j in 0..=99 {
             let mut nums = nums.clone();
-            println!("trying {} {}", i, j);
             nums[1] = i;
             nums[2] = j;
             let mut ci = 0;
@@ -50,8 +49,8 @@ pub fn part2(input: &str) -> usize {
             }
 
             if nums[0] == 19690720 {
-                println!("{} {}", i, j);
-                return 0;
+                // println!("{} {}", i, j);
+                return i*100+j;
             }
         }
     }
