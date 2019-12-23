@@ -34,8 +34,8 @@ trait ContainsDouble {
     const N: usize;
 }
 
-trait Min<T> {
-    type Min;
+trait Max<T> {
+    type Max;
 }
 
 macro_rules! impl_contains_double {
@@ -77,32 +77,32 @@ impl_contains_double! {
     N9: [N0, N1, N2, N3, N4, N5, N6, N7, N8]
 }
 
-macro_rules! impl_min {
-    ($($min:tt < $($other:tt),*;)*) => {
+macro_rules! impl_max {
+    ($($max:tt > $($other:tt),*;)*) => {
         $($(
-            impl Min<$min<End>> for $other<End> {
-                type Min = $min<End>;
+            impl Max<$max<End>> for $other<End> {
+                type Max = $max<End>;
             }
-            impl Min<$other<End>> for $min<End> {
-                type Min = $min<End>;
+            impl Max<$other<End>> for $max<End> {
+                type Max = $max<End>;
             }
         )*)*
     }
 }
 
-impl_min! {
-    N0 < N1, N2, N3, N4, N5, N6, N7, N8, N9;
-    N1 < N2, N3, N4, N5, N6, N7, N8, N9;
-    N2 < N3, N4, N5, N6, N7, N8, N9;
-    N3 < N4, N5, N6, N7, N8, N9;
-    N4 < N5, N6, N7, N8, N9;
-    N5 < N6, N7, N8, N9;
-    N6 < N7, N8, N9;
-    N7 < N8, N9;
-    N8 < N9;
+impl_max! {
+    N9 > N0, N1, N2, N3, N4, N5, N6, N7, N8;
+    N8 > N0, N1, N2, N3, N4, N5, N6, N7;
+    N7 > N0, N1, N2, N3, N4, N5, N6;
+    N6 > N0, N1, N2, N3, N4, N5;
+    N5 > N0, N1, N2, N3, N4;
+    N4 > N0, N1, N2, N3;
+    N3 > N0, N1, N2;
+    N2 > N0, N1;
+    N1 > N0;
 }
 
-impl<T> Min<T> for T { type Min = T; }
+impl<T> Max<T> for T { type Max = T; }
 
 trait Repr {
     const REPR: usize;
@@ -139,47 +139,31 @@ impl Incr for End { type Incr = N1<End>; }
 
 trait FirstIncreasing { // get the lowest number higher than Self that has increasing digits
     type FirstIncr;
+    type MinRq;
 }
 
 trait LastIncreasing { // get the highest number lower than Self that has increasing digits
     type LastIncr;
 }
 
-// impl FirstIncreasing for N0<T>
+impl<T> FirstIncreasing for N0<End> { type FirstIncr = Self; type MinRq = Self; }
+impl<T> FirstIncreasing for N1<End> { type FirstIncr = Self; type MinRq = Self; }
+impl<T> FirstIncreasing for N2<End> { type FirstIncr = Self; type MinRq = Self; }
+impl<T> FirstIncreasing for N3<End> { type FirstIncr = Self; type MinRq = Self; }
+impl<T> FirstIncreasing for N4<End> { type FirstIncr = Self; type MinRq = Self; }
+impl<T> FirstIncreasing for N5<End> { type FirstIncr = Self; type MinRq = Self; }
+impl<T> FirstIncreasing for N6<End> { type FirstIncr = Self; type MinRq = Self; }
+impl<T> FirstIncreasing for N7<End> { type FirstIncr = Self; type MinRq = Self; }
+impl<T> FirstIncreasing for N8<End> { type FirstIncr = Self; type MinRq = Self; }
+impl<T> FirstIncreasing for N9<End> { type FirstIncr = Self; type MinRq = Self; }
+
+impl<T: FirstIncreasing> FirstIncreasing for N0<T> {
+    type FirstIncr = <Self::MinRq as Wr<T::FirstIncr>>::Wr;
+    type MinRq = <T::MinRq as Max<N0<End>>>::Max;
+}
 
 fn main() {
 
     println!("{}", <N9<N9<N9<End>>> as Incr>::Incr::REPR)
 
 }
-
-// impl<T> ContainsDouble for N0<N0<T>> {
-//     const N: usize = 1;
-// }
-// impl<T> ContainsDouble for N1<N1<T>> {
-//     const N: usize = 1;
-// }
-// impl<T> ContainsDouble for N2<N2<T>> {
-//     const N: usize = 1;
-// }
-// impl<T> ContainsDouble for N3<N3<T>> {
-//     const N: usize = 1;
-// }
-// impl<T> ContainsDouble for N4<N4<T>> {
-//     const N: usize = 1;
-// }
-// impl<T> ContainsDouble for N5<N5<T>> {
-//     const N: usize = 1;
-// }
-// impl<T> ContainsDouble for N6<N6<T>> {
-//     const N: usize = 1;
-// }
-// impl<T> ContainsDouble for N7<N7<T>> {
-//     const N: usize = 1;
-// }
-// impl<T> ContainsDouble for N8<N8<T>> {
-//     const N: usize = 1;
-// }
-// impl<T> ContainsDouble for N9<N9<T>> {
-//     const N: usize = 1;
-// }

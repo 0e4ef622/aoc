@@ -42,7 +42,7 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
     let mut botd = 0i32; // 0 = up, 1 = right, 2 = down, 3 = left
     let mut vm = ic::Icvm::new(input.trim().split(",").map(|x| x.parse::<i128>().unwrap()).collect());
     let mut paint = HashMap::new();
-    paint.insert((0, 0), 0);
+    paint.insert((0, 0), 1);
 
     while vm.status() != ic::Status::Finished {
         vm.run();

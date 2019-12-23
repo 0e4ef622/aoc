@@ -232,15 +232,15 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
 
     vm = ic::Icvm::new(prog);
 
-    vm.push_inputs(main.bytes().map(Into::into));
+    vm.push_inputs(main.bytes());
     vm.push_input(10);
-    vm.push_inputs(a.bytes().map(Into::into));
+    vm.push_inputs(a.bytes());
     vm.push_input(10);
-    vm.push_inputs(b.bytes().map(Into::into));
+    vm.push_inputs(b.bytes());
     vm.push_input(10);
-    vm.push_inputs(c.bytes().map(Into::into));
+    vm.push_inputs(c.bytes());
     vm.push_input(10);
-    vm.push_input(b'n' as i128);
+    vm.push_input(b'n');
     vm.push_input(10);
 
     vm.run();
