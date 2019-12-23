@@ -140,8 +140,8 @@ impl Icvm {
     }
 
     /// Add an input to the VM.
-    pub fn push_input(&mut self, i: i128) {
-        self.input.push_back(i);
+    pub fn push_input(&mut self, i: impl Into<i128>) {
+        self.input.push_back(i.into());
         if self.status == Status::WaitingForInput {
             self.status = Status::Ready;
         }

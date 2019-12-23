@@ -347,6 +347,24 @@ dependencies = [
 ]
 
 [[package]]
+name = "day22"
+version = "0.1.0"
+dependencies = [
+ "criterion",
+ "ic",
+ "rand",
+]
+
+[[package]]
+name = "day23"
+version = "0.1.0"
+dependencies = [
+ "criterion",
+ "ic",
+ "rand",
+]
+
+[[package]]
 name = "dijkstra"
 version = "0.1.0"
 
