@@ -365,6 +365,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "day24"
+version = "0.1.0"
+dependencies = [
+ "criterion",
+ "ic",
+ "rand",
+]
+
+[[package]]
 name = "dijkstra"
 version = "0.1.0"
 

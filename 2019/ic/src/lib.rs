@@ -34,6 +34,11 @@ impl Icvm {
         }
     }
 
+    pub fn from_str(s: &str) -> Option<Self> {
+        let prog: Result<Vec<_>, _> = s.trim().split(",").map(|x| x.parse::<i128>()).collect();
+        Some(Self::new(prog.ok()?))
+    }
+
     /// Run until completion, or until the program needs more input.
     pub fn run(&mut self) {
         while self.status == Status::Ready {
