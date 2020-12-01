@@ -51,47 +51,35 @@ fn next_state(state: &[Vec<u8>]) -> Vec<Vec<u8>> {
 
 pub fn part2(input: &str) -> impl std::fmt::Display {
     let mut state: Vec<Vec<Vec<u8>>> = vec![input.lines().map(|l| l.bytes().collect()).collect()];
+    let mut oldstate: Vec<Vec<Vec<u8>>> = state.clone();
 
     for _ in 0..200 {
-        // for thing in &state {
-        //     print_thing(thing);
-        //     println!("-");
-        // }
-        // println!("-------------------------------------");
-        state = next_state2(state);
+        next_state2(&mut oldstate, &mut state);
+        let t = oldstate;
+        oldstate = state;
+        state = t;
     }
-    state.into_iter().flatten().flatten().filter(|&x| x == b'#').count()
+    oldstate.into_iter().flatten().flatten().filter(|&x| x == b'#').count()
 }
 
-fn print_thing(thing: &[Vec<u8>]) {
-    for line in thing {
-        for &c in line {
-            print!("{}", c as char);
-        }
-        println!();
-    }
-}
-
-fn next_state2(mut state: Vec<Vec<Vec<u8>>>) -> Vec<Vec<Vec<u8>>> {
+fn next_state2(state: &mut Vec<Vec<Vec<u8>>>, newstate: &mut Vec<Vec<Vec<u8>>>) {
     state.insert(0, vec![vec![b'.'; 5]; 5]);
     state.push(vec![vec![b'.'; 5]; 5]);
-    let state = state;
-    let mut newstate = state.clone();
+    newstate.insert(0, vec![vec![b'.'; 5]; 5]);
+    newstate.push(vec![vec![b'.'; 5]; 5]);
 
     for d in 0..state.len() {
         for y in 0..state[d].len() {
             for x in 0..state[d][y].len() {
+
                 if x == 2 && y == 2 { continue; }
-                let adji = adjacents([x, y], d);
-
-
                 let mut adjc = 0;
-                for ([X, Y], D) in adji {
-                    if D >= state.len() { continue; }
+                adjacents([x, y], d, |[X, Y], D| {
+                    if D >= state.len() { return; }
                     if state[D][Y][X] == b'#' {
                         adjc += 1;
                     }
-                }
+                });
 
                 if state[d][y][x] == b'#' && adjc != 1 {
                     newstate[d][y][x] = b'.';
@@ -103,68 +91,64 @@ fn next_state2(mut state: Vec<Vec<Vec<u8>>>) -> Vec<Vec<Vec<u8>>> {
             }
         }
     }
-    newstate
 }
 
-fn adjacents([x, y]: [usize; 2], d: usize) -> Vec<([usize; 2], usize)> {
-    let mut adj = vec![];
-
+fn adjacents([x, y]: [usize; 2], d: usize, mut f: impl FnMut([usize; 2], usize)) {
     if x == 0 && d != 0 {
-        adj.push(([1, 2], d-1));
+        f([1, 2], d-1);
     }
 
     if y == 0 && d != 0 {
-        adj.push(([2, 1], d-1));
+        f([2, 1], d-1);
     }
 
     if x == 4 && d != 0 {
-        adj.push(([3, 2], d-1));
+        f([3, 2], d-1);
     }
     if y == 4 && d != 0 {
-        adj.push(([2, 3], d-1));
+        f([2, 3], d-1);
     }
 
     if x != 0 && !(x == 3 && y == 2) {
-        adj.push(([x-1, y], d));
+        f([x-1, y], d);
     }
     if y != 0 && !(y == 3 && x == 2) {
-        adj.push(([x, y-1], d));
+        f([x, y-1], d);
     }
 
     if x != 4 && !(x == 1 && y == 2) {
-        adj.push(([x+1, y], d));
+        f([x+1, y], d);
     }
     if y != 4 && !(y == 1 && x == 2) {
-        adj.push(([x, y+1], d));
+        f([x, y+1], d);
     }
 
     if y == 1 && x == 2 {
-        adj.push(([0, 0], d+1));
-        adj.push(([1, 0], d+1));
-        adj.push(([2, 0], d+1));
-        adj.push(([3, 0], d+1));
-        adj.push(([4, 0], d+1));
+        f([0, 0], d+1);
+        f([1, 0], d+1);
+        f([2, 0], d+1);
+        f([3, 0], d+1);
+        f([4, 0], d+1);
     }
     if y == 2 && x == 1 {
-        adj.push(([0, 0], d+1));
-        adj.push(([0, 1], d+1));
-        adj.push(([0, 2], d+1));
-        adj.push(([0, 3], d+1));
-        adj.push(([0, 4], d+1));
+        f([0, 0], d+1);
+        f([0, 1], d+1);
+        f([0, 2], d+1);
+        f([0, 3], d+1);
+        f([0, 4], d+1);
     }
     if y == 2 && x == 3 {
-        adj.push(([4, 0], d+1));
-        adj.push(([4, 1], d+1));
-        adj.push(([4, 2], d+1));
-        adj.push(([4, 3], d+1));
-        adj.push(([4, 4], d+1));
+        f([4, 0], d+1);
+        f([4, 1], d+1);
+        f([4, 2], d+1);
+        f([4, 3], d+1);
+        f([4, 4], d+1);
     }
     if y == 3 && x == 2 {
-        adj.push(([0, 4], d+1));
-        adj.push(([1, 4], d+1));
-        adj.push(([2, 4], d+1));
-        adj.push(([3, 4], d+1));
-        adj.push(([4, 4], d+1));
+        f([0, 4], d+1);
+        f([1, 4], d+1);
+        f([2, 4], d+1);
+        f([3, 4], d+1);
+        f([4, 4], d+1);
     }
-    adj
 }
