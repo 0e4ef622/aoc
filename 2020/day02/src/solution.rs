@@ -4,16 +4,13 @@ pub fn part1(input: &str) -> impl std::fmt::Display {
     let mut inlines = input.lines();
     let mut R = 0;
     for line in inlines {
-        let mut w = line.split_whitespace();
-        let mut r = w.next().unwrap().split("-").map(|x| x.parse().unwrap());
-        let l: usize = r.next().unwrap();
-        let r: usize = r.next().unwrap();
-        let c = &w.next().unwrap().chars().next().unwrap();
+        let mut w = line.split(&[' ','-'][..]);
+        let l: usize = w.next().unwrap().parse().unwrap();
+        let r: usize = w.next().unwrap().parse().unwrap();
+        let c = w.next().unwrap().as_bytes()[0];
         let p = w.next().unwrap();
-        let C = p.chars().filter(|x| x == c).count();
-        if C >= l && C <= r {
-            R += 1;
-        }
+        let C = p.bytes().filter(|&x| x == c).count();
+        R += (C >= l && C <= r) as u32;
     }
     R
 }
@@ -22,15 +19,14 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
     let mut inlines = input.lines();
     let mut R = 0;
     for line in inlines {
-        let mut w = line.split_whitespace();
-        let mut r = w.next().unwrap().split("-").map(|x| x.parse().unwrap());
-        let l: usize = r.next().unwrap();
-        let r: usize = r.next().unwrap();
-        let c = &w.next().unwrap()[0..1];
-        let p = w.next().unwrap();
+        let mut w = line.split(&[' ','-'][..]);
+        let l: usize = w.next().unwrap().parse().unwrap();
+        let r: usize = w.next().unwrap().parse().unwrap();
+        let c = w.next().unwrap().as_bytes()[0];
+        let p = w.next().unwrap().as_bytes();
 
-        if (&p[l-1..l] == c) ^ (&p[r-1..r] == c) {
-            R += 1;
+        unsafe {
+            R += ((*p.get_unchecked(l-1) == c) ^ (*p.get_unchecked(r-1) == c)) as u32;
         }
     }
     R
