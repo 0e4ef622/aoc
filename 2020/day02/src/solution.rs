@@ -4,12 +4,26 @@ pub fn part1(input: &str) -> impl std::fmt::Display {
     let mut inlines = input.lines();
     let mut R = 0;
     for line in inlines {
-        let mut w = line.split(&[' ','-'][..]);
-        let l: usize = w.next().unwrap().parse().unwrap();
-        let r: usize = w.next().unwrap().parse().unwrap();
-        let c = w.next().unwrap().as_bytes()[0];
-        let p = w.next().unwrap();
-        let C = p.bytes().filter(|&x| x == c).count();
+        let mut l: usize = 0;
+        let mut r: usize = 0;
+        let mut b = line.as_bytes().iter();
+
+        loop {
+            let ch = *b.next().unwrap();
+            if ch == b'-' { break; }
+            l = 10*l + (ch - b'0') as usize;
+        }
+        loop {
+            let ch = *b.next().unwrap();
+            if ch == b' ' { break; }
+            r = 10*r + (ch - b'0') as usize;
+        }
+        let c = *b.next().unwrap();
+        b.next();
+        b.next();
+        let p = b.as_slice();
+
+        let C = p.iter().filter(|&&x| x == c).count();
         R += (C >= l && C <= r) as u32;
     }
     R
@@ -19,14 +33,27 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
     let mut inlines = input.lines();
     let mut R = 0;
     for line in inlines {
-        let mut w = line.split(&[' ','-'][..]);
-        let l: usize = w.next().unwrap().parse().unwrap();
-        let r: usize = w.next().unwrap().parse().unwrap();
-        let c = w.next().unwrap().as_bytes()[0];
-        let p = w.next().unwrap().as_bytes();
+        let mut l: usize = 0;
+        let mut r: usize = 0;
+        let mut b = line.as_bytes().iter();
+
+        loop {
+            let ch = *b.next().unwrap();
+            if ch == b'-' { break; }
+            l = 10*l + (ch - b'0') as usize;
+        }
+        loop {
+            let ch = *b.next().unwrap();
+            if ch == b' ' { break; }
+            r = 10*r + (ch - b'0') as usize;
+        }
+        let c = *b.next().unwrap();
+        b.next();
+        b.next();
+        let p = b.as_slice();
 
         unsafe {
-            R += ((*p.get_unchecked(l-1) == c) ^ (*p.get_unchecked(r-1) == c)) as u32;
+            R += ((*p.get_unchecked(l-1) == c) != (*p.get_unchecked(r-1) == c)) as u32;
         }
     }
     R

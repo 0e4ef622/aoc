@@ -13,3 +13,4 @@ harness = false
 
 [dependencies]
 rand = "*"
+serde_scan = "*"
