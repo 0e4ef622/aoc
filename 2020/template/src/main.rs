@@ -1,3 +1,4 @@
+#![allow(warnings)]
 use std::io::Read;
 mod solution;
 // const INPUT: &'static str = include_str!("../in");
