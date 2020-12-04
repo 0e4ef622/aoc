@@ -8,8 +8,8 @@ const INPUT: &'static str = include_str!("../in");
 use criterion::{criterion_group, criterion_main, Criterion};
 
 fn criterion_benchmark(c: &mut Criterion) {
-    c.bench_function("p1_me", |b| b.iter(|| part1(INPUT)));
-    c.bench_function("p2_me", |b| b.iter(|| part2(INPUT)));
+    c.bench_function("p1_me", |b| b.iter(|| part1(INPUT.as_bytes())));
+    c.bench_function("p2_me", |b| b.iter(|| part2(INPUT.as_bytes())));
 }
 
 criterion_group!(

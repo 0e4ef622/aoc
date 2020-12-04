@@ -1,32 +1,27 @@
-use std::collections::*;
-use rand::random;
-use serde_scan::scan as s;
-pub fn part1(input: &str) -> impl std::fmt::Display {
-    let mut inlines = input.lines();
-    let mut R = 0;
-    for (i, line) in inlines.enumerate() {
-        let line = line.as_bytes();
-        R += (line[i*3 % line.len()] == b'#') as u32;
-    }
-    R
+pub fn part1(i: &[u8]) -> usize {
+    (0..i.len())
+        // .filter(|&n| (n + n / 32 * 3 / 31 * 31) % 35 == 0 && i[n] == 35)
+        .filter(|&n| (n + n / 32 * 3 / 31 * 31) % 35 ^ i[n] as usize == 35)
+        .count()
+}
+pub fn oldpart1(input: &str) -> impl std::fmt::Display {
+    input.lines().enumerate().fold(0, |a, x| {
+        a + (x.1.as_bytes()[x.0 * 3 % x.1.len()] == b'#') as u32
+    })
 }
 
-pub fn part2(input: &str) -> impl std::fmt::Display {
-    let mut inlines = input.lines();
-    let mut a = 0;
-    let mut b = 0;
-    let mut c = 0;
-    let mut d = 0;
-    let mut e = 0;
-    for (i, line) in inlines.enumerate() {
-        let line = line.as_bytes();
-        a += (line[i % line.len()] == b'#') as u32;
-        b += (line[i*3 % line.len()] == b'#') as u32;
-        c += (line[i*5 % line.len()] == b'#') as u32;
-        d += (line[i*7 % line.len()] == b'#') as u32;
-        if (i%2==0) {
-            e += (line[i/2 % line.len()] == b'#') as u32;
-        }
-    }
-    a*b*c*d*e
+pub fn part2(i: &[u8]) -> impl std::fmt::Display {
+    (|f: &dyn Fn(_, _) -> _| f(1, 1) * f(3, 1) * f(5, 1) * f(7, 1) * f(1, 2))(&|x, y| {
+        (0..i.len())
+            .filter(|&n| (n + n / 32 / y * x / 31 * 31) % (32 * y + x) == 0 && i[n] == 35)
+            .count()
+    })
+}
+
+pub fn oldpart2(input: &str) -> impl std::fmt::Display {
+    (|f: &dyn Fn(_, _) -> _| f(1, 1) * f(3, 1) * f(5, 1) * f(7, 1) * f(1, 2))(&|x, y| {
+        input.lines().step_by(y).enumerate().fold(0, |a, (i, l)| {
+            a + (l.as_bytes()[i * x % l.len()] == b'#') as usize
+        })
+    })
 }
