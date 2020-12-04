@@ -1,7 +1,6 @@
 pub fn part1(i: &[u8]) -> usize {
     (0..i.len())
-        // .filter(|&n| (n + n / 32 * 3 / 31 * 31) % 35 == 0 && i[n] == 35)
-        .filter(|&n| (n + n / 32 * 3 / 31 * 31) % 35 ^ i[n] as usize == 35)
+        .filter(|&n| (n + n / 32 * 3 / 31 * 31) % 35 == 0 && i[n] == 35)
         .count()
 }
 pub fn oldpart1(input: &str) -> impl std::fmt::Display {
