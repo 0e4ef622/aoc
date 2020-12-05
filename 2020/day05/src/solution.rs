@@ -1,50 +1,16 @@
-use std::collections::*;
-use rand::random;
-use serde_scan::scan as s;
 pub fn part1(input: &str) -> impl std::fmt::Display {
-    let mut max = 0;
-    for line in input.lines() {
-        let mut l = 0;
-        let mut r = 128;
-        for c in line[..7].bytes() {
-            let m = (l + r)/2;
-            match c {
-                b'F' => r = m,
-                b'B' => l = m,
-                _ => (),
-            }
-        }
-        let row = l;
-        let col = i32::from_str_radix(&line[7..].replace("R","1").replace("L","0"), 2).unwrap();
-        let x = 8*row + col;
-        max = max.max(x);
-    }
-    max
+    input.as_bytes().split(|&x| x == b'\n').map(|l|
+        l.iter().fold(0usize, |a, &x| a*2 + ((!x as usize & 4) >> 2))
+    )
+    .max()
+    .unwrap()
 }
 
 pub fn part2(input: &str) -> impl std::fmt::Display {
-    let mut s = vec![];
-    for line in input.lines() {
-        let mut l = 0;
-        let mut r = 128;
-        for c in line[..7].bytes() {
-            let m = (l + r)/2;
-            match c {
-                b'F' => r = m,
-                b'B' => l = m,
-                _ => (),
-            }
-        }
-        let row = l;
-        let col = i32::from_str_radix(&line[7..].replace("R","1").replace("L","0"), 2).unwrap();
-        let x = 8*row + col;
-        s.push(x);
-    }
-    s.sort();
-    for w in s.windows(2) {
-        if w[1] - w[0] == 2 {
-            return w[1] - 1;
-        }
-    }
-    0
+    let mut t = [false; 1024];
+    input.as_bytes().split(|&x| x == b'\n').map(|l|
+        l.iter().fold(0usize, |a, &x| a*2 + ((!x as usize & 4) >> 2))
+    ).for_each(|n| t[n] = true);
+    t[0] = false;
+    t.iter().enumerate().skip_while(|b| !b.1).skip_while(|b| *b.1).next().unwrap().0
 }
