@@ -221,6 +221,16 @@ version = "0.1.0"
 dependencies = [
  "criterion",
  "rand",
+ "serde_json",
+ "serde_scan",
+]
+
+[[package]]
+name = "day05"
+version = "0.1.0"
+dependencies = [
+ "criterion",
+ "rand",
  "serde_scan",
 ]
 
