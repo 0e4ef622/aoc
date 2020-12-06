@@ -1,6 +1,3 @@
-use std::collections::*;
-use rand::random;
-use serde_scan::scan as s;
 pub fn part1(input: &str) -> impl std::fmt::Display {
     let mut c: usize = 0;
     for group in input.trim().split("\n\n") {
