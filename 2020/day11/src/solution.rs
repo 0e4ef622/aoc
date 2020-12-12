@@ -30,7 +30,6 @@ pub fn part1(input: &str) -> impl std::fmt::Display {
     grid.insert(0, vec![b'.'; grid[0].len()]);
     grid.push(vec![b'.'; grid[0].len()]);
     let mut grid2 = grid.clone();
-    // loop {
     loop {
         iterate(&grid, &mut grid2);
         if grid == grid2 { break; }
