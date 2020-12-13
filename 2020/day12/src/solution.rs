@@ -2,8 +2,8 @@ use std::collections::*;
 use rand::random;
 use serde_scan::scan as s;
 pub fn part1(input: &str) -> impl std::fmt::Display {
-    let mut x:i32 = 0;
-    let mut y:i32 = 0;
+    let mut x: i32 = 0;
+    let mut y: i32 = 0;
     let mut dx = 1;
     let mut dy = 0;
     for line in input.lines() {
@@ -19,13 +19,12 @@ pub fn part1(input: &str) -> impl std::fmt::Display {
             _ => (),
         }
     }
-    println!("{} {}", x, y);
     x.abs()+y.abs()
 }
 
 pub fn part2(input: &str) -> impl std::fmt::Display {
-    let mut x:i32 = 0;
-    let mut y:i32 = 0;
+    let mut x: i32 = 0;
+    let mut y: i32 = 0;
     let mut dx = 10;
     let mut dy = 1;
     for line in input.lines() {
@@ -41,6 +40,5 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
             _ => (),
         }
     }
-    println!("{} {}", x, y);
     x.abs()+y.abs()
 }
