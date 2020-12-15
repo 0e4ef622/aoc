@@ -34,7 +34,6 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
 
     let mut last = *input.last().unwrap();
     for t in input.len()..30000000 {
-        println!("{}", last);
         let oldlast = last;
         if !cnt.contains_key(&last) {
             last = 0;
