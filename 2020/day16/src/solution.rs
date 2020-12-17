@@ -68,6 +68,7 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
 
         if !badd { tickets.push(line.split(",").map(|x| x.parse::<isize>().unwrap()).collect::<Vec<_>>()); }
     }
+    println!("{}", tickets.len());
 
     let mut field_map = vec![(1u64<<ranges.len())-1; ranges.len()];
 
@@ -80,7 +81,6 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
             }
         }
     }
-    for x in &field_map {println!("{:b}", x); }
 
     let mut fm = vec![0; ranges.len()];
     for _ in 0..field_map.len() {
@@ -93,7 +93,6 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
             }
         }
     }
-    println!("{:?}", field_map);
     fm[..6].iter().map(|x| mine.split(",").nth(*x).unwrap().parse::<isize>().unwrap()).product::<isize>()
 }
 
