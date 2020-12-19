@@ -3,50 +3,22 @@ use rand::random;
 use serde_scan::scan as s;
 
 
-fn oldtest_rule(rules: &HashMap<usize, Vec<Vec<&str>>>, s: &mut &str, r: usize) -> bool {
-    println!("test({}, {})", s, r);
+fn test_rule(rules: &HashMap<usize, Vec<Vec<Result<usize, u8>>>>, s: &mut &str, r: usize) -> bool {
     if s.is_empty() { return false; }
     'outer: for rule_seq in &rules[&r] {
         let mut ss = *s;
         for rule in rule_seq {
             if ss.is_empty() { continue 'outer; }
-            match rule.as_bytes()[0] {
-                b'\"' => {
-                    if ss.as_bytes()[0] != rule.as_bytes()[1] {
+            match rule {
+                Err(c) => {
+                    if ss.as_bytes()[0] != *c {
                         continue 'outer;
                     } else {
                         ss = &ss[1..];
                     }
                 }
-                _ => {
-                    if !test_rule(rules, &mut ss, rule.parse().unwrap()) {
-                        continue 'outer;
-                    }
-                }
-            }
-        }
-        *s = ss;
-        return true;
-    }
-    false
-}
-
-fn test_rule(rules: &HashMap<usize, Vec<Vec<&str>>>, s: &mut &str, r: usize) -> bool {
-    if s.is_empty() { return false; }
-    'outer: for rule_seq in &rules[&r] {
-        let mut ss = *s;
-        for rule in rule_seq {
-            if ss.is_empty() { continue 'outer; }
-            match rule.as_bytes()[0] {
-                b'\"' => {
-                    if ss.as_bytes()[0] != rule.as_bytes()[1] {
-                        continue 'outer;
-                    } else {
-                        ss = &ss[1..];
-                    }
-                }
-                _ => {
-                    if !test_rule(rules, &mut ss, rule.parse().unwrap()) {
+                Ok(r) => {
+                    if !test_rule(rules, &mut ss, *r) {
                         continue 'outer;
                     }
                 }
@@ -66,7 +38,7 @@ pub fn part1(input: &str) -> impl std::fmt::Display {
         let r = s.next().unwrap();
         let a = s.next().unwrap()
             .split("|")
-            .map(|x| x.trim().split_whitespace().collect::<Vec<_>>())
+            .map(|x| x.trim().split_whitespace().map(|x| x.parse().map_err(|_| x.as_bytes()[1])).collect::<Vec<_>>())
             .collect::<Vec<_>>();
 
         rules.insert(r.parse().unwrap(), a);
@@ -86,24 +58,23 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
         let r = s.next().unwrap();
         let a = s.next().unwrap()
             .split("|")
-            .map(|x| x.trim().split_whitespace().collect::<Vec<_>>())
+            .map(|x| x.trim().split_whitespace().map(|x| x.parse().map_err(|_| x.as_bytes()[1])).collect::<Vec<_>>())
             .collect::<Vec<_>>();
 
         rules.insert(r.parse().unwrap(), a);
     }
 
-    let rule11 = (rules[&11][0][0], rules[&11][0][1]);
-    rules.get_mut(&11).unwrap().insert(0, vec![rule11.0, "11", rule11.1]);
-
     sections[1].lines()
-        .map(|line| {
-            for cnt8 in 1..101 {
+        .map(|mut line| {
+            let mut cnt42 = 0;
+            loop {
+                if !test_rule(&rules, &mut line, 42) { break; }
+                cnt42 += 1;
+
                 let mut line = line;
-                (0..cnt8).for_each(|_| { test_rule(&rules, &mut line, 8); });
-                if line.is_empty() { break; }
-                if test_rule(&rules, &mut line, 11) && line.is_empty() {
-                    return true;
-                }
+                let mut cnt31 = 0;
+                while test_rule(&rules, &mut line, 31) { cnt31 += 1; }
+                if cnt42 > cnt31 && cnt42 >= 2 && cnt31 >= 1 && line.is_empty() { return true; }
             }
             return false;
         })
