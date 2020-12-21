@@ -1,10 +1,7 @@
 use std::collections::*;
-use rand::random;
-use serde_scan::scan as s;
 
 #[derive(Debug)]
 struct Tile {
-    id: usize,
     top: Vec<u8>,
     bottom: Vec<u8>,
     left: Vec<u8>,
@@ -30,7 +27,7 @@ impl Tile {
     }
 }
 
-fn mktile(tile: &str, id: usize) -> Tile {
+fn mktile(tile: &str) -> Tile {
     let lines = tile.lines().collect::<Vec<_>>();
     let top = lines[0].as_bytes().to_vec();
     let bottom = lines.last().unwrap().as_bytes().to_vec();
@@ -38,7 +35,7 @@ fn mktile(tile: &str, id: usize) -> Tile {
     let right = lines.iter().map(|x| *x.as_bytes().last().unwrap()).collect::<Vec<_>>();
 
     let inner = lines[1..lines.len()-1].iter().map(|x| x[1..x.len()-1].as_bytes().to_vec()).collect();
-    Tile { top, bottom, left, right, id, used: false, inner }
+    Tile { top, bottom, left, right, used: false, inner }
 }
 
 fn attempt(tiles: &mut HashMap<usize, Tile>, grid: &mut [[Option<usize>; 12]; 12]) -> bool {
@@ -87,7 +84,7 @@ pub fn part1(input: &str) -> impl std::fmt::Display {
         let tile_id = s.next().unwrap();
         let tile_id = tile_id[5..tile_id.len()-1].parse::<usize>().unwrap();
         let tile = s.next().unwrap();
-        let tile = mktile(tile, tile_id);
+        let tile = mktile(tile);
         tiles.insert(tile_id, tile);
     }
     let mut grid = [[None; 12]; 12];
@@ -141,7 +138,7 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
         let tile_id = s.next().unwrap();
         let tile_id = tile_id[5..tile_id.len()-1].parse::<usize>().unwrap();
         let tile = s.next().unwrap();
-        let tile = mktile(tile, tile_id);
+        let tile = mktile(tile);
         tiles.insert(tile_id, tile);
     }
     let mut grid = [[None; 12]; 12];
