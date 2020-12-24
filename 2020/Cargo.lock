@@ -397,6 +397,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "day24"
+version = "0.1.0"
+dependencies = [
+ "criterion",
+ "rand",
+ "serde_scan",
+]
+
+[[package]]
 name = "either"
 version = "1.6.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
