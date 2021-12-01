@@ -2,5 +2,6 @@
 
 members = [
     "day*",
+    "util",
 ]
 exclude = ["template"]
