@@ -40,7 +40,7 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
     input
         .lines()
         .map(|x| x.parse::<i64>().unwrap())
-        .collectv()
+        .cv()
         .appr(|v| v.windows(3))
         .map(|w| w.iter().sum::<i64>())
         .app(|i| i.clone().zip(i.skip(1)))

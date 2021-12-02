@@ -1,7 +1,7 @@
 #!/bin/bash
 
 day=$1;
-if ${#day} == 1; then
+if [ ${#day} = 1 ]; then
     day=0$day;
 fi
 
@@ -22,7 +22,8 @@ harness = false
 
 [dependencies]
 rand = "*"
-serde_scan = "*"' > Cargo.toml;
+serde_scan = "*"
+util = { path = "../util" }' > Cargo.toml;
 
 mkdir benches src;
 echo '#![feature(test)]
@@ -62,21 +63,12 @@ fn main() {
 echo 'use std::collections::*;
 use rand::random;
 use serde_scan::scan as s;
+use util::*;
 
-trait ApplyTo: Sized {
-    fn app<F, T>(self, f: F) -> T
-    where
-        F: FnOnce(Self) -> T,
-    {
-        f(self)
-    }
-}
-impl<T> ApplyTo for T {}
-
-pub fn part1(input: &str) -> impl std::fmt::Display + '\''_ {
+pub fn part1(input: &str) -> impl std::fmt::Display {
     0
 }
 
-pub fn part2(input: &str) -> impl std::fmt::Display + '\''_ {
+pub fn part2(input: &str) -> impl std::fmt::Display {
     0
 }' > src/solution.rs;

@@ -45,7 +45,7 @@ pub trait ChainDeref: Sized + std::ops::DerefMut {
 impl<T: std::ops::DerefMut> ChainDeref for T {}
 
 pub trait CollectVec: Iterator + Sized {
-    fn collectv(self) -> Vec<Self::Item> {
+    fn cv(self) -> Vec<Self::Item> {
         self.collect()
     }
 }
