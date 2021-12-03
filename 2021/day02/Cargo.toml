@@ -14,4 +14,4 @@ harness = false
 [dependencies]
 rand = "*"
 serde_scan = "*"
-util = { path = "../util" }
+util = { path = "../../util" }
