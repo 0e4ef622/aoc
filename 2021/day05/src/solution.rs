@@ -15,10 +15,8 @@ pub fn part1(input: &str) -> impl std::fmt::Display {
         let bx = b.next().unwrap().parse::<i64>().unwrap();
         let by = b.next().unwrap().parse::<i64>().unwrap();
         if !(ax == bx || ay == by) { continue; }
-        let mut dx = bx - ax;
-        let mut dy = by - ay;
-        if dx != 0 { dx /= dx.abs(); }
-        if dy != 0 { dy /= dy.abs(); }
+        let dx = (bx - ax).signum();
+        let dy = (by - ay).signum();
         *map.entry((ax, ay)).or_insert(0) += 1;
         while ax != bx || ay != by {
             ax += dx;
@@ -40,10 +38,8 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
         let mut ay = a.next().unwrap().parse::<i64>().unwrap();
         let bx = b.next().unwrap().parse::<i64>().unwrap();
         let by = b.next().unwrap().parse::<i64>().unwrap();
-        let mut dx = bx - ax;
-        let mut dy = by - ay;
-        if dx != 0 { dx /= dx.abs(); }
-        if dy != 0 { dy /= dy.abs(); }
+        let dx = (bx - ax).signum();
+        let dy = (by - ay).signum();
         *map.entry((ax, ay)).or_insert(0) += 1;
         while ax != bx || ay != by {
             ax += dx;
