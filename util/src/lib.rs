@@ -49,5 +49,56 @@ pub trait CollectVec: Iterator + Sized {
         self.collect()
     }
 }
-
 impl<I: Iterator> CollectVec for I {}
+
+pub trait Transpose {
+    type Out;
+    fn transpose(&self) -> Self::Out;
+}
+impl<T: Clone> Transpose for Vec<Vec<T>> {
+    type Out = Vec<Vec<T>>;
+    fn transpose(&self) -> Vec<Vec<T>> {
+        let h = self.len();
+        let w = self[0].len();
+        let mut r = vec![];
+        for i in 0..h {
+            r.push(vec![]);
+            for j in 0..w {
+                r.last_mut().unwrap().push(self[j][i].clone());
+            }
+        }
+        r
+    }
+}
+
+pub struct Dsu {
+    pub p: Vec<usize>,
+    pub s: Vec<usize>,
+}
+
+impl Dsu {
+    pub fn new(n: usize) -> Self {
+        let mut p = vec![0; n];
+        for (i, v) in p.iter_mut().enumerate() {
+            *v = i;
+        }
+        Dsu { p, s: vec![1; n] }
+    }
+
+    pub fn find(&mut self, i: usize) -> usize {
+        if self.p[i] == i {
+            return i;
+        }
+        let v = self.find(self.p[i]);
+        self.p[i] = v;
+        return self.p[i];
+    }
+
+    pub fn merge(&mut self, i: usize, j: usize) {
+        let i = self.find(i);
+        let j = self.find(j);
+        if i == j { return; }
+        self.p[i] = j;
+        self.s[j] += self.s[i];
+    }
+}

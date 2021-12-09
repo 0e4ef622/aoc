@@ -24,7 +24,7 @@ harness = false
 
 [dependencies]
 rand = "*"
-serde_scan = "*"
+itertools = "*"
 util = { path = "../../util" }' > Cargo.toml;
 
 mkdir benches src;
@@ -75,7 +75,7 @@ pub mod solution;
 
 echo 'use std::collections::*;
 use rand::random;
-use serde_scan::scan as s;
+use itertools::{iproduct, Itertools};
 use util::*;
 
 pub fn part1(input: &str) -> impl std::fmt::Display {
