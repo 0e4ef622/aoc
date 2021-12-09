@@ -98,7 +98,12 @@ impl Dsu {
         let i = self.find(i);
         let j = self.find(j);
         if i == j { return; }
-        self.p[i] = j;
-        self.s[j] += self.s[i];
+        if self.s[j] > self.s[i] {
+            self.p[i] = j;
+            self.s[j] += self.s[i];
+        } else {
+            self.p[j] = i;
+            self.s[i] += self.s[j];
+        }
     }
 }

@@ -28,18 +28,14 @@ itertools = "*"
 util = { path = "../../util" }' > Cargo.toml;
 
 mkdir benches src;
-echo '#![feature(test)]
-include!("../src/solution.rs");
-
-extern crate test;
-
-const INPUT: &'\''static str = include_str!("../in");
+echo 'const INPUT: &'\''static str = include_str!("../in");
 
 use criterion::{criterion_group, criterion_main, Criterion};
+use day'$day'::solution::{part1, part2};
 
 fn criterion_benchmark(c: &mut Criterion) {
-    c.bench_function("p1_me", |b| b.iter(|| part1(INPUT)));
-    c.bench_function("p2_me", |b| b.iter(|| part2(INPUT)));
+    c.bench_function("day'$day'_p1_me", |b| b.iter(|| part1(INPUT)));
+    c.bench_function("day'$day'_p2_me", |b| b.iter(|| part2(INPUT)));
 }
 
 criterion_group!(
