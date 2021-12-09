@@ -43,15 +43,11 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
     let ix = |i, j| i*(w+2) + j;
 
     for (i, j) in iproduct!(1..=h, 1..=w) {
-        let l = (map[i][j-1], ix(i, j-1));
-        let r = (map[i][j+1], ix(i, j+1));
-        let u = (map[i-1][j], ix(i-1, j));
-        let d = (map[i+1][j], ix(i+1, j));
         let c = map[i][j];
         if c == 9 { continue; }
+        let l = (map[i][j-1], ix(i, j-1));
+        let d = (map[i+1][j], ix(i+1, j));
         if l.0 != 9 { ds.merge(ix(i,j), l.1); }
-        if r.0 != 9 { ds.merge(ix(i,j), r.1); }
-        if u.0 != 9 { ds.merge(ix(i,j), u.1); }
         if d.0 != 9 { ds.merge(ix(i,j), d.1); }
     }
 
