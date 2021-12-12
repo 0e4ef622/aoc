@@ -9,6 +9,7 @@ fn is_lower(current: &str) -> bool {
 
 fn dfs<'a>(
     graph: &Vec<Vec<u8>>,
+    memo: &mut HashMap<(u32, bool, u8), usize>,
     mut visited: u32,
     mut double: bool,
     current: u8,
@@ -16,6 +17,12 @@ fn dfs<'a>(
     if current == 2 {
         return 1;
     }
+    if let Some(&c) = memo.get(&(visited, double, current)) {
+        return c;
+    }
+
+    let pd = double;
+    let pv = visited;
     if current % 2 == 0 {
         if visited & (1 << current) != 0 {
             if double || current == 0 {
@@ -27,8 +34,10 @@ fn dfs<'a>(
     }
     let mut paths = 0;
     for &neighbor in &graph[current as usize] {
-        paths += dfs(graph, visited, double, neighbor);
+        paths += dfs(graph, memo, visited, double, neighbor);
     }
+
+    memo.insert((pv, pd, current), paths);
 
     paths
 }
@@ -57,7 +66,7 @@ pub fn part1(input: &str) -> impl std::fmt::Display {
         g[a as usize].push(b);
         g[b as usize].push(a);
     }
-    dfs(&mut g, 0, true, 0)
+    dfs(&g, &mut Default::default(), 0, true, 0)
 }
 
 pub fn part2(input: &str) -> impl std::fmt::Display {
@@ -84,5 +93,5 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
         g[a as usize].push(b);
         g[b as usize].push(a);
     }
-    dfs(&mut g, 0, false, 0)
+    dfs(&g, &mut Default::default(), 0, false, 0)
 }
