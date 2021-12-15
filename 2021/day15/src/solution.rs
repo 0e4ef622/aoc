@@ -31,54 +31,165 @@ where
     G: Fn(usize, usize) -> i64,
 {
 
-    for i in 0..=h { eprintln!() }
+    let mut vv = VisViz::new(w, h);
 
-    let mut v = vec![vec![false; w]; h];
+    let mut v = vec![vec![None; w]; h];
     let mut q = BinaryHeap::new();
-    q.push((-heur(0,0),0,0));
+    q.push((-heur(0,0),0,0,0,0));
     loop {
-        let (r, i, j) = q.pop().unwrap();
-        visualize_visits(&v, &q, [w,h,i,j], &cost);
+        let (r, i, j, pi, pj) = q.pop().unwrap();
         let r = -r - heur(i, j);
+
+        if v[i][j].is_some() { continue; }
+        v[i][j] = Some((pi, pj));
+
+        vv.viz(&v, &q, [i,j], &cost);
         if i == h-1 && j == w-1 {
+            vv.finish(&v, [i, j], &cost);
             return r;
         }
-        if v[i][j] { continue; }
-        v[i][j] = true;
 
-        if i > 0   && !v[i-1][j] { q.push((-r - cost(i-1, j) - heur(i-1, j), i-1, j)); }
-        if i < h-1 && !v[i+1][j] { q.push((-r - cost(i+1, j) - heur(i+1, j), i+1, j)); }
-        if j > 0   && !v[i][j-1] { q.push((-r - cost(i, j-1) - heur(i, j-1), i, j-1)); }
-        if j < w-1 && !v[i][j+1] { q.push((-r - cost(i, j+1) - heur(i, j+1), i, j+1)); }
+        if i > 0   && v[i-1][j].is_none() { q.push((-r - cost(i-1, j) - heur(i-1, j), i-1, j, i, j)); }
+        if i < h-1 && v[i+1][j].is_none() { q.push((-r - cost(i+1, j) - heur(i+1, j), i+1, j, i, j)); }
+        if j > 0   && v[i][j-1].is_none() { q.push((-r - cost(i, j-1) - heur(i, j-1), i, j-1, i, j)); }
+        if j < w-1 && v[i][j+1].is_none() { q.push((-r - cost(i, j+1) - heur(i, j+1), i, j+1, i, j)); }
     }
 }
 
-fn visualize_visits<F>(v: &[Vec<bool>], q: &BinaryHeap<(i64, usize, usize)>, [w, h, i, j]: [usize; 4], cost: F)
-where
-    F: Fn(usize, usize) -> i64,
-{
-    use std::io::Write;
-    use termcolor::{ColorChoice, StandardStream, WriteColor};
+#[derive(Clone, Copy, PartialEq, Eq)]
+enum VizState {
+    Uninit,
+    Unvisited,
+    Visited,
+    Queued,
+    Path,
+    Current,
+}
 
-    eprint!("[{}A", h);
-
-    let mut stdout = StandardStream::stderr(ColorChoice::Auto);
-    for y in 0..h {
-        for x in 0..w {
-            let mut color = ColorSpec::new();
-            if y == i && x == j {
-                color.set_bg(Some(Color::White));
-                color.set_fg(Some(Color::Black));
-            } else if v[y][x] {
-                color.set_fg(Some(Color::Red));
-            } else if q.iter().find(|(_, i, j)| y==*i && x==*j).is_some() {
-                color.set_fg(Some(Color::Green));
-            }
-            stdout.set_color(&color).unwrap();
-            write!(&mut stdout, "{}", cost(y, x));
-            stdout.reset().unwrap();
+impl VizState {
+    fn color_spec(self) -> termcolor::ColorSpec {
+        let mut c = termcolor::ColorSpec::new();
+        match self {
+            VizState::Uninit | VizState::Unvisited => (),
+            VizState::Visited => { c.set_fg(Some(Color::Red)); },
+            VizState::Queued => { c.set_fg(Some(Color::Green)); },
+            VizState::Path => { c.set_bg(Some(Color::White)).set_fg(Some(Color::Black)); },
+            VizState::Current => { c.set_bg(Some(Color::Green)).set_fg(Some(Color::Black)); },
+            _ => todo!(),
         }
-        writeln!(&mut stdout);
+        c
     }
-    // std::thread::sleep(Duration::from_millis(50));
+}
+
+struct VisViz {
+    w: usize,
+    h: usize,
+    prev: Vec<Vec<VizState>>,
+}
+
+impl VisViz {
+    fn new(w: usize, h: usize) -> Self {
+        for i in 0..=h { eprintln!() }
+        eprint!("   ");
+        Self { w, h, prev: vec![vec![VizState::Uninit; w]; h] }
+    }
+    fn viz<F>(&mut self, v: &[Vec<Option<(usize, usize)>>], q: &BinaryHeap<(i64, usize, usize, usize, usize)>, [i, j]: [usize; 2], cost: F)
+    where
+        F: Fn(usize, usize) -> i64,
+    {
+        let Self { w, h, .. } = *self;
+
+        let mut path = HashSet::new();
+        path.insert((0,0));
+        for (mut y, mut x) in q.iter().map(|x| (x.3, x.4)).chain(v[i][j]) {
+            while (y, x) != (0, 0) {
+                path.insert((y, x));
+                let (i, j) = v[y][x].unwrap();
+                y = i;
+                x = j;
+            }
+        }
+        let q: HashSet<_> = q.iter().map(|x| (x.1, x.2)).collect::<HashSet<_>>().ch(|q| q.insert((i, j)));
+
+        let mut new = vec![vec![VizState::Uninit; w]; h];
+        for y in 0..h {
+            for x in 0..w {
+                new[y][x] = if (y, x) == (i, j) {
+                    VizState::Current
+                } else if path.contains(&(y, x)) {
+                    VizState::Path
+                } else if v[y][x].is_some() {
+                    VizState::Visited
+                } else if q.contains(&(y, x)) {
+                    VizState::Queued
+                } else {
+                    VizState::Unvisited
+                };
+            }
+        }
+        self.update(new, cost);
+        // std::thread::sleep(Duration::from_millis(20));
+    }
+    fn finish<F>(&mut self, v: &[Vec<Option<(usize, usize)>>], [mut i, mut j]: [usize; 2], cost: F)
+    where
+        F: Fn(usize, usize) -> i64,
+    {
+        let Self { w, h, .. } = *self;
+
+        let mut path = HashSet::new();
+        path.insert((0,0));
+        while (i, j) != (0, 0) {
+            path.insert((i, j));
+            let (y, x) = v[i][j].unwrap();
+            i = y;
+            j = x;
+        }
+
+        let mut new = vec![vec![VizState::Visited; w]; h];
+        for (y, x) in path {
+            new[y][x] = VizState::Current;
+        }
+        self.update(new, cost);
+        // std::thread::sleep(Duration::from_millis(20));
+    }
+    fn update<F>(&mut self, new: Vec<Vec<VizState>>, cost: F)
+    where
+        F: Fn(usize, usize) -> i64,
+    {
+        use std::io::Write;
+        use termcolor::{ColorChoice, StandardStream, WriteColor};
+
+        let mut out = StandardStream::stderr(ColorChoice::Auto);
+        let Self { w, h, .. } = *self;
+        let (mut cy, mut cx) = (h as i32, 0);
+        for y in 0..h {
+            for x in 0..w {
+                if new[y][x] != self.prev[y][x] {
+                    self.move_cursor(x as i32 - cx, y as i32 - cy);
+                    let color = new[y][x].color_spec();
+                    out.set_color(&color).unwrap();
+                    write!(&mut out, "{}", cost(y, x));
+                    cy = y as i32;
+                    cx = x as i32 + 1;
+                }
+            }
+        }
+        out.reset().unwrap();
+        self.move_cursor(-cx, h as i32 - cy);
+        self.prev = new;
+    }
+
+    fn move_cursor(&self, x: i32, y: i32) {
+        if x < 0 {
+            eprint!("[{}D", -x);
+        } else if x > 0 {
+            eprint!("[{}C", x);
+        }
+        if y < 0 {
+            eprint!("[{}A", -y);
+        } else if y > 0 {
+            eprint!("[{}B", y);
+        }
+        // std::thread::sleep(Duration::from_millis(100));
+    }
 }
