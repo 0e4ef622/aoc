@@ -25,7 +25,7 @@ impl<T> ApplyTo for T {}
 pub trait Chain: Sized {
     fn ch<F, T>(mut self, f: F) -> Self
     where
-        F: FnOnce(&mut Self) -> (),
+        F: FnOnce(&mut Self) -> T,
     {
         f(&mut self);
         self
