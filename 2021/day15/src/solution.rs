@@ -45,7 +45,7 @@ where
 
         vv.viz(&v, &q, [i,j], &cost);
         if i == h-1 && j == w-1 {
-            vv.finish(&v, [i, j], &cost);
+            vv.finish(&v, &q, [i, j], &cost);
             return r;
         }
 
@@ -103,7 +103,7 @@ impl VisViz {
         path.insert((0,0));
         for (mut y, mut x) in q.iter().map(|x| (x.3, x.4)).chain(v[i][j]) {
             while (y, x) != (0, 0) {
-                path.insert((y, x));
+                if !path.insert((y, x)) { break; };
                 let (i, j) = v[y][x].unwrap();
                 y = i;
                 x = j;
@@ -130,7 +130,7 @@ impl VisViz {
         self.update(new, cost);
         // std::thread::sleep(Duration::from_millis(20));
     }
-    fn finish<F>(&mut self, v: &[Vec<Option<(usize, usize)>>], [mut i, mut j]: [usize; 2], cost: F)
+    fn finish<F>(&mut self, v: &[Vec<Option<(usize, usize)>>], q: &BinaryHeap<(i64, usize, usize, usize, usize)>, [mut i, mut j]: [usize; 2], cost: F)
     where
         F: Fn(usize, usize) -> i64,
     {
@@ -139,15 +139,27 @@ impl VisViz {
         let mut path = HashSet::new();
         path.insert((0,0));
         while (i, j) != (0, 0) {
-            path.insert((i, j));
+            if !path.insert((i, j)) { break; };
             let (y, x) = v[i][j].unwrap();
             i = y;
             j = x;
         }
 
-        let mut new = vec![vec![VizState::Visited; w]; h];
-        for (y, x) in path {
-            new[y][x] = VizState::Current;
+        let q: HashSet<_> = q.iter().map(|x| (x.1, x.2)).collect::<HashSet<_>>().ch(|q| q.insert((i, j)));
+
+        let mut new = vec![vec![VizState::Uninit; w]; h];
+        for y in 0..h {
+            for x in 0..w {
+                new[y][x] = if path.contains(&(y, x)) {
+                    VizState::Current
+                } else if v[y][x].is_some() {
+                    VizState::Visited
+                } else if q.contains(&(y, x)) {
+                    VizState::Queued
+                } else {
+                    VizState::Unvisited
+                };
+            }
         }
         self.update(new, cost);
         // std::thread::sleep(Duration::from_millis(20));
