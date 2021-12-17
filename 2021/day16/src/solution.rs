@@ -5,7 +5,7 @@ use util::*;
 
 #[derive(Debug)]
 enum PktInner {
-    Lit(Vec<u8>),
+    Lit(usize),
     Op(Vec<Pkt>),
 }
 
@@ -31,7 +31,7 @@ fn vsum(p: &Pkt) -> usize {
 
 fn calc(p: &Pkt) -> usize {
     match &p.inner {
-        PktInner::Lit(v) => bn(v),
+        PktInner::Lit(v) => *v,
         PktInner::Op(v) => match p.ty {
             0 => v.iter().map(|p| calc(p)).sum::<usize>(),
             1 => v.iter().map(|p| calc(p)).product::<usize>(),
@@ -57,14 +57,43 @@ fn calc(p: &Pkt) -> usize {
     }
 }
 
-fn l(b: &mut &[u8]) -> Vec<u8> {
-    let mut s = vec![];
+fn fmt_pkt(p: &Pkt) -> String {
+    match &p.inner {
+        PktInner::Lit(v) => v.to_string(),
+        PktInner::Op(v) => match p.ty {
+            0 => format!("({})", v.iter().map(|p| fmt_pkt(p)).join("+")),
+            1 => format!("({})", v.iter().map(|p| fmt_pkt(p)).join("*")),
+            2 => format!("min({},float('inf'))", v.iter().map(|p| fmt_pkt(p)).join(",")),
+            3 => format!("max({},float('-inf'))", v.iter().map(|p| fmt_pkt(p)).join(",")),
+            5 => {
+                let p1 = fmt_pkt(&v[0]);
+                let p2 = fmt_pkt(&v[1]);
+                format!("int({}>{})", p1, p2)
+            }
+            6 => {
+                let p1 = fmt_pkt(&v[0]);
+                let p2 = fmt_pkt(&v[1]);
+                format!("int({}<{})", p1, p2)
+            }
+            7 => {
+                let p1 = fmt_pkt(&v[0]);
+                let p2 = fmt_pkt(&v[1]);
+                format!("int({}=={})", p1, p2)
+            }
+            _ => unreachable!(),
+        }
+
+    }
+}
+
+fn l(b: &mut &[u8]) -> usize {
+    let mut n = 0;
     loop {
         let x = &b[..5]; *b = &b[5..];
-        s.extend_from_slice(&x[1..]);
+        n = (n<<4) | bn(&x[1..]);
         if x[0] == 0 { break; }
     }
-    s
+    n
 }
 
 fn bn(b: &[u8]) -> usize {
@@ -81,13 +110,9 @@ fn p(b: &mut &[u8]) -> Pkt {
     let ty = bn(&b[..3]) as u8;
     *b = &b[3..];
 
-    if ty == 4 {
+    let inner = if ty == 4 {
         let v = l(b);
-        Pkt {
-            version,
-            ty,
-            inner: PktInner::Lit(v),
-        }
+        PktInner::Lit(v)
     } else {
         let tid = b[0];
         *b = &b[1..];
@@ -100,11 +125,7 @@ fn p(b: &mut &[u8]) -> Pkt {
             while sub.len() > 0 {
                 sp.push(p(&mut sub));
             }
-            Pkt {
-                ty,
-                version,
-                inner: PktInner::Op(sp),
-            }
+            PktInner::Op(sp)
         } else {
             let plen = bn(&b[..11]);
             *b = &b[11..];
@@ -112,13 +133,11 @@ fn p(b: &mut &[u8]) -> Pkt {
             for _ in 0..plen {
                 sp.push(p(b));
             }
-            Pkt {
-                version,
-                ty,
-                inner: PktInner::Op(sp),
-            }
+            PktInner::Op(sp)
         }
-    }
+    };
+
+    Pkt { version, ty, inner }
 }
 
 fn hx(s: &str) -> Vec<u8> {
@@ -150,10 +169,12 @@ fn hx(s: &str) -> Vec<u8> {
 
 pub fn part1(input: &str) -> impl std::fmt::Display {
     let d = hx(input.trim());
-    vsum(&p(&mut &d[..]))
+    let pkt = p(&mut &d[..]);
+    vsum(&pkt)
 }
 
 pub fn part2(input: &str) -> impl std::fmt::Display {
     let d = hx(input.trim());
-    calc(&p(&mut &d[..]))
+    let pkt = p(&mut &d[..]);
+    calc(&pkt)
 }
