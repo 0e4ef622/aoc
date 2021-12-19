@@ -47,11 +47,10 @@ fn rots(a: &[Vec<i64>]) -> Vec<Vec<Vec<i64>>> {
 }
 
 fn merge(a: &[Vec<i64>], b: &[Vec<i64>]) -> Option<(Vec<Vec<i64>>, [i64; 3])> {
-    let aset: BTreeSet<_> = a.iter().cloned().collect();
+    let aset: HashSet<_> = a.iter().cloned().collect();
     for (aa, bb) in iproduct!(&*a, b) {
         let d = [aa[0] - bb[0],aa[1] - bb[1],aa[2] - bb[2]];
-        let bset: BTreeSet<_> = b.iter().map(|c| vec![c[0]+d[0], c[1]+d[1], c[2]+d[2]]).collect();
-        // eprintln!("{:?}", bset);
+        let bset: HashSet<_> = b.iter().map(|c| vec![c[0]+d[0], c[1]+d[1], c[2]+d[2]]).collect();
         if aset.intersection(&bset).count() >= 12 {
             return Some((aset.union(&bset).cloned().collect(), d));
         }
