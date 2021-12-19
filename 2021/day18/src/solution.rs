@@ -6,7 +6,7 @@ use util::*;
 #[derive(Clone, Debug)]
 enum Item {
     V(u8),
-    P(Box<Item>, Box<Item>),
+    P(Box<(Item, Item)>),
 }
 
 fn explode<'a>(i: &'a mut Item, pn: &mut Option<&'a mut u8>, exp: &mut Option<u8>, depth: usize) -> bool {
@@ -15,12 +15,12 @@ fn explode<'a>(i: &'a mut Item, pn: &mut Option<&'a mut u8>, exp: &mut Option<u8
             if let Some(exp) = exp { *v += *exp; return true; }
             else { *pn = Some(v) }
         }
-        Item::P(box Item::V(l), box Item::V(r)) if depth >= 4 && exp.is_none() => {
+        Item::P(box (Item::V(l), Item::V(r))) if depth >= 4 && exp.is_none() => {
             if let Some(pn) = pn { **pn += *l; }
             *exp = Some(*r);
             *i = Item::V(0);
         }
-        Item::P(l, r) => {
+        Item::P(box (l, r)) => {
             if explode(l, pn, exp, depth+1) { return true; }
             if explode(r, pn, exp, depth+1) { return true; }
         }
@@ -31,11 +31,11 @@ fn explode<'a>(i: &'a mut Item, pn: &mut Option<&'a mut u8>, exp: &mut Option<u8
 fn split(i: &mut Item) -> bool {
     match i {
         Item::V(v) if *v >= 10 => {
-            *i = Item::P(Item::V(*v/2).into(), Item::V((*v+1)/2).into());
+            *i = Item::P((Item::V(*v/2), Item::V((*v+1)/2)).into());
             return true;
         }
         Item::V(_) => (),
-        Item::P(l, r) => {
+        Item::P(box (l, r)) => {
             if split(l) { return true; }
             if split(r) { return true; }
         }
@@ -57,7 +57,7 @@ fn fmt(i: &Item, o: &mut String) {
     use std::fmt::Write;
     match i {
         Item::V(v) => write!(o, "{}", v).unwrap(),
-        Item::P(l, r) => {
+        Item::P(box (l, r)) => {
             *o += "[";
             fmt(l, o);
             *o += ",";
@@ -70,7 +70,7 @@ fn fmt(i: &Item, o: &mut String) {
 fn mag(i: &Item) -> usize {
     match i {
         Item::V(v) => *v as usize,
-        Item::P(l, r) => 3*mag(l) + 2*mag(r),
+        Item::P(box (l, r)) => 3*mag(l) + 2*mag(r),
     }
 }
 
@@ -87,7 +87,7 @@ fn parse(s: &mut &str) -> Item {
         *s = &s[1..];
         let r = parse(s);
         *s = &s[1..];
-        Item::P(l.into(), r.into())
+        Item::P((l, r).into())
     } else {
         let v = s.as_bytes()[0] - b'0';
         *s = &s[1..];
@@ -100,7 +100,7 @@ pub fn part1(input: &str) -> impl std::fmt::Display {
     let mut i = parse(&mut lines.next().unwrap());
     for line in lines {
         let j = parse(&mut {line});
-        i = Item::P(i.into(), j.into());
+        i = Item::P((i, j).into());
         reduce(&mut i);
     }
     mag(&i)
@@ -110,7 +110,7 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
     let items = input.lines().map(|mut x| parse(&mut x)).cv();
     let mut mx = 0;
     for (l, r) in iproduct!(&items, &items) {
-        let mut i = Item::P(l.clone().into(), r.clone().into());
+        let mut i = Item::P((l.clone(), r.clone()).into());
         reduce(&mut i);
         mx = mx.max(mag(&i));
     }
