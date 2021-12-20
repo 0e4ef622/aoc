@@ -117,14 +117,8 @@ fn rotmerge(a: &[[i16; 3]], b: &mut [[i16; 3]]) -> Option<Transform> {
     None
 }
 
-fn c3<T>(mut i: impl Iterator<Item = T>) -> [T; 3] {
+fn collect3<T>(mut i: impl Iterator<Item = T>) -> [T; 3] {
     [i.next().unwrap(), i.next().unwrap(), i.next().unwrap()]
-}
-
-fn idx2<T>(s: &mut [T], i: usize, j: usize) -> [&mut T; 2] {
-    debug_assert_ne!(i, j);
-    let ptr = s.as_mut_ptr();
-    unsafe { [&mut *ptr.offset(i as isize), &mut *ptr.offset(j as isize)] }
 }
 
 fn dist(a: [i16; 3], b: [i16; 3]) -> i64 {
@@ -209,10 +203,11 @@ fn dfs(
     graph: &[Vec<(usize, Transform, bool)>],
     current: usize,
     previous: usize,
+    update_beacon_positions: bool,
     t: Transform,
 ) {
     scanner_pos.push(t.trans);
-    if current != previous {
+    if current != previous && update_beacon_positions {
         scanners[current].iter_mut().for_each(|p| *p = t.apply(*p));
     }
     beacons.extend(scanners[current].iter().copied());
@@ -220,7 +215,7 @@ fn dfs(
         if ch == previous {
             continue;
         }
-        dfs(scanners, scanner_pos, beacons, graph, ch, current, tt.then(&t));
+        dfs(scanners, scanner_pos, beacons, graph, ch, current, update_beacon_positions, tt.then(&t));
     }
 }
 
@@ -230,9 +225,8 @@ fn parse_input(input: &str) -> Vec<Vec<[i16; 3]>> {
         .map(|sect| {
             sect.lines()
                 .skip(1)
-                .map(|s| c3(s.split(',').map(|v| v.parse::<i16>().unwrap())))
+                .map(|s| collect3(s.split(',').map(|v| v.parse::<i16>().unwrap())))
                 .cv()
-                .chd(<[_]>::sort_unstable)
         })
         .cv();
     sc
@@ -251,7 +245,6 @@ pub fn part1(input: &str) -> impl std::fmt::Display {
             if let Some([a, mut b]) = maybe_overlap(&scanners[i], &scanners[j]) {
                 if let Some(t) = rotmerge(&a, &mut b) {
                     edges_left -= 1;
-                    // eprintln!("{} remaining", cn);
                     dsu.merge(i, j);
                     graph[i].push((j, t, true));
                     graph[j].push((i, t.inv(), false));
@@ -263,7 +256,7 @@ pub fn part1(input: &str) -> impl std::fmt::Display {
         }
     }
     let mut f = HashSet::default();
-    dfs(&mut scanners, &mut vec![], &mut f, &graph, 0, 0, Transform::new());
+    dfs(&mut scanners, &mut vec![], &mut f, &graph, 0, 0, true, Transform::new());
     f.len()
 }
 
@@ -280,7 +273,6 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
             if let Some([a, mut b]) = maybe_overlap(&scanners[i], &scanners[j]) {
                 if let Some(t) = rotmerge(&a, &mut b) {
                     edges_left -= 1;
-                    // eprintln!("{} remaining", cn);
                     dsu.merge(i, j);
                     graph[i].push((j, t, true));
                     graph[j].push((i, t.inv(), false));
@@ -293,7 +285,7 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
     }
     let mut f = HashSet::default();
     let mut sp = vec![];
-    dfs(&mut scanners, &mut sp, &mut f, &graph, 0, 0, Transform::new());
+    dfs(&mut scanners, &mut sp, &mut f, &graph, 0, 0, false, Transform::new());
     iproduct!(&sp, &sp)
         .map(|(a, b)| (a[0] - b[0]).abs() + (a[1] - b[1]).abs() + (a[2] - b[2]).abs())
         .max()
