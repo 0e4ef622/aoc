@@ -1,6 +1,6 @@
-use std::collections::*;
-use rand::random;
 use itertools::{iproduct, Itertools};
+use rand::random;
+use std::collections::*;
 use util::*;
 
 pub fn part1(input: &str) -> impl std::fmt::Display {
@@ -31,7 +31,7 @@ pub fn part1(input: &str) -> impl std::fmt::Display {
         c += 3;
         if s1 >= 1000 || s2 >= 1000 { break; }
     }
-    s1.min(s2)*c
+    s1.min(s2) * c
 }
 
 pub fn part2(input: &str) -> impl std::fmt::Display {
@@ -43,46 +43,49 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
     let mut c1 = 0;
     let mut c2 = 0;
     let mut turn = true;
+    let mut x = 0;
+    let mut y = 0;
     loop {
         let mut dp2 = [[[[0; 10]; 10]; 31]; 31];
-        for i in 0..21 {
-            for j in 0..21 {
-                for l in 0..10 {
-                    for m in 0..10 {
-                        for (a,b,c) in iproduct!(1..=3, 1..=3, 1..=3) {
-                            if turn {
-                                let p = (l+a+b+c)%10;
-                                dp2[i+p+1][j][p][m] += dp[i][j][l][m];
-                            } else {
-                                let p = (m+a+b+c)%10;
-                                dp2[i][j+p+1][l][p] += dp[i][j][l][m];
-                            }
-                        }
-                    }
-                }
+        for (i, j, l, m, a, b, c) in iproduct!(x..21, y..21, 0..10, 0..10, 1..4, 1..4, 1..4) {
+            if turn {
+                let p = (l + a + b + c) % 10;
+                dp2[i + p + 1][j][p][m] += dp[i][j][l][m];
+            } else {
+                let p = (m + a + b + c) % 10;
+                dp2[i][j + p + 1][l][p] += dp[i][j][l][m];
             }
         }
-        for i in 0..31 {
-            for j in 0..31 {
-                if i >= 21 {
-                    c1 += dp2[i][j].iter().flatten().sum::<u64>();
-                } else if j >= 21 {
-                    c2 += dp2[i][j].iter().flatten().sum::<u64>();
-                }
-            }
+        if turn {
+            c1 += dp2[21..]
+                .iter()
+                .flat_map(|a| &a[y..21])
+                .flatten()
+                .flatten()
+                .sum::<u64>();
+        } else {
+            c2 += dp2[x..21]
+                .iter()
+                .flat_map(|a| &a[21..])
+                .flatten()
+                .flatten()
+                .sum::<u64>();
         }
         let mut z = true;
-        for i in 0..21 {
-            for j in 0..21 {
-                for l in 0..10 {
-                    for m in 0..10 {
-                        if dp2[i][j][l][m] != 0 { z = false; }
-                        dp[i][j][l][m] = dp2[i][j][l][m];
-                    }
-                }
+        for (i, j, l, m) in iproduct!(x..21, y..21, 0..10, 0..10) {
+            if dp2[i][j][l][m] != 0 {
+                z = false;
             }
+            dp[i][j][l][m] = dp2[i][j][l][m];
         }
-        if z { break; }
+        if z {
+            break;
+        }
+        if turn {
+            x += 1;
+        } else {
+            y += 1;
+        }
         turn = !turn;
     }
     c1.max(c2)
