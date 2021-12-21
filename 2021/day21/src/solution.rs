@@ -46,14 +46,14 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
     let mut x = 0;
     let mut y = 0;
     loop {
-        let mut dp2 = [[[[0; 10]; 10]; 31]; 31];
-        for (i, j, l, m, a, b, c) in iproduct!(x..21, y..21, 0..10, 0..10, 1..4, 1..4, 1..4) {
+        let mut dp2 = [[[[0; 10]; 10]; 30]; 30];
+        for (i, j, l, m, (n, c)) in iproduct!(x..21, y..21, 0..10, 0..10, [(3, 1), (4, 3), (5, 6), (6, 7), (7, 6), (8, 3), (9, 1)]) {
             if turn {
-                let p = (l + a + b + c) % 10;
-                dp2[i + p + 1][j][p][m] += dp[i][j][l][m];
+                let p = (l + n) % 10;
+                dp2[i + p + 1][j][p][m] += c*dp[i][j][l][m];
             } else {
-                let p = (m + a + b + c) % 10;
-                dp2[i][j + p + 1][l][p] += dp[i][j][l][m];
+                let p = (m + n) % 10;
+                dp2[i][j + p + 1][l][p] += c*dp[i][j][l][m];
             }
         }
         if turn {
