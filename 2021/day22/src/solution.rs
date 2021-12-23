@@ -31,8 +31,8 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
 
 fn dqx(r: Cube, q: &[(&str, Cube)]) -> i64 {
     let mut q = q.to_vec();
-    dbg!(q.len());
-    eprintln!("{}..{}", r[0], r[3]);
+    // dbg!(q.len());
+    // eprintln!("{}..{}", r[0], r[3]);
     if q.iter().all(|(_,c)| c[0]==r[0]&&c[3]==r[3]) { return dqy(r, &q) }
 
     let mut qq = q.to_vec();
