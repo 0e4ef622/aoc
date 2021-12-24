@@ -3,6 +3,16 @@ use rand::random;
 use itertools::{iproduct, Itertools};
 use util::*;
 
+// The input consists of the same block repeated 14 times, each block has 3 unique constants
+// Each block performs the following, where z is a stack
+//
+//     read w
+//     x = z.top() + c2
+//     if c1 == 26 { z.pop() }
+//     if x != w {
+//         z.push(w + c3)
+//     }
+
 pub fn part1(input: &str) -> impl std::fmt::Display {
     let mut c1 = vec![];
     let mut c2 = vec![];
