@@ -1,4 +1,3 @@
-#![feature(iter_map_while)]
 #![allow(warnings)]
 use std::io::Read;
 mod solution;
