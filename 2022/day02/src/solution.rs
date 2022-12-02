@@ -9,18 +9,8 @@ pub fn part1(input: &str) -> impl std::fmt::Display {
         let mut wh = line.split_whitespace();
         let a = wh.next().unwrap();
         let x = wh.next().unwrap();
-        let a = match a {
-            "A" => 0,
-            "B" => 1,
-            "C" => 2,
-            _ => unreachable!(),
-        };
-        let x = match x {
-            "X" => 0,
-            "Y" => 1,
-            "Z" => 2,
-            _ => unreachable!(),
-        };
+        let a = a.chars().next().unwrap() as i64 - 'A' as i64;
+        let x = x.chars().next().unwrap() as i64 - 'X' as i64;
         sc += x+1;
         if a == x {
             sc += 3;
@@ -37,12 +27,7 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
         let mut wh = line.split_whitespace();
         let a = wh.next().unwrap();
         let x = wh.next().unwrap();
-        let a = match a {
-            "A" => 0,
-            "B" => 1,
-            "C" => 2,
-            _ => unreachable!(),
-        };
+        let a = a.chars().next().unwrap() as i64 - 'A' as i64;
         let x = match x {
             "X" => sc += (a+2)%3+1,
             "Y" => sc += 3 + a%3+1,
