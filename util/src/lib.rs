@@ -1,3 +1,5 @@
+use std::collections::BTreeSet;
+
 pub trait ApplyTo: Sized {
     fn app<F, T>(self, f: F) -> T
     where
@@ -48,7 +50,7 @@ pub trait CollectVec: Iterator + Sized {
     fn cv(self) -> Vec<Self::Item> {
         self.collect()
     }
-    fn cs(self) -> BTreeSet<Self::Item> {
+    fn cs(self) -> BTreeSet<Self::Item> where Self::Item: Ord {
         self.collect()
     }
 }
