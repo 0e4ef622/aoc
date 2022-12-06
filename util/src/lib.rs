@@ -48,6 +48,9 @@ pub trait CollectVec: Iterator + Sized {
     fn cv(self) -> Vec<Self::Item> {
         self.collect()
     }
+    fn cs(self) -> BTreeSet<Self::Item> {
+        self.collect()
+    }
 }
 impl<I: Iterator> CollectVec for I {}
 
