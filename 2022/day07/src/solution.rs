@@ -10,6 +10,17 @@ struct Node {
     parent: usize,
 }
 
+fn dfs(i: usize, g: &mut [Node]) {
+    if g[i].children.is_empty() {
+        return;
+    }
+
+    for ch in g[i].children.values().copied().cv() {
+        dfs(ch, g);
+        g[i].size += g[ch].size;
+    }
+}
+
 pub fn part1(input: &str) -> impl std::fmt::Display {
     let mut tree: Vec<Node> = Default::default();
     tree.insert(0, Default::default());
@@ -40,17 +51,7 @@ pub fn part1(input: &str) -> impl std::fmt::Display {
             }
         }
     }
-    for i in 0..tree.len()+1 {
-        for (k, v) in tree.clone().into_iter().enumerate() {
-            if v.children.len() > 0 {
-                let mut size = 0;
-                for (name, &ch) in &v.children {
-                    size += tree[ch].size;
-                }
-                tree[k].size = size;
-            }
-        }
-    }
+    dfs(0, &mut tree);
 
     let mut ans = 0;
     for (i, v) in tree.iter().enumerate() {
@@ -91,17 +92,7 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
             }
         }
     }
-    for i in 0..tree.len() {
-        for (k, v) in tree.clone().into_iter().enumerate() {
-            if v.children.len() > 0 {
-                let mut size = 0;
-                for (name, &ch) in &v.children {
-                    size += tree[ch].size;
-                }
-                tree[k].size = size;
-            }
-        }
-    }
+    dfs(0, &mut tree);
 
     let mut ans = usize::MAX;
     let mut free = 70000000 - tree[0].size;
