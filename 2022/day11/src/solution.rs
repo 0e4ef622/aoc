@@ -3,25 +3,32 @@ use rand::random;
 use itertools::{iproduct, Itertools};
 use util::*;
 
-struct Monkey<'a> {
+struct Monkey {
     items: Vec<i64>,
-    op: Vec<&'a str>,
+    op: Op,
     tes: i64,
     tru: usize,
     fal: usize,
     inspect: i64,
 }
 
-fn gomonk(i: usize, monkeys: &mut [Monkey<'_>], p2: bool) {
+enum Op {
+    TimesOld,
+    PlusOld,
+    Times(i64),
+    Plus(i64),
+}
+
+fn gomonk(i: usize, monkeys: &mut [Monkey], p2: bool) {
     let mut items = std::mem::take(&mut monkeys[i].items);
     monkeys[i].inspect += items.len() as i64;
 
-    for mut old in items {
-        match monkeys[i].op[..] {
-            ["*", "old"] => old *= old,
-            ["+", "old"] => old += old,
-            ["*", a] => old *= a.parse::<i64>().unwrap(),
-            ["+", a] => old += a.parse::<i64>().unwrap(),
+    for mut old in items.drain(..) {
+        match monkeys[i].op {
+            Op::TimesOld => old *= old,
+            Op::PlusOld => old += old,
+            Op::Times(a) => old *= a,
+            Op::Plus(a) => old += a,
             _ => (),
         }
         if !p2 { old /= 3; }
@@ -33,9 +40,10 @@ fn gomonk(i: usize, monkeys: &mut [Monkey<'_>], p2: bool) {
             monkeys[to].items.push(old);
         }
     }
+    monkeys[i].items = items;
 }
 
-fn round(monkeys: &mut [Monkey<'_>], p2: bool) {
+fn round(monkeys: &mut [Monkey], p2: bool) {
     for i in 0..monkeys.len() {
         gomonk(i, monkeys, p2);
     }
@@ -55,6 +63,13 @@ pub fn part1(input: &str) -> impl std::fmt::Display {
         //     If true: throw to monkey 
         let tru = lines[3][29..].parse().unwrap();
         let fal = lines[4][30..].parse().unwrap();
+        let op = match op[..] {
+            ["*", "old"] => Op::TimesOld,
+            ["+", "old"] => Op::PlusOld,
+            ["*", a] => Op::Times(a.parse().unwrap()),
+            ["+", a] => Op::Plus(a.parse().unwrap()),
+            _ => panic!(),
+        };
 
         monkeys.push(Monkey {
             items, op, tes, tru, fal, inspect: 0
@@ -91,6 +106,14 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
         //     If true: throw to monkey 
         let tru = lines[3][29..].parse().unwrap();
         let fal = lines[4][30..].parse().unwrap();
+
+        let op = match op[..] {
+            ["*", "old"] => Op::TimesOld,
+            ["+", "old"] => Op::PlusOld,
+            ["*", a] => Op::Times(a.parse().unwrap()),
+            ["+", a] => Op::Plus(a.parse().unwrap()),
+            _ => panic!(),
+        };
 
         monkeys.push(Monkey {
             items, op, tes, tru, fal, inspect: 0
