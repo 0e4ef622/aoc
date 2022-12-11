@@ -73,8 +73,6 @@ pub fn part1(input: &str) -> impl std::fmt::Display {
 fn gcd(a: i64, b: i64) -> i64 {
     if a == 0 { return b; }
     if b == 0 { return a; }
-
-    if a < b { return gcd(b, a); }
     gcd(b, a%b)
 }
 
