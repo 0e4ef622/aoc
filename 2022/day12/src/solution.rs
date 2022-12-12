@@ -33,18 +33,14 @@ pub fn part1(input: &str) -> impl std::fmt::Display {
             return d;
         }
 
-        for di in [-1i32, 0, 1] {
-            for dj in [-1i32, 0, 1] {
-                if (di == 0 || dj == 0 && !(di==0 && dj==0)) {
-                    let ii = (i as i32 + di) as usize;
-                    let jj = (j as i32 + dj) as usize;
-                    if ii < 0 || ii >= h || jj < 0 || jj >= w { continue; }
-                    if grid[ii][jj] as i32 - grid[i][j] as i32 <= 1 {
-                        if !visited.contains(&(ii, jj)) {
-                            queue.push_back(((ii, jj), d+1));
-                            visited.insert((ii, jj));
-                        }
-                    }
+        for (di, dj) in [(-1, 0), (1, 0), (0, -1), (0, 1)] {
+            let ii = (i as i32 + di) as usize;
+            let jj = (j as i32 + dj) as usize;
+            if ii < 0 || ii >= h || jj < 0 || jj >= w { continue; }
+            if grid[ii][jj] as i32 - grid[i][j] as i32 <= 1 {
+                if !visited.contains(&(ii, jj)) {
+                    queue.push_back(((ii, jj), d+1));
+                    visited.insert((ii, jj));
                 }
             }
         }
@@ -81,18 +77,14 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
             return d;
         }
 
-        for di in [-1i32, 0, 1] {
-            for dj in [-1i32, 0, 1] {
-                if (di == 0 || dj == 0 && !(di==0 && dj==0)) {
-                    let ii = (i as i32 + di) as usize;
-                    let jj = (j as i32 + dj) as usize;
-                    if ii < 0 || ii >= h || jj < 0 || jj >= w { continue; }
-                    if grid[ii][jj] as i32 - grid[i][j] as i32 <= 1 {
-                        if !visited.contains(&(ii, jj)) {
-                            queue.push_back(((ii, jj), d+1));
-                            visited.insert((ii, jj));
-                        }
-                    }
+        for (di, dj) in [(-1, 0), (1, 0), (0, -1), (0, 1)] {
+            let ii = (i as i32 + di) as usize;
+            let jj = (j as i32 + dj) as usize;
+            if ii < 0 || ii >= h || jj < 0 || jj >= w { continue; }
+            if grid[ii][jj] as i32 - grid[i][j] as i32 <= 1 {
+                if !visited.contains(&(ii, jj)) {
+                    queue.push_back(((ii, jj), d+1));
+                    visited.insert((ii, jj));
                 }
             }
         }
