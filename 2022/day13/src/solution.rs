@@ -1,9 +1,9 @@
-use std::{collections::*, cmp::Ordering};
+use std::{collections::*, cmp::Ordering, fmt::{Display, Debug}};
 use rand::random;
 use itertools::{iproduct, Itertools};
 use util::*;
 
-#[derive(Debug, Eq, PartialEq, Clone)]
+#[derive(Eq, PartialEq, Clone)]
 enum Value {
     Int(i64),
     List(Vec<Value>),
@@ -25,6 +25,15 @@ impl Ord for Value {
 impl PartialOrd for Value {
     fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
         Some(self.cmp(other))
+    }
+}
+
+impl Debug for Value {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            Value::Int(n) => Display::fmt(n, f),
+            Value::List(l) => Debug::fmt(l, f),
+        }
     }
 }
 

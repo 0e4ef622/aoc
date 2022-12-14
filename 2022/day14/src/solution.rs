@@ -3,23 +3,19 @@ use rand::random;
 use itertools::{iproduct, Itertools};
 use util::*;
 
-fn add_sand(cave: &mut HashMap<(i64, i64), char>, floor: i64) -> bool {
-    let (mut x, mut y) = (500, 0);
-    while y < floor {
-        if cave.get(&(x, y+1)) == None {
-            y += 1;
-        } else if cave.get(&(x-1, y+1)) == None {
-            y += 1;
-            x -= 1;
-        } else if cave.get(&(x+1, y+1)) == None {
-            y += 1;
-            x += 1;
-        } else {
-            cave.insert((x, y), 'o');
-            return true;
-        }
+fn sandfs(cave: &mut HashMap<(i64, i64), char>, x: i64, y: i64, floor: i64) -> bool {
+    if cave.get(&(x, y)) != None {
+        return true;
     }
-    false
+    if y == floor {
+        return false;
+    }
+    if sandfs(cave, x, y+1, floor) && sandfs(cave, x-1, y+1, floor) && sandfs(cave, x+1, y+1, floor) {
+        cave.insert((x, y), 'o');
+        return true;
+    } else {
+        return false;
+    }
 }
 
 pub fn part1(input: &str) -> impl std::fmt::Display {
@@ -41,33 +37,30 @@ pub fn part1(input: &str) -> impl std::fmt::Display {
             (x, y) = (dx, dy);
         }
     }
+    sandfs(&mut cave, 500, 0, floor);
+    cave.values().filter(|&&x| x == 'o').count()
+}
+
+fn sandfs2(cave: &mut HashMap<(i64, i64), char>, x: i64, y: i64, floor: i64) -> usize{
     let mut c = 0;
-    while add_sand(&mut cave, floor) {
+    let mut stack = vec![(x, y)];
+    while let Some((x, y)) = stack.pop() {
+        if cave.get(&(x, y)) != None { continue; }
+        if y == floor+1 {
+            cave.insert((x, y), 'o');
+            c += 1;
+            continue;
+        }
+
+        cave.insert((x, y), 'o');
         c += 1;
+        stack.push((x, y+1));
+        stack.push((x-1, y+1));
+        stack.push((x+1, y+1));
     }
     c
 }
 
-fn add_sand2(cave: &mut HashMap<(i64, i64), char>, floor: i64) {
-    let (mut x, mut y) = (500, 0);
-    loop {
-        if y == floor + 1 {
-            cave.insert((x, y), 'o');
-            break;
-        } else if cave.get(&(x, y+1)) == None {
-            y += 1;
-        } else if cave.get(&(x-1, y+1)) == None {
-            y += 1;
-            x -= 1;
-        } else if cave.get(&(x+1, y+1)) == None {
-            y += 1;
-            x += 1;
-        } else {
-            cave.insert((x, y), 'o');
-            break;
-        }
-    }
-}
 pub fn part2(input: &str) -> impl std::fmt::Display {
     let mut cave = HashMap::new();
     let mut floor = 0;
@@ -87,10 +80,5 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
             (x, y) = (dx, dy);
         }
     }
-    let mut c = 0;
-    while cave.get(&(500, 0)) == None {
-        add_sand2(&mut cave, floor);
-        c += 1;
-    }
-    c
+    sandfs2(&mut cave, 500, 0, floor)
 }
