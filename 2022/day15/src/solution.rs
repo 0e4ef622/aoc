@@ -4,6 +4,8 @@ use itertools::{iproduct, Itertools};
 use util::*;
 
 pub fn part1(input: &str) -> impl std::fmt::Display {
+    let yy = 2000000;
+    let mut ybeacons = HashSet::new();
     let mut sensors = Vec::new();
     let mut beacons = HashSet::new();
     for line in input.lines() {
@@ -13,24 +15,33 @@ pub fn part1(input: &str) -> impl std::fmt::Display {
         let bx = wtf[5].parse::<i64>().unwrap();
         let by = wtf[7].parse::<i64>().unwrap();
 
+        if by == yy {
+            ybeacons.insert(bx);
+        }
+
         let r = (sx - bx).abs() + (sy-by).abs();
         sensors.push((sx, sy, r));
         beacons.insert((bx, by));
     }
 
-    let mut set = HashSet::new();
-    // let yy = 10;
-    let yy = 2000000;
+    let mut ans = 0;
+    let mut iv: BTreeMap<i64, i64> = BTreeMap::new();
     for &(x, y, r) in &sensors {
         let d = r - (y-yy).abs();
-        for x in x-d..=x+d {
-            if !beacons.contains(&(x, yy)) {
-                set.insert(x);
-            }
+        if d < 0 { continue; }
+        *iv.entry(x-d).or_default() += 1;
+        *iv.entry(x+d+1).or_default() -= 1;
+    }
+    let mut iv = iv.into_iter().cv();
+    let mut c = iv[0].1;
+    for w in iv.windows(2) {
+        if c > 0 {
+            ans += w[1].0 - w[0].0;
         }
+        c += w[1].1;
     }
 
-    set.len()
+    ans - ybeacons.len() as i64
 }
 
 pub fn part2(input: &str) -> impl std::fmt::Display {
@@ -65,7 +76,6 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
             }
         }
         if lk != *iv.iter().last().unwrap().0 {
-            dbg!(lk, yy);
             return lk*4000000+yy;
         }
     }
