@@ -7,16 +7,11 @@ fn mix(a: &mut [i64]) {
     let mut val = (0..a.len()).cv();
     let mut pos = (0..a.len()).cv();
     for i in 0..a.len() {
-        // eprintln!("a = {:?}", (0..a.len()).map(|i| a[val[i]]).cv());
-        // eprintln!("val = {val:?}");
-        // eprintln!("pos = {pos:?}");
         let x = pos[i] as i64;
         let y = (x + a[i]) % (a.len()-1) as i64;
         let y = (y -1 + a.len() as i64) % (a.len()-1) as i64;
         let x = x as usize;
         let y = y as usize;
-        // dbg!(x,y);
-        // eprintln!();
         if x < y {
             for j in x+1..=y {
                 pos[val[j]] -= 1;
@@ -49,16 +44,11 @@ fn mix2(a: &mut [i64]) {
     let mut pos = (0..a.len()).cv();
     for _ in 0..10 {
         for i in 0..a.len() {
-            // eprintln!("a = {:?}", (0..a.len()).map(|i| a[val[i]]).cv());
-            // eprintln!("val = {val:?}");
-            // eprintln!("pos = {pos:?}");
             let x = pos[i] as i64;
             let y = (x + a[i]) % (a.len()-1) as i64;
             let y = (y -1 + a.len() as i64) % (a.len()-1) as i64;
             let x = x as usize;
             let y = y as usize;
-            // dbg!(x,y);
-            // eprintln!();
             if x < y {
                 for j in x+1..=y {
                     pos[val[j]] -= 1;
