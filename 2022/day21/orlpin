@@ -1,0 +1,9 @@
+aaaa: humn * humn
+bbbb: humn * 38
+cccc: 361
+tmpa: aaaa + bbbb
+tmpb: tmpa + cccc
+zero: 0
+humn: 1337
+38: 38
+root: tmpb + zero
