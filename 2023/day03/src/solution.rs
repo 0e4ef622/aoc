@@ -7,29 +7,11 @@ fn is_symbol(c: u8) -> bool {
     !(b'0'..=b'9').contains(&c) && c != b'.'
 }
 
-fn get_numbers(ro: i64, s: &str) -> Vec<(i64, i64, i64, i64)> {
-    let mut r = vec![];
-    let mut n = 0;
-    let mut l = 0;
-    let mut x = 0;
-    for (i, c) in s.bytes().enumerate() {
-        let i = i as i64;
-        if (b'0'..=b'9').contains(&c) {
-            n = n*10 + (c-b'0') as i64;
-            l += 1;
-        } else {
-            if l != 0 {
-                r.push((ro, x, l, n));
-            }
-            n = 0;
-            x = i+1;
-            l = 0;
-        }
-    }
-    if l != 0 {
-        r.push((ro, x, l, n));
-    }
-    r
+fn get_numbers2(s: &str) -> impl Iterator<Item = (usize, usize, i64)> + '_ {
+    s
+        .split(|c: char| !c.is_digit(10))
+        .filter(|s| !s.is_empty())
+        .map(|n| (n.as_ptr() as usize - s.as_ptr() as usize, n.len(), n.parse::<i64>().unwrap()))
 }
 
 pub fn part1(input: &str) -> impl std::fmt::Display {
@@ -40,7 +22,7 @@ pub fn part1(input: &str) -> impl std::fmt::Display {
         for (j, c) in row.bytes().enumerate() {
             g.insert((i as i64, j as i64), c);
         }
-        numbers.extend(get_numbers(i as i64, row));
+        numbers.extend(get_numbers2(row).map(|(j, c, n)| (i as i64,j as i64,c as i64,n)));
     }
     let mut ans = 0;
     'num: for (i, j, c, n) in numbers {
@@ -65,7 +47,7 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
         for (j, c) in row.bytes().enumerate() {
             g.insert((i as i64, j as i64), c);
         }
-        numbers.extend(get_numbers(i as i64, row));
+        numbers.extend(get_numbers2(row).map(|(j, c, n)| (i as i64,j as i64,c as i64,n)));
     }
     let mut adjcnt = HashMap::new();
     'num: for (i, j, c, n) in numbers {
