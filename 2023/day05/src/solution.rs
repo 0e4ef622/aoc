@@ -7,7 +7,7 @@ pub fn part1(input: &str) -> impl std::fmt::Display {
     let secs = input.split("\n\n").cv();
     let mut seeds = secs[0][7..].split(" ").map(|x| x.parse::<i64>().unwrap()).cv();
     let mut seeds2 = vec![];
-    for sec in secs {
+    for sec in &secs[1..] {
         for line in sec.lines().skip(1) {
             let [ds, ss, l] = line
                 .split(" ")
@@ -40,7 +40,7 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
     let secs = input.split("\n\n").cv();
     let mut seeds = secs[0][7..].split(" ").map(|x| x.parse::<i64>().unwrap()).cv().chunks(2).map(|x| x[0]..x[0]+x[1]).cv();
     let mut seeds2 = vec![];
-    for sec in secs {
+    for sec in &secs[1..] {
         for line in sec.lines().skip(1) {
             let [ds, ss, l] = line
                 .split(" ")
