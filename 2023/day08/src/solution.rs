@@ -52,9 +52,9 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
         let pcnt = cnt;
         period
     }).cv();
-    let mut ans = 1;
+    let mut ans = ins.len() as i64;
     for m in stuff {
-        ans = m*ans;
+        ans = lcm(m as i64, ans as i64);
     }
-    ans*ins.len()
+    ans
 }
