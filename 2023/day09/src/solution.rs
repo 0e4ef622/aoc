@@ -3,35 +3,46 @@ use rand::random;
 use itertools::{iproduct, Itertools};
 use util::*;
 
-fn predict(a: &[i64]) -> i64 {
+fn predict(a: &mut [i32]) -> i32 {
     if a.iter().all_equal() {
         return a[0];
     }
-    let diff = a.windows(2).map(|a| a[1]-a[0]).cv();
-    a.last().unwrap() + predict(&diff)
+    let n = a.len();
+    for i in 0..n-1 {
+        a[i] = a[i+1] - a[i];
+    }
+    a[n-1] + predict(&mut a[..n-1])
 }
 
 pub fn part1(input: &str) -> impl std::fmt::Display {
     let mut ans = 0;
+    let mut nums = vec![];
     for line in input.lines() {
-        let nums = line.split_ascii_whitespace().map(|x| x.parse::<i64>().unwrap()).cv();
-        ans += predict(&nums);
+        nums.extend(line.split_ascii_whitespace().map(|x| x.parse::<i32>().unwrap()));
+        ans += predict(&mut nums);
+        nums.clear();
     }
     ans
 }
 
-fn predict2(a: &[i64]) -> i64 {
+fn predict2(a: &mut [i32]) -> i32 {
     if a.iter().all_equal() {
         return a[0];
     }
-    let diff = a.windows(2).map(|a| a[1]-a[0]).cv();
-    a.first().unwrap() - predict2(&diff)
+    let n = a.len();
+    let first = a[0];
+    for i in 0..n-1 {
+        a[i] = a[i+1] - a[i];
+    }
+    first - predict2(&mut a[..n-1])
 }
 pub fn part2(input: &str) -> impl std::fmt::Display {
     let mut ans = 0;
+    let mut nums = vec![];
     for line in input.lines() {
-        let nums = line.split_ascii_whitespace().map(|x| x.parse::<i64>().unwrap()).cv();
-        ans += predict2(&nums);
+        nums.extend(line.split_ascii_whitespace().map(|x| x.parse::<i32>().unwrap()));
+        ans += predict2(&mut nums);
+        nums.clear();
     }
     ans
 }
