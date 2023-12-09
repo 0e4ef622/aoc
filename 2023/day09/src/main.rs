@@ -7,6 +7,8 @@ fn main() {
     if args.len() <= 1 {
         let p1 = day09::solution::part1(&input);
         println!("part 1: {}", p1);
+        let p1 = day09::solution::part1_funny(&input);
+        println!("part 1 funny: {}", p1);
         let p2 = day09::solution::part2(&input);
         println!("part 2: {}", p2);
     } else if args[1] == "2" {
