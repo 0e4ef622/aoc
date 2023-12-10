@@ -1,5 +1,4 @@
 use std::collections::*;
-use rand::random;
 use itertools::{iproduct, Itertools};
 
 fn predict(a: &mut [i32]) -> i32 {
@@ -48,21 +47,24 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
 
 // funny lookup table
 
-const fn cpredict<const N: usize>(mut a: [i32; N], n: usize) -> i32 {
+const fn cpredict<const N: usize>(mut a: [i32; N], n: usize) -> [i32; 2] {
     if n == 1 {
-        return a[0];
+        return [a[0], a[0]];
     }
+    let first = a[0];
+    let last = a[n-1];
     let mut i = 0;
     while i < n-1 {
         a[i] = a[i+1] - a[i];
         i += 1;
     }
-    a[n-1] + cpredict(a, n-1)
+    let p = cpredict(a, n-1);
+    [first - p[0], last + p[1]]
 }
 
-const LUT: [i32; 21] = {
+const LUT: [[i32; 2]; 21] = {
     let mut arr = [0; 21];
-    let mut out = [0; 21];
+    let mut out = [[0; 2]; 21];
     let mut i = 0;
     while i < 21 {
         arr[i] = 1;
@@ -96,7 +98,19 @@ pub fn part1_funny(input: &str) -> impl std::fmt::Display {
             .split_ascii_whitespace()
             .map(|x| parse(x.as_bytes()))
             .zip(LUT)
-            .map(|(a, b)| a.overflowing_mul(b).0)
+            .map(|(a, b)| a.overflowing_mul(b[1]).0)
+            .fold(0i32, |a, b| a.overflowing_add(b).0);
+    }
+    ans
+}
+pub fn part2_funny(input: &str) -> impl std::fmt::Display {
+    let mut ans = 0;
+    for line in input.lines() {
+        ans += line
+            .split_ascii_whitespace()
+            .map(|x| parse(x.as_bytes()))
+            .zip(LUT)
+            .map(|(a, b)| a.overflowing_mul(b[0]).0)
             .fold(0i32, |a, b| a.overflowing_add(b).0);
     }
     ans
