@@ -5,23 +5,17 @@ use util::*;
 
 pub fn solve(input: &str, expansion: usize) -> i64 {
     let g = input.lines().map(|x| x.as_bytes()).cv();
-    let mut rows = vec![];
-    let mut cols = vec![];
-    for i in 0..g.len() {
-        let mut has_g = false;
-        for j in 0..g[i].len() {
-            if g[i][j] == b'#' {
-                has_g = true;
-                break;
-            }
-        }
+    let mut rows = Vec::with_capacity(g.len());
+    let mut cols = Vec::with_capacity(g[0].len());
+    for (i, l) in g.iter().enumerate() {
+        let mut has_g = l.contains(&b'#');
         if !has_g {
             rows.push(i);
         }
     }
-    for j in 0..g.len() {
+    for j in 0..g[0].len() {
         let mut has_g = false;
-        for i in 0..g[j].len() {
+        for i in 0..g.len() {
             if g[i][j] == b'#' {
                 has_g = true;
                 break;
@@ -31,26 +25,34 @@ pub fn solve(input: &str, expansion: usize) -> i64 {
             cols.push(j);
         }
     }
-    let mut coords = vec![];
+    let mut x = vec![];
+    let mut y = vec![];
     for i in 0..g.len() {
         for j in 0..g[i].len() {
             if g[i][j] == b'#' {
                 let ii = i + expansion*rows.iter().filter(|&&x| x < i).count();
                 let jj = j + expansion*cols.iter().filter(|&&x| x < j).count();
-                coords.push((ii as i64, jj as i64));
+                y.push(ii as i64);
+                x.push(jj as i64);
             }
         }
     }
-    let mut ans = 0;
-    for i in 0..coords.len() {
-        for j in i+1..coords.len() {
-            let c1 = coords[i];
-            let c2 = coords[j];
-            ans += (c1.0 - c2.0).abs() + (c1.1 - c2.1).abs();
-        }
-    }
-    ans
+    x.sort_unstable();
+    sum_diff(&x) + sum_diff(&y)
 }
+
+fn sum_diff(v: &[i64]) -> i64 {
+    let mut sum: i64 = v.iter().sum();
+    let mut cnt = v.len() as i64;
+    let mut total = 0;
+    for &x in v {
+        sum -= x;
+        cnt -= 1;
+        total += sum - cnt*x;
+    }
+    total
+}
+
 pub fn part1(input: &str) -> impl std::fmt::Display {
     solve(input, 1)
 }
