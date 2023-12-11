@@ -1,5 +1,5 @@
-use std::collections::*;
 use itertools::{iproduct, Itertools};
+use std::collections::*;
 use util::*;
 
 pub fn solve(input: &str, expansion: i64) -> i64 {
@@ -26,7 +26,7 @@ fn expand(v: &mut [i64], f: i64) {
     for x in &mut *v {
         c += (*x - p - 1).max(0);
         p = *x;
-        *x += c*f;
+        *x += c * f;
     }
 }
 
@@ -37,7 +37,7 @@ fn sum_diff(v: &[i64]) -> i64 {
     for &x in v {
         sum -= x;
         cnt -= 1;
-        total += sum - cnt*x;
+        total += sum - cnt * x;
     }
     total
 }
