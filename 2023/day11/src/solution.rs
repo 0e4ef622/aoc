@@ -23,7 +23,7 @@ pub fn solve(input: &str, expansion: i64) -> i64 {
 fn expand(v: &mut [i64], f: i64) {
     let mut p = 0;
     let mut c = 0;
-    for x in &mut *v {
+    for x in v {
         c += (*x - p - 1).max(0);
         p = *x;
         *x += c * f;
