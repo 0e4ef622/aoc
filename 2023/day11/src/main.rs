@@ -9,6 +9,11 @@ fn main() {
         println!("part 1: {}", p1);
         let p2 = day11::solution::part2(&input);
         println!("part 2: {}", p2);
+
+        let p1 = day11::unsafe_solution::part1(&input);
+        println!("part 1 unsafe: {}", p1);
+        let p2 = day11::unsafe_solution::part2(&input);
+        println!("part 2 unsafe: {}", p2);
     } else if args[1] == "2" {
         let p2 = day11::solution::part2(&input);
         println!("{}", p2);

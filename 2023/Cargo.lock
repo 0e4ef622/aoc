@@ -189,7 +189,7 @@ name = "day02"
 version = "0.1.0"
 dependencies = [
  "criterion",
- "itertools 0.10.5",
+ "itertools 0.12.0",
  "rand",
  "util",
 ]
@@ -199,7 +199,7 @@ name = "day03"
 version = "0.1.0"
 dependencies = [
  "criterion",
- "itertools 0.10.5",
+ "itertools 0.12.0",
  "rand",
  "util",
 ]
@@ -209,7 +209,7 @@ name = "day04"
 version = "0.1.0"
 dependencies = [
  "criterion",
- "itertools 0.10.5",
+ "itertools 0.12.0",
  "rand",
  "util",
 ]
@@ -219,7 +219,7 @@ name = "day05"
 version = "0.1.0"
 dependencies = [
  "criterion",
- "itertools 0.10.5",
+ "itertools 0.12.0",
  "rand",
  "util",
 ]
@@ -229,7 +229,7 @@ name = "day06"
 version = "0.1.0"
 dependencies = [
  "criterion",
- "itertools 0.10.5",
+ "itertools 0.12.0",
  "rand",
  "util",
 ]
@@ -239,7 +239,7 @@ name = "day07"
 version = "0.1.0"
 dependencies = [
  "criterion",
- "itertools 0.10.5",
+ "itertools 0.12.0",
  "rand",
  "util",
 ]
@@ -249,7 +249,7 @@ name = "day08"
 version = "0.1.0"
 dependencies = [
  "criterion",
- "itertools 0.10.5",
+ "itertools 0.12.0",
  "rand",
  "util",
 ]
@@ -259,7 +259,7 @@ name = "day09"
 version = "0.1.0"
 dependencies = [
  "criterion",
- "itertools 0.10.5",
+ "itertools 0.12.0",
  "rand",
  "util",
 ]
@@ -269,7 +269,7 @@ name = "day10"
 version = "0.1.0"
 dependencies = [
  "criterion",
- "itertools 0.10.5",
+ "itertools 0.12.0",
  "rand",
  "util",
 ]
@@ -279,7 +279,8 @@ name = "day11"
 version = "0.1.0"
 dependencies = [
  "criterion",
- "itertools 0.10.5",
+ "itertools 0.12.0",
+ "radsort",
  "rand",
  "util",
 ]
@@ -472,6 +473,12 @@ checksum = "5267fca4496028628a95160fc423a33e8b2e6af8a5302579e322e4b520293cae"
 dependencies = [
  "proc-macro2",
 ]
+
+[[package]]
+name = "radsort"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "17fd96390ed3feda12e1dfe2645ed587e0bea749e319333f104a33ff62f77a0b"
 
 [[package]]
 name = "rand"
