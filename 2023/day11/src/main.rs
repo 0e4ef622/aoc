@@ -1,5 +1,5 @@
 #![allow(warnings)]
-use std::io::Read;
+use std::{io::Read, hint::black_box};
 fn main() {
     let args: Vec<String> = std::env::args().collect();
     let mut input = String::new();
@@ -15,8 +15,11 @@ fn main() {
         let p2 = day11::unsafe_solution::part2(&input);
         println!("part 2 unsafe: {}", p2);
     } else if args[1] == "2" {
-        let p2 = day11::solution::part2(&input);
-        println!("{}", p2);
+        for i in 0..100000 {
+            let p2 = day11::unsafe_solution::part2(&input);
+            black_box(p2);
+            // println!("{}", p2);
+        }
     } else {
         let p1 = day11::solution::part1(&input);
         println!("{}", p1);
