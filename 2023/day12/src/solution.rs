@@ -7,22 +7,24 @@ fn re(s: &str, v: &[usize], memo: &mut HashMap<(usize, usize), usize>) -> usize 
     if v.len() == 0 { return (!s.contains('#')) as usize; }
     if s.len() < v[0] { return 0; }
     let key = (s.as_ptr() as usize, v.as_ptr() as usize);
-    {
-        if memo.contains_key(&key) {
-            return memo[&key];
-        }
-    }
+    if memo.contains_key(&key) { return memo[&key]; }
+
+    let (head, tail) = s.split_at(v[0]);
     let mut ans = 0;
-    if s[..v[0]].chars().all(|x| ['?','#'].contains(&x)) && (s.len() == v[0] || s.as_bytes()[v[0]] != b'#') {
-        if s.len() == v[0] {
-            if v.len() == 1 {
-                ans += 1;
-            }
+    let chunk_has_dot = head.contains('.');
+    let hash_after_chunk = tail.starts_with('#');
+    let can_place_chunk = !chunk_has_dot && !hash_after_chunk;
+    if can_place_chunk {
+        if tail.is_empty() {
+            ans += (v.len() == 1) as usize;
         } else {
-            ans += re(&s[v[0]+1..], &v[1..], memo);
+            // match the first chunk to the head of the string
+            // skip the first char of tail because it must be '.' to separate chunks
+            ans += re(&tail[1..], &v[1..], memo);
         }
     }
-    if s.as_bytes()[0] != b'#' {
+    if &s[..1] != "#" {
+        // don't match the first character to anything
         ans += re(&s[1..], v, memo);
     }
     memo.insert(key, ans);
