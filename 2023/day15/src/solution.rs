@@ -11,11 +11,16 @@ fn hash(s: &str) -> i64 {
     }
     v
 }
-
 pub fn part1(input: &str) -> impl std::fmt::Display {
     let mut r = 0;
-    for x in input.trim().split(',') {
-        r += hash(x);
+    let mut v = 0;
+    for x in input.as_bytes() {
+        if *x <= b',' {
+            r += v;
+            v = 0;
+        } else {
+            v = (v + *x as i64)*17 % 256;
+        }
     }
     r
 }
