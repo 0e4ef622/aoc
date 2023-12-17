@@ -95,13 +95,22 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
     let h = g.len() as i32;
 
     let mut ans = 0;
+    let mut argmax = (0,0,D);
+    let mut ckmax = |x,y,d| {
+        let r = sim(input, x, y, d, false);
+        if r > ans {
+            ans = r;
+            argmax  = (x, y, d);
+        }
+    };
     for i in 0..w {
-        ans = ans.max(sim(input, i, 0, D, false));
-        ans = ans.max(sim(input, i, h-1, U, false));
+        ckmax(i, 0, D);
+        ckmax(i, h-1, U);
     }
     for i in 0..h {
-        ans = ans.max(sim(input, 0, i, R, false));
-        ans = ans.max(sim(input, w-1, i, L, false));
+        ckmax(0, i, R);
+        ckmax(w-1, i, L);
     }
+    // sim(input, argmax.0, argmax.1, argmax.2, true);
     ans
 }
