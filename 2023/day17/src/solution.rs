@@ -73,6 +73,7 @@ pub fn solve<const TURN_MIN: i32, const STRAIGHT_MAX: i32>(input: &str) -> i32 {
     let h = g.len() as i32;
     let mut q = CustomHeap::new(2048);
     q.push(0, (0i32, (0i32, 0i32), 0, R));
+    q.push(0, (0i32, (0i32, 0i32), 0, D));
     let mut v = vec![false; (w*h*4*(STRAIGHT_MAX+1)) as usize];
     let bck = |(x,y)| x>=0 && x<w && y>=0 && y<h;
     let mut ans = i32::MAX;
