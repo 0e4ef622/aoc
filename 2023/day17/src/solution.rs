@@ -1,7 +1,4 @@
 use std::collections::*;
-use rand::random;
-use itertools::{iproduct, Itertools};
-use util::*;
 
 #[derive(PartialEq, Eq, Hash, Clone, Copy, Debug, PartialOrd, Ord)]
 enum Dir {
@@ -68,7 +65,7 @@ impl<T> CustomHeap<T> {
 }
 
 pub fn solve<const TURN_MIN: i32, const STRAIGHT_MAX: i32>(input: &str) -> i32 {
-    let g = input.lines().map(str::as_bytes).cv();
+    let g = input.lines().map(str::as_bytes).collect::<Vec<_>>();
     let w = g[0].len() as i32;
     let h = g.len() as i32;
     let mut q = CustomHeap::new(2048);
@@ -102,4 +99,7 @@ pub fn part1(input: &str) -> impl std::fmt::Display {
 
 pub fn part2(input: &str) -> impl std::fmt::Display {
     solve::<4, 10>(input)
+}
+pub fn run(input: &str) -> impl std::fmt::Display {
+    part2(input)
 }

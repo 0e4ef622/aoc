@@ -3,41 +3,7 @@ use rand::random;
 use itertools::{iproduct, Itertools};
 use util::*;
 
-#[derive(PartialEq, Eq, Hash, Clone, Copy, Debug, PartialOrd, Ord)]
-enum Dir {
-    U,D,L,R
-}
-fn mv(x: i32, y: i32, d: Dir) -> (i32, i32) {
-    match d {
-        Dir::U => (x, y-1),
-        Dir::D => (x, y+1),
-        Dir::L => (x-1, y),
-        Dir::R => (x+1, y),
-    }
-}
-
-fn mv2(x: i64, y: i64, n: i64, d: Dir) -> (i64, i64) {
-    match d {
-        Dir::U => (x, y-n),
-        Dir::D => (x, y+n),
-        Dir::L => (x-n, y),
-        Dir::R => (x+n, y),
-    }
-}
-
 use Dir::*;
-
-impl Dir {
-    fn from_str(s: &str) -> Self {
-        match s {
-            "U" => U,
-            "D" => D,
-            "L" => L,
-            "R" => R,
-            _ => unreachable!(),
-        }
-    }
-}
 
 fn fill(g: &mut [[i64; 1000]; 1000], x: usize, y: usize) {
     g[y][x] = 1;
@@ -57,7 +23,7 @@ pub fn part1(input: &str) -> impl std::fmt::Display {
         let dir = Dir::from_str(w[0]);
         let c = w[1].parse::<i64>().unwrap();
         for i in 0..c {
-            (x, y) = mv(x, y, dir);
+            P(x, y) = P(x, y) + dir.p();
             g[y as usize][x as usize] = 1;
         }
     }
@@ -76,7 +42,7 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
         let dir = [R,D,L,U][usize::from_str_radix(&w[2][7..8], 16).unwrap()];
         let c = i64::from_str_radix(&w[2][2..][..5], 16).unwrap();
         e += c;
-        let (x2, y2) = mv2(x, y, c, dir);
+        let P(x2, y2) = P(x, y) + c * dir.p();
         area += x*y2 - x2*y;
         (x, y) = (x2, y2)
     }

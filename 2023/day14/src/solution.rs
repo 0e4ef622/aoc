@@ -1,7 +1,7 @@
 use std::{collections::*, ops::{Index, IndexMut}};
 use itertools::{iproduct, Itertools};
 use rustc_hash::FxHashMap;
-use utils::*;
+use util::CollectVec;
 
 struct Grid<T> {
     array: Vec<T>,

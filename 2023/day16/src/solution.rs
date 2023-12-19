@@ -1,7 +1,7 @@
 use std::collections::*;
 use rand::random;
 use itertools::{iproduct, Itertools};
-use util::*;
+use util::CollectVec;
 
 #[derive(PartialEq, Eq, Hash, Clone, Copy, Debug)]
 enum Dir {
