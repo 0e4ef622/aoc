@@ -310,6 +310,7 @@ impl Dir {
     }
 }
 
+#[derive(Clone)]
 pub struct Grid<T> {
     pub array: Vec<T>,
     pub width: usize,
