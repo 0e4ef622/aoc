@@ -42,7 +42,59 @@ pub fn part1(input: &str) -> impl std::fmt::Display {
     dfs(P(1, 0), P(1, 0), &mut g, false)
 }
 
+fn reduce(p: P<i64>, mut i: i32, mut w: i32, g: &mut Grid<u8>, gr: &mut Vec<Vec<(i32, i32)>>) {
+    if g[p] > b'.' {
+        let j = (g[p] - b'/') as i32;
+        gr[i as usize].push((j, w));
+        gr[j as usize].push((i, w));
+        return;
+    }
+    let adjc = Dir::iter().filter(|&d| !matches!(g.get(p+d), Some(b'#'))).count();
+    if adjc > 2 {
+        let oi = i;
+        let ow = w;
+        i = gr.len() as i32;
+        w = 0;
+        g[p] = b'/' + i as u8;
+        gr.push(vec![]);
+        reduce(p, oi, ow, g, gr);
+    } else {
+        g[p] = b'%';
+    }
+    for d in Dir::iter() {
+        let Some(c) = g.get(p+d) else { continue };
+        if !b"#%".contains(&g[p+d]) && g[p+d] != b'/'+i as u8 {
+            reduce(p+d, i, w+1, g, gr);
+        }
+    }
+}
+
+fn dfs2(i: usize, v: &mut [bool], g: &mut Vec<Vec<(i32, i32)>>) -> i64 {
+    if i == 1 {
+        return 0;
+    }
+    v[i] = true;
+    let mut r = i64::MIN;
+    for j in 0..g[i].len() {
+        let (c, w) = g[i][j];
+        if !v[c as usize] {
+            r = r.max(w as i64 + dfs2(c as _, v, g));
+        }
+    }
+    v[i] = false;
+    r
+}
+
 pub fn part2(input: &str) -> impl std::fmt::Display {
     let mut g = Grid::from_ascii(input);
-    dfs(P(1, 0), P(1, 0), &mut g, true)
+    for c in b"<>v^" {
+        g.replace(c, b'.');
+    }
+    let w = g.width;
+    let h = g.height;
+    let mut gr = vec![vec![]; 2];
+    g[0][1] = b'/' + 0;
+    g[h-1][w-2] = b'/' + 1;
+    reduce(P(1, 1), 0, 1, &mut g, &mut gr);
+    dfs2(0, &mut vec![false; gr.len()], &mut gr)
 }
