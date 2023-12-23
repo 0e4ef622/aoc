@@ -3,7 +3,7 @@ use rand::random;
 use itertools::{iproduct, Itertools};
 use util::*;
 
-fn fall(bricks: &mut Vec<(Vec<i64>, Vec<i64>)>) -> usize {
+fn fall(bricks: &mut Vec<([i64; 3], [i64; 3])>) -> usize {
     let mut height_map = [[0i64; 10]; 10];
     let mut changed = 0;
     for b in bricks {
@@ -24,9 +24,8 @@ fn fall(bricks: &mut Vec<(Vec<i64>, Vec<i64>)>) -> usize {
 pub fn part1(input: &str) -> impl std::fmt::Display {
     let mut bricks = input.lines().map(|l| {
         let ends = l.split('~').cv();
-        let a = ends[0].split(',').map(|x| x.parse::<i64>().unwrap()).cv();
-        let b = ends[1].split(',').map(|x| x.parse::<i64>().unwrap()).cv();
-        assert!(a <= b);
+        let a: [i64; 3] = ends[0].split(',').map(|x| x.parse::<i64>().unwrap()).cv().try_into().unwrap();
+        let b: [i64; 3] = ends[1].split(',').map(|x| x.parse::<i64>().unwrap()).cv().try_into().unwrap();
         (a, b)
     }).cv();
     bricks.sort_unstable_by_key(|x| x.0[2]);
@@ -44,9 +43,8 @@ pub fn part1(input: &str) -> impl std::fmt::Display {
 pub fn part2(input: &str) -> impl std::fmt::Display {
     let mut bricks = input.lines().map(|l| {
         let ends = l.split('~').cv();
-        let a = ends[0].split(',').map(|x| x.parse::<i64>().unwrap()).cv();
-        let b = ends[1].split(',').map(|x| x.parse::<i64>().unwrap()).cv();
-        assert!(a <= b);
+        let a: [i64; 3] = ends[0].split(',').map(|x| x.parse::<i64>().unwrap()).cv().try_into().unwrap();
+        let b: [i64; 3] = ends[1].split(',').map(|x| x.parse::<i64>().unwrap()).cv().try_into().unwrap();
         (a, b)
     }).cv();
     bricks.sort_unstable_by_key(|x| x.0[2]);
