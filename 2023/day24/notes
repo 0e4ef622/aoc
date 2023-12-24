@@ -1,0 +1,77 @@
+p1 = x1 + t1*v1
+p2 = x2 + t2*v2
+p3 = x3 + t3*v3
+
+(p2-p1)/(t2-t1) = (p3-p2)/(t3-t2)
+
+-t1*t2 + 2*t1 + t2*t3 - t2 - t3
+2*t1*t2 - 3*t1*t3 + 6*t1 + t2*t3 - 12*t2 + 6*t3
+-2*t1*t3 + 12*t1 + 2*t2*t3 - 4*t2 - 8*t3
+
+
+t1*t2  t1*t3  t2*t3  t1  t2  t3
+ -1      0      1     2  -1  -1
+  2     -3      1     6 -12   6
+  0     -2      2    12  -4  -8
+
+
+assume t1 constant
+
+t2*t3        t2         t3        |
+  1       -1 - t1       -1        |  -2*t1
+  1      -12 + 2*t1   6 - 3*t1    |  -6*t1
+  2          -4      -8 - 2*t1    | -12*t1
+---------------------------------------
+  t1*t1      t1         t1
+
+D:
+
+det(...) = 0
+t1 = 5
+
+
+{{1,-1-t_1,-1},{1,-12+2*t_1,6-3*t_1},{2,-4,-8-2*t_1}}
+
+
+
+
+
+
+
+-5*t2 + 10 + t2*t3 - t2 - t3 = 0
+10*t2 - 3*5*t3 + 6*5 + t2*t3 - 12*t2 + 6*t3
+
+
+t1*t2*vx1 - t1*t2*vx2 - t1*t3*vx1 + t1*t3*vx3 - t1*x2 + t1*x3 + t2*t3*vx2 - t2*t3*vx3 + t2*x1 - t2*x3 - t3*x1 + t3*x2
+t1*t2*vy1 - t1*t2*vy2 - t1*t3*vy1 + t1*t3*vy3 - t1*y2 + t1*y3 + t2*t3*vy2 - t2*t3*vy3 + t2*y1 - t2*y3 - t3*y1 + t3*y2
+t1*t2*vz1 - t1*t2*vz2 - t1*t3*vz1 + t1*t3*vz3 - t1*z2 + t1*z3 + t2*t3*vz2 - t2*t3*vz3 + t2*z1 - t2*z3 - t3*z1 + t3*z2
+
+ t1*t2    t1*t3    t2*t3     t1     t2     t3   |
+vx1-vx2  vx3-vx1  vx2-vx3  x3-x2  x1-x3  x2-x1  | 0
+vy1-vy2  vy3-vy1  vy2-vy3  y3-y2  y1-y3  y2-y1  | 0
+vz1-vz2  vz3-vz1  vz2-vz3  z3-z2  z1-z3  z2-z1  | 0
+
+
+assume t1 constant
+
+ t2*t3        t2                    t3           |
+vx2-vx3  x1-x3+t1*(vx1-vx2)  x2-x1+t1*(vx3-vx1)  |  t1*(x3-x2)
+vy2-vy3  y1-y3+t1*(vy1-vy2)  y2-y1+t1*(vy3-vy1)  |  t1*(y3-y2)
+vz2-vz3  z1-z3+t1*(vz1-vz2)  z2-z1+t1*(vz3-vz1)  |  t1*(z3-z2)
+
+|vx2-vx3  x1-x3+t1*(vx1-vx2)  x2-x1+t1*(vx3-vx1)|
+|vy2-vy3  y1-y3+t1*(vy1-vy2)  y2-y1+t1*(vy3-vy1)| = 0
+|vz2-vz3  z1-z3+t1*(vz1-vz2)  z2-z1+t1*(vz3-vz1)|
+
+(vx2*y1*z2 - vx2*y1*z3 - vx2*y2*z1 + vx2*y2*z3 + vx2*y3*z1 - vx2*y3*z2 - vx3*y1*z2 + vx3*y1*z3 + vx3*y2*z1 - vx3*y2*z3 - vx3*y3*z1 + vx3*y3*z2 - vy2*x1*z2 + vy2*x1*z3 + vy2*x2*z1 - vy2*x2*z3 - vy2*x3*z1 + vy2*x3*z2 + vy3*x1*z2 - vy3*x1*z3 - vy3*x2*z1 + vy3*x2*z3 + vy3*x3*z1 - vy3*x3*z2 + vz2*x1*y2 - vz2*x1*y3 - vz2*x2*y1 + vz2*x2*y3 + vz2*x3*y1 - vz2*x3*y2 - vz3*x1*y2 + vz3*x1*y3 + vz3*x2*y1 - vz3*x2*y3 - vz3*x3*y1 + vz3*x3*y2)/(vx1*vy2*z2 - vx1*vy2*z3 - vx1*vy3*z2 + vx1*vy3*z3 - vx1*vz2*y2 + vx1*vz2*y3 + vx1*vz3*y2 - vx1*vz3*y3 - vx2*vy1*z2 + vx2*vy1*z3 + vx2*vy3*z2 - vx2*vy3*z3 + vx2*vz1*y2 - vx2*vz1*y3 - vx2*vz3*y2 + vx2*vz3*y3 + vx3*vy1*z2 - vx3*vy1*z3 - vx3*vy2*z2 + vx3*vy2*z3 - vx3*vz1*y2 + vx3*vz1*y3 + vx3*vz2*y2 - vx3*vz2*y3 + vy1*vz2*x2 - vy1*vz2*x3 - vy1*vz3*x2 + vy1*vz3*x3 - vy2*vz1*x2 + vy2*vz1*x3 + vy2*vz3*x2 - vy2*vz3*x3 + vy3*vz1*x2 - vy3*vz1*x3 - vy3*vz2*x2 + vy3*vz2*x3)
+
+(vx2*(y1*(z2 - z3) + y2*(-z1 + z3) + y3*(z1 - z2)) + vx3*(y1*(-z2 + z3) + y2*(z1 - z3) + y3*(-z1 + z2)) + vy2*(x1*(-z2 + z3) + x2*(z1 - z3) + x3*(-z1 + z2)) + vy3*(x1*(z2 - z3) + x2*(-z1 + z3) + x3*(z1 - z2)) + vz2*(x1*(y2 - y3) + x2*(-y1 + y3) + x3*(y1 - y2)) + vz3*(x1*(-y2 + y3) + x2*(y1 - y3) + x3*(-y1 + y2))) / (vx1*(vy2*(z2 - z3) + vy3*(-z2 + z3) + vz2*(-y2 + y3) + vz3*(y2 - y3)) + vx2*(vy1*(-z2 + z3) + vy3*(z2 - z3) + vz1*(y2 - y3) + vz3*(-y2 + y3)) + vx3*(vy1*(z2 - z3) + vy2*(-z2 + z3) + vz1*(-y2 + y3) + vz2*(y2 - y3)) + vy1*(vz2*(x2 - x3) + vz3*(-x2 + x3)) + vy2*(vz1*(-x2 + x3) + vz3*(x2 - x3)) + vy3*(vz1*(x2 - x3) + vz2*(-x2 + x3)))
+
+
+yz = (y1*(z2 - z3) + y2*(-z1 + z3) + y3*(z1 - z2))
+xz = (x1*(-z2 + z3) + x2*(z1 - z3) + x3*(-z1 + z2))
+xy = (x1*(y2 - y3) + x2*(-y1 + y3) + x3*(y1 - y2))
+vxvy = (vx1*(vy2 - vy3) + vx2*(-vy1 + vy3) + vx3*(vy1 - vy2))
+vxvz = (vx1*(-vz2 + vz3) + vx2*(vz1 - vz3) + vx3*(-vz1 + vz2))
+vyvz = (vy1*(vz2 - vz3) + vy2*(-vz1 + vz3) + vy3*(vz1 - vz2))
+((vx2 - vx3)*yz + (vy2 - vy3)*xz + (vz2 - vz3)*xy) / ((z2 - z3)*vxvy + (y2 - y3)*vxvz + (x2 - x3)*vyvz)
