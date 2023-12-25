@@ -108,11 +108,11 @@ impl Dsu {
         return self.p[i];
     }
 
-    pub fn merge(&mut self, i: usize, j: usize) {
+    pub fn merge(&mut self, i: usize, j: usize) -> bool {
         let i = self.find(i);
         let j = self.find(j);
         if i == j {
-            return;
+            return false;
         }
         if self.s[j] > self.s[i] {
             self.p[i] = j;
@@ -121,6 +121,7 @@ impl Dsu {
             self.p[j] = i;
             self.s[i] += self.s[j];
         }
+        true
     }
 }
 
