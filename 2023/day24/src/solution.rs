@@ -63,10 +63,47 @@ fn solve_t1(rocks: [[[f64; 3]; 2]; 3]) -> f64 {
     n / d
 }
 
+fn parse_nums<const N: usize>(mut s: &[u8]) -> [f64; N] {
+    let mut r = [0.; N];
+    let mut cnt = 0;
+    let mut reading = false;
+    let mut neg = false;
+    while cnt < N {
+        match unsafe { *s.get_unchecked(0) } {
+            b'-' => neg = true,
+            b' ' | b'\n' | b',' | b'#' | b'@' => if reading {
+                if neg {
+                    r[cnt] = -r[cnt];
+                }
+                cnt += 1;
+                reading = false;
+                neg = false;
+            }
+            b => {
+                reading = true;
+                r[cnt] = r[cnt]*10. + (b - b'0') as f64;
+            }
+        }
+        s = unsafe { s.get_unchecked(1..) };
+    }
+    r
+}
+
 pub fn part2(input: &str) -> impl std::fmt::Display {
-    let hs = input.lines().map(|l|
-        l.split(" @ ").map(|s| s.split(", ").map(|x| x.trim().parse::<f64>().unwrap()).cv().try_into().unwrap()).cv().try_into().unwrap()
-    ).take(3).cv().try_into().unwrap();
+    // let mut hs = input.lines().map(|l| {
+    //     let mut it = l.split(" @ ").flat_map(|s| s.split(", "));
+    //     [[
+    //         it.next().unwrap().parse::<i64>().unwrap() as f64,
+    //         it.next().unwrap().parse::<i64>().unwrap() as f64,
+    //         it.next().unwrap().parse::<i64>().unwrap() as f64,
+    //     ], [
+    //         it.next().unwrap().parse::<i64>().unwrap() as f64,
+    //         it.next().unwrap().parse::<i64>().unwrap() as f64,
+    //         it.next().unwrap().parse::<i64>().unwrap() as f64,
+    //     ]]
+    // });
+    // let hs = [hs.next().unwrap(), hs.next().unwrap(), hs.next().unwrap()];
+    let hs = unsafe { std::mem::transmute(parse_nums::<18>(input.as_bytes())) };
     let t1 = solve_t1(hs);
     let t2 = solve_t1([hs[1], hs[0], hs[2]]);
 
@@ -92,5 +129,5 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
         y1 + vy1*t1 - vy*t1,
         z1 + vz1*t1 - vz*t1,
     ];
-    x + y + z
+    (x + y + z).round()
 }
