@@ -249,6 +249,7 @@ impl_p!(f64);
 impl_p!(usize);
 
 #[derive(PartialEq, Eq, Hash, Clone, Copy, Debug, PartialOrd, Ord)]
+#[repr(u8)]
 pub enum Dir {
     U,
     D,
