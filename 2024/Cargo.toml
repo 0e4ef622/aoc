@@ -11,4 +11,5 @@ exclude = [
     "day03",
     "day04",
     "day06",
+    "day08",
 ]
