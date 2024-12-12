@@ -85,6 +85,7 @@ impl<T: Clone> Transpose for Vec<Vec<T>> {
     }
 }
 
+#[derive(Debug)]
 pub struct Dsu {
     pub p: Vec<usize>,
     pub s: Vec<usize>,
@@ -392,6 +393,14 @@ impl Grid<u8> {
         for y in 0..self.height {
             for x in 0..self.width {
                 eprint!("{}", self[y][x] as char);
+            }
+            eprintln!();
+        }
+    }
+    pub fn print_ints(&self) {
+        for y in 0..self.height {
+            for x in 0..self.width {
+                eprint!("{:4}", self[y][x]);
             }
             eprintln!();
         }
