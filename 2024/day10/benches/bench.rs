@@ -7,6 +7,7 @@ use std::hint::black_box;
 fn criterion_benchmark(c: &mut Criterion) {
     c.bench_function("day10_p1_me", |b| b.iter(|| black_box(part1(black_box(INPUT)))));
     c.bench_function("day10_p2_me", |b| b.iter(|| black_box(part2(black_box(INPUT)))));
+    c.bench_function("day10_p2_me_elf", |b| b.iter(|| black_box(day10::elf2::run(black_box(INPUT)))));
 }
 
 criterion_group!(
