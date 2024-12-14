@@ -38,21 +38,43 @@ pub fn part1(input: &str) -> impl std::fmt::Display {
     ans
 }
 
-pub fn print(bots: &[(P<i64>, P<i64>)], t: i64) {
+fn longest_run(g: &[[bool; W as usize]; H as usize]) -> usize {
+    let mut re = 0;
+    for r in g {
+        let mut cr = 0;
+        for &c in r {
+            if c {
+                cr += 1;
+            } else {
+                re = re.max(cr);
+                cr = 0;
+            }
+        }
+        re = re.max(cr);
+    }
+    re
+}
+
+pub fn print(bots: &[(P<i64>, P<i64>)], t: i64) -> bool {
     let mut g = [[false; W as usize]; H as usize];
     for b in bots {
         let p = b.0 + (t % (W*H))*b.1;
         g[p.1.rem_euclid(H) as usize][p.0.rem_euclid(W) as usize] = true;
     }
-    for r in g {
-        for c in r {
-            if c {
-                print!("#");
-            } else {
-                print!(".");
+    if longest_run(&g) >= 10 {
+        for r in g {
+            for c in r {
+                if c {
+                    print!("#");
+                } else {
+                    print!(".");
+                }
             }
+            println!();
         }
-        println!();
+        true
+    } else {
+        false
     }
 }
 
@@ -63,10 +85,12 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
     }).cv();
 
     for i in 0..W*H {
-        println!("{i}");
-        print(&bots, i);
-        println!();
-        std::thread::sleep_ms(50);
+        // println!("{i}");
+        if print(&bots, i) {
+            return i;
+        }
+        // println!();
+        // std::thread::sleep_ms(50);
     }
     0
 }
