@@ -1,9 +1,8 @@
 use std::{
-    collections::BTreeSet,
-    ops::{
+    collections::BTreeSet, num::TryFromIntError, ops::{
         Add, AddAssign, Div, DivAssign, Index, IndexMut, Mul, MulAssign, Rem, RemAssign, Sub,
         SubAssign,
-    }, slice::{ChunksExact, ChunksExactMut},
+    }, slice::{ChunksExact, ChunksExactMut}
 };
 
 pub trait ApplyTo: Sized {
@@ -333,6 +332,34 @@ impl Dir {
     }
 }
 
+impl TryFrom<usize> for Dir {
+    type Error = ();
+
+    fn try_from(value: usize) -> Result<Self, Self::Error> {
+        Ok(match value {
+            0 => Dir::U,
+            1 => Dir::D,
+            2 => Dir::L,
+            3 => Dir::R,
+            _ => return Err(()),
+        })
+    }
+}
+
+impl TryFrom<u8> for Dir {
+    type Error = ();
+
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Ok(match value {
+            0 => Dir::U,
+            1 => Dir::D,
+            2 => Dir::L,
+            3 => Dir::R,
+            _ => return Err(()),
+        })
+    }
+}
+
 impl Add<Dir> for P<i64> {
     type Output = Self;
     fn add(mut self, rhs: Dir) -> P<i64> {
@@ -360,6 +387,15 @@ impl Add<Dir> for P<usize> {
     }
 }
 
+impl Sub<Dir> for P<i64> {
+    type Output = Self;
+    fn sub(mut self, rhs: Dir) -> P<i64> {
+        self.0 -= rhs.p().0;
+        self.1 -= rhs.p().1;
+        self
+    }
+}
+
 #[derive(Clone)]
 pub struct Grid<T> {
     pub array: Vec<T>,
@@ -372,6 +408,16 @@ impl<T> Grid<T> {
         let height = array.len() / width;
         Self {
             array,
+            width,
+            height,
+        }
+    }
+    pub fn blank(init: T, width: usize, height: usize) -> Self
+    where
+        T: Clone
+    {
+        Self {
+            array: vec![init; width*height],
             width,
             height,
         }
