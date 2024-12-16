@@ -302,6 +302,23 @@ impl Dir {
             Dir::R => Dir::D,
         }
     }
+
+    pub fn is_vertical(self) -> bool {
+        match self {
+            Dir::U => true,
+            Dir::D => true,
+            Dir::L => false,
+            Dir::R => false,
+        }
+    }
+    pub fn is_horizontal(self) -> bool {
+        match self {
+            Dir::U => false,
+            Dir::D => false,
+            Dir::L => true,
+            Dir::R => true,
+        }
+    }
     pub fn from_str(s: &str) -> Self {
         match s {
             "U" | "N" => Dir::U,
@@ -367,6 +384,24 @@ impl<T> Grid<T> {
     }
     pub fn iter_mut(&mut self) -> impl Iterator<Item = &mut [T]> {
         self.into_iter()
+    }
+    pub fn iter_coords(&self) -> impl Iterator<Item = (P<i64>, &T)> {
+        self.into_iter().enumerate().flat_map(|(i, r)| {
+            r.iter().enumerate().map(move |(j, c)| (P(j, i).ai(), c))
+        })
+    }
+    pub fn find(&self, value: T) -> Option<P<i64>>
+    where
+        T: PartialEq
+    {
+        for (i, r) in self.iter().enumerate() {
+            for (j, c) in r.iter().enumerate() {
+                if value == *c {
+                    return Some(P(j, i).ai());
+                }
+            }
+        }
+        None
     }
 }
 
