@@ -5,12 +5,7 @@ use util::*;
 
 pub fn part1(input: &str) -> impl std::fmt::Display {
     let mut g = Grid::from_ascii(input);
-    let mut dist = [
-        Grid::new(vec![-1; g.width*g.height], g.width),
-        Grid::new(vec![-1; g.width*g.height], g.width),
-        Grid::new(vec![-1; g.width*g.height], g.width),
-        Grid::new(vec![-1; g.width*g.height], g.width),
-    ];
+    let mut dist = Grid::new([-1; 4], g.width, g.height);
 
     let start = g.find(b'S').unwrap();
     let end = g.find(b'E').unwrap();
@@ -20,24 +15,18 @@ pub fn part1(input: &str) -> impl std::fmt::Display {
     let mut q = BinaryHeap::new();
     q.push(Reverse((0, start, Dir::R)));
     while let Some(Reverse((cdist, p, d))) = q.pop() {
-        if g.get(p) != Some(&b'.') { continue; }
-        if dist[d as usize][p] != -1 { continue; }
-        dist[d as usize][p] = cdist;
-        q.push(Reverse((cdist+1, p+d, d)));
-        q.push(Reverse((cdist+1000, p, d.r())));
-        q.push(Reverse((cdist+1000, p, d.l())));
+        if dist[p][d as usize] != -1 { continue; }
+        dist[p][d as usize] = cdist;
+        if g[p+d] != b'#' && dist[p+d][d as usize] == -1 { q.push(Reverse((cdist+1, p+d, d))); }
+        if dist[p][d.r() as usize] == -1 { q.push(Reverse((cdist+1000, p, d.r()))); }
+        if dist[p][d.l() as usize] == -1 { q.push(Reverse((cdist+1000, p, d.l()))); }
     }
-    dist.iter().map(|d| d[end]).min().unwrap()
+    *dist[end].iter().min().unwrap()
 }
 
 pub fn part2(input: &str) -> impl std::fmt::Display {
     let mut g = Grid::from_ascii(input);
-    let mut dist = [
-        Grid::new(vec![-1; g.width*g.height], g.width),
-        Grid::new(vec![-1; g.width*g.height], g.width),
-        Grid::new(vec![-1; g.width*g.height], g.width),
-        Grid::new(vec![-1; g.width*g.height], g.width),
-    ];
+    let mut dist = Grid::new([-1; 4], g.width, g.height);
 
     let start = g.find(b'S').unwrap();
     let end = g.find(b'E').unwrap();
@@ -47,41 +36,31 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
     let mut q = BinaryHeap::new();
     q.push(Reverse((0, start, Dir::R)));
     while let Some(Reverse((cdist, p, d))) = q.pop() {
-        if g.get(p) != Some(&b'.') { continue; }
-        if dist[d as usize][p] != -1 { continue; }
-        dist[d as usize][p] = cdist;
-        q.push(Reverse((cdist+1, p+d, d)));
-        q.push(Reverse((cdist+1000, p, d.r())));
-        q.push(Reverse((cdist+1000, p, d.l())));
+        if dist[p][d as usize] != -1 { continue; }
+        dist[p][d as usize] = cdist;
+        if g[p+d] != b'#' && dist[p+d][d as usize] == -1 { q.push(Reverse((cdist+1, p+d, d))); }
+        if dist[p][d.r() as usize] == -1 { q.push(Reverse((cdist+1000, p, d.r()))); }
+        if dist[p][d.l() as usize] == -1 { q.push(Reverse((cdist+1000, p, d.l()))); }
     }
-    let mindist = dist.iter().map(|d| d[end]).min().unwrap();
+    let mindist = *dist[end].iter().min().unwrap();
 
 
-    let mut vis = [
-        Grid::new(vec![-1; g.width*g.height], g.width),
-        Grid::new(vec![-1; g.width*g.height], g.width),
-        Grid::new(vec![-1; g.width*g.height], g.width),
-        Grid::new(vec![-1; g.width*g.height], g.width),
-    ];
-    vis[0][end] = 1;
-    vis[1][end] = 1;
-    vis[2][end] = 1;
-    vis[3][end] = 1;
+    let mut vis = Grid::new([-1; 4], g.width, g.height);
+    vis[end] = [1; 4];
     let mut q = VecDeque::new();
     for d in Dir::iter() {
-        if dist[d as usize][end] == mindist {
+        if dist[end][d as usize] == mindist {
             q.push_back((end-d, d, (end, d)));
         }
     }
     while let Some((p, d, par)) = q.pop_front() {
-        if g.get(p) != Some(&b'.') { continue; }
-        if vis[d as usize][p] != -1 { continue; }
-        vis[d as usize][p] = 0;
-        if ((p+d, d) == par && dist[d as usize][p]+1 == dist[d as usize][par.0])
-        || ((p, d.r()) == par && dist[d as usize][p] + 1000 == dist[d.r() as usize][par.0])
-        || ((p, d.l()) == par && dist[d as usize][p] + 1000 == dist[d.l() as usize][par.0]) {
-            vis[d as usize][p] = 1;
-            q.push_back((p-d, d, (p, d)));
+        if vis[p][d as usize] != -1 { continue; }
+        vis[p][d as usize] = 0;
+        if ((p+d, d) == par && dist[p][d as usize]+1 == dist[par.0][d as usize])
+        || ((p, d.r()) == par && dist[p][d as usize] + 1000 == dist[par.0][d.r() as usize])
+        || ((p, d.l()) == par && dist[p][d as usize] + 1000 == dist[par.0][d.l() as usize]) {
+            vis[p][d as usize] = 1;
+            if g[p-d] != b'#' { q.push_back((p-d, d, (p, d))); }
             q.push_back((p, d.r(), (p, d)));
             q.push_back((p, d.l(), (p, d)));
         }
@@ -90,14 +69,9 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
     let mut ans = 0;
     for i in 0..g.height {
         for j in 0..g.width {
-            let ispath = (0..4).any(|k| vis[k][i][j] == 1);
+            let ispath = vis[i][j].contains(&1);
             ans += ispath as usize;
-            if ispath {
-                g[i][j] = b'O';
-            }
         }
     }
-    g.print();
-    assert_ne!(ans, 591);
     ans
 }

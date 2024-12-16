@@ -7,7 +7,7 @@ pub fn part1(input: &str) -> impl std::fmt::Display {
     let g = Grid::from_ascii(input);
     let mut dsu = Dsu::new(g.width*g.height);
     let id = |p: P<i64>| p.1 as usize*g.width + p.0 as usize;
-    let mut perimeter = Grid::new(vec![0; g.width*g.height], g.width);
+    let mut perimeter = Grid::from_parts(vec![0; g.width*g.height], g.width);
     for (y, r) in g.iter().enumerate() {
         for (x, &c) in r.iter().enumerate() {
             let p = P(x as i64, y as i64);

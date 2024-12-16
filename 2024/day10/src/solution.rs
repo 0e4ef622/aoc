@@ -83,7 +83,7 @@ pub fn part2(input: &str) -> impl std::fmt::Display {
         }
     }
 
-    let mut g2 = Grid::new(vec![0; g.width*g.height], g.width);
+    let mut g2 = Grid::from_parts(vec![0; g.width*g.height], g.width);
     for w in h.windows(2) {
         g2.array.fill(0);
         let pre = &w[0];

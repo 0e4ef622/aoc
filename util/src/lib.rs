@@ -1,5 +1,5 @@
 use std::{
-    collections::BTreeSet, num::TryFromIntError, ops::{
+    collections::BTreeSet, ops::{
         Add, AddAssign, Div, DivAssign, Index, IndexMut, Mul, MulAssign, Rem, RemAssign, Sub,
         SubAssign,
     }, slice::{ChunksExact, ChunksExactMut}
@@ -404,7 +404,7 @@ pub struct Grid<T> {
 }
 
 impl<T> Grid<T> {
-    pub fn new(array: Vec<T>, width: usize) -> Self {
+    pub fn from_parts(array: Vec<T>, width: usize) -> Self {
         let height = array.len() / width;
         Self {
             array,
@@ -412,7 +412,7 @@ impl<T> Grid<T> {
             height,
         }
     }
-    pub fn blank(init: T, width: usize, height: usize) -> Self
+    pub fn new(init: T, width: usize, height: usize) -> Self
     where
         T: Clone
     {
@@ -467,7 +467,7 @@ impl Grid<u8> {
     pub fn from_ascii(s: &str) -> Self {
         let w = s.lines().next().unwrap().len();
         let a = s.lines().flat_map(|x| x.as_bytes()).copied().cv();
-        Self::new(a, w)
+        Self::from_parts(a, w)
     }
 
     pub fn print(&self) {
