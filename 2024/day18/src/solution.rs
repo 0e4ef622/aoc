@@ -14,22 +14,59 @@ pub fn part1(input: &str) -> impl std::fmt::Display {
         g[P(x, y)] = b'#';
     }
 
-    let mut dist = Grid::new(-1, g.width, g.height);
+    let mut vis = Grid::new(false, g.width, g.height);
     let start = P(0i64, 0);
     let end = P(70i64, 70);
 
-    let mut q = BinaryHeap::new();
-    q.push(Reverse((0, start)));
-    while let Some(Reverse((cdist, p))) = q.pop() {
-        if dist[p] != -1 { continue; }
-        dist[p] = cdist;
+    let mut q = VecDeque::new();
+    q.push_back((0, start));
+    vis[start] = true;
+    while let Some((cdist, p)) = q.pop_front() {
+        if p == end {
+            return cdist;
+        }
         for d in Dir::iter() {
-            if g.get(p+d) == Some(&b'.') && dist[p+d] == -1 {
-                q.push(Reverse((cdist+1, p+d)));
+            if g.get(p+d) == Some(&b'.') && !vis[p+d] {
+                vis[p+d] = true;
+                q.push_back((cdist+1, p+d));
             }
         }
     }
-    dist[end]
+    0
+}
+
+#[derive(Debug)]
+pub struct Dsu {
+    pub p: Vec<usize>,
+}
+
+impl Dsu {
+    pub fn new(n: usize) -> Self {
+        let mut p = vec![0; n];
+        for (i, v) in p.iter_mut().enumerate() {
+            *v = i;
+        }
+        Dsu { p }
+    }
+
+    pub fn find(&mut self, i: usize) -> usize {
+        if self.p[i] == i {
+            return i;
+        }
+        let v = self.find(self.p[i]);
+        self.p[i] = v;
+        return self.p[i];
+    }
+
+    pub fn merge(&mut self, i: usize, j: usize) -> bool {
+        let i = self.find(i);
+        let j = self.find(j);
+        if i == j {
+            return false;
+        }
+        self.p[i] = j;
+        true
+    }
 }
 
 pub fn part2(input: &str) -> impl std::fmt::Display {
