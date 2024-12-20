@@ -19,8 +19,8 @@ fn possible(d: &[&str], pat: &str) -> usize {
 }
 
 pub fn part1(input: &str) -> impl std::fmt::Display {
-    let ss = input.split("\n\n").cv();
-    let designs = ss[0].split(", ").cv();
+    let ss = input.split("\n\n").collect::<Vec<_>>();
+    let designs = ss[0].split(", ").collect::<Vec<_>>();
 
     let mut ans = 0;
     for pat in ss[1].lines() {
@@ -30,8 +30,8 @@ pub fn part1(input: &str) -> impl std::fmt::Display {
 }
 
 pub fn part2(input: &str) -> impl std::fmt::Display {
-    let ss = input.split("\n\n").cv();
-    let designs = ss[0].split(", ").cv();
+    let ss = input.split("\n\n").collect::<Vec<_>>();
+    let designs = ss[0].split(", ").collect::<Vec<_>>();
 
     let mut ans = 0;
     for pat in ss[1].lines() {

@@ -488,6 +488,17 @@ impl Grid<u8> {
     }
 }
 
+impl Grid<i64> {
+    pub fn print_ints(&self) {
+        for y in 0..self.height {
+            for x in 0..self.width {
+                eprint!("{:4}", self[y][x]);
+            }
+            eprintln!();
+        }
+    }
+}
+
 pub trait GridIndex<T> {
     type Output: ?Sized;
     fn get(&self, index: T) -> Option<&Self::Output>;
