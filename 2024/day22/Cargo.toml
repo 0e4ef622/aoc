@@ -1,0 +1,17 @@
+[package]
+name = "day22"
+version = "0.1.0"
+authors = ["Matthew Tran <0e4ef622@gmail.com>"]
+edition = "2021"
+
+[dev-dependencies]
+criterion = "*"
+
+[[bench]]
+name = "bench"
+harness = false
+
+[dependencies]
+rand = "*"
+itertools = "*"
+util = { path = "../../util" }
