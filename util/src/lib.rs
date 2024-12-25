@@ -74,9 +74,9 @@ impl<T: Clone> Transpose for Vec<Vec<T>> {
         let h = self.len();
         let w = self[0].len();
         let mut r = vec![];
-        for i in 0..h {
+        for i in 0..w {
             r.push(vec![]);
-            for j in 0..w {
+            for j in 0..h {
                 r.last_mut().unwrap().push(self[j][i].clone());
             }
         }

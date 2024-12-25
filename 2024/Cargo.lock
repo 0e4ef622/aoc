@@ -333,6 +333,36 @@ dependencies = [
 ]
 
 [[package]]
+name = "day23"
+version = "0.1.0"
+dependencies = [
+ "criterion",
+ "itertools",
+ "rand",
+ "util",
+]
+
+[[package]]
+name = "day24"
+version = "0.1.0"
+dependencies = [
+ "criterion",
+ "itertools",
+ "rand",
+ "util",
+]
+
+[[package]]
+name = "day25"
+version = "0.1.0"
+dependencies = [
+ "criterion",
+ "itertools",
+ "rand",
+ "util",
+]
+
+[[package]]
 name = "either"
 version = "1.13.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
