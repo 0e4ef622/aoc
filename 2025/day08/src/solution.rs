@@ -22,7 +22,7 @@ pub fn part1(input: &str) -> impl std::fmt::Display {
             edges.push((i, j));
         }
     }
-    edges.sort_unstable_by_key(|&(i, j)| {
+    let (edges1000, ..) = edges.select_nth_unstable_by_key(1000, |&(i, j)| {
         let a = coords[i];
         let b = coords[j];
         let d = (a.0 - b.0, a.1 - b.1, a.2 - b.2);
@@ -30,13 +30,19 @@ pub fn part1(input: &str) -> impl std::fmt::Display {
         dist2
     });
 
-    for &(i, j) in &edges[..1000] {
+    for &mut (i, j) in edges1000 {
         ds.merge(i, j);
     }
 
-    let mut sizes = ds.s.clone();
-    sizes.sort_unstable();
-    sizes[sizes.len() - 1] * sizes[sizes.len() - 2] * sizes[sizes.len() - 3]
+    let mut sizes =
+        ds.s.iter()
+            .zip(ds.p)
+            .enumerate()
+            .filter_map(|(i, (s, p))| (p == i).then_some(*s))
+            .cv();
+    let sizes_len = sizes.len();
+    let (.., last3) = sizes.select_nth_unstable(sizes_len - 4);
+    last3[0] * last3[1] * last3[2]
 }
 
 pub fn part2(input: &str) -> impl std::fmt::Display {
